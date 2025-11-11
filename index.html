@@ -1228,6 +1228,46 @@
             .we-hero-card .card-content { padding-top: 80px; }
         }
 
+        /* Service card professional styles */
+        .service-card {
+            border-color: #e9e6f2 !important;
+            padding: 22px !important;
+            border-radius: 16px !important;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            background: #fff;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(16,24,40,0.08);
+        }
+        .service-accent {
+            height: 6px;
+            width: 72px;
+            margin-bottom: 14px;
+            border-radius: 6px;
+            display: block;
+        }
+        .service-title { color: #0d3d3d; margin-bottom: 8px; font-weight:700; }
+        .service-desc { color: #475569; margin-bottom: 14px; }
+        .service-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 14px; border-radius: 12px; background: #d8dbf0; /* requested light button color */
+            color: #0d3d3d; text-decoration: none; box-shadow: 0 8px 20px rgba(13,61,61,0.06);
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+            font-weight:600;
+        }
+        .service-cta:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(13,61,61,0.08); background-color: #cfd3e6; }
+
+        /* Ensure CTA links inside .service-card use dark text on the light background */
+        .service-card a.service-cta { color: #0d3d3d; }
+
+        @media (max-width: 640px) {
+            .service-card { padding: 16px !important; }
+            .service-accent { width: 56px; }
+            .service-title { font-size: 1.125rem; }
+            .service-cta { padding: 8px 12px; }
+        }
+
     </style>
 </head>
 
@@ -1335,114 +1375,82 @@
     <section class="py-16 lg:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header -->
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-extrabold mb-6" style="color: #000;">Your Back Office. <span style="color: #000;">Simplified.</span></h2>
-                <p class="text-xl max-w-3xl mx-auto mb-10" style="color: #0d3d3d;">Each tool is powerful on its own, but together? Game-changing. Transform your business operations with our comprehensive suite of services.</p>
-                
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://crm.wealthempires.in/" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white shadow-lg transition duration-200 transform hover:scale-105" style="background-color: #0d3d3d;" onmouseover="this.style.backgroundColor='#0d3d3d'" onmouseout="this.style.backgroundColor='#0d3d3d'">
-                        Start Incorporation
-                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </a>
-                    <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 border-2 text-base font-medium rounded-xl bg-white transition duration-200" style="border-color: #0d3d3d; color: #0d3d3d;" onmouseover="this.style.backgroundColor='#d8d6f0'" onmouseout="this.style.backgroundColor='white'">
-                        Contact Us
-                    </a>
+            <div class="text-center mb-12">
+                <div style="max-width:900px; margin:0 auto;">
+                    <h2 class="text-4xl lg:text-5xl font-extrabold mb-4" style="color: #0d3d3d; line-height:1.05;">
+                        Your Back Office.
+                        <span style="display:block; color: #7851A9;">Simplified.</span>
+                    </h2>
+
+                    <div style="height:6px; width:84px; margin: 0 auto 18px; background: linear-gradient(90deg, #7851A9, #0d3d3d); border-radius:4px;"></div>
+
+                    <p class="text-lg mx-auto mb-6" style="color: #475569; max-width:720px;">
+                        One place to handle incorporation, compliance, taxes, bookkeeping and trademark services — so you can focus on growing your business.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="https://crm.wealthempires.in/" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white shadow transition duration-200 transform hover:scale-105" style="background-color: #0d3d3d;">
+                            Start Incorporation
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </a>
+                        <a href="contact.html" class="inline-flex items-center justify-center px-6 py-3 border-2 text-base font-medium rounded-lg bg-white transition duration-200" style="border-color: #0d3d3d; color: #0d3d3d;">
+                            Contact Us
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <!-- Services Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Company Incorporation -->
-                <div class="group rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border bg-white" style="border-color: #d8d6f0;">
-                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style="background-color: #7851A9;">
-                        <i class="fa-solid fa-building-circle-check text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4" style="color: #0d3d3d;">Company Incorporation</h3>
-                    <p class="mb-6 leading-relaxed" style="color: #0d3d3d;">Skip the paperwork. We set up your business so you can start selling faster with our streamlined incorporation process.</p>
-                    <a href="incorporation.html" class="inline-flex items-center font-semibold transition-colors group" style="color: #7851A9;" onmouseover="this.style.color='#6b4696'" onmouseout="this.style.color='#7851A9'">
-                        Start Your Business
-                        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </a>
+                <!-- Company Incorporation (redesigned) -->
+                <div class="group service-card">
+                    <span class="service-accent" style="background: linear-gradient(90deg,#7851A9,#0d3d3d);"></span>
+                    <h3 class="service-title">Company Incorporation</h3>
+                    <p class="service-desc">Skip the paperwork. We set up your business so you can start selling faster with our streamlined incorporation process.</p>
+                    <a href="incorporation.html" class="service-cta">Start Your Business</a>
                 </div>
 
                 <!-- 360° Compliance -->
-                <div class="group rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border bg-white" style="border-color: #d8d6f0;">
-                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style="background-color: #0d3d3d;">
-                        <i class="fa-solid fa-user-lock text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4" style="color: #0d3d3d;">360° Compliance</h3>
-                    <p class="mb-6 leading-relaxed" style="color: #0d3d3d;">End-to-end compliance management for all your business regulatory requirements with expert guidance.</p>
-                    <a href="360-compliance.html" class="inline-flex items-center font-semibold transition-colors group" style="color: #7851A9;" onmouseover="this.style.color='#6b4696'" onmouseout="this.style.color='#7851A9'">
-                        Stay Compliant
-                        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </a>
+                <div class="group service-card">
+                    <span class="service-accent" style="background: linear-gradient(90deg,#0d3d3d,#7851A9);"></span>
+                    <h3 class="service-title">360° Compliance</h3>
+                    <p class="service-desc">End-to-end compliance management for all your business regulatory requirements with expert guidance.</p>
+                    <a href="360-compliance.html" class="service-cta">Stay Compliant</a>
                 </div>
 
                 <!-- Trademark Registration -->
-                <div class="group rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border bg-white" style="border-color: #d8d6f0;">
-                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style="background-color: #7851A9;">
-                        <i class="fa-solid fa-registered text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4" style="color: #0d3d3d;">Trademark Registration</h3>
-                    <p class="mb-6 leading-relaxed" style="color: #0d3d3d;">Protect your brand identity with professional trademark registration services and legal protection.</p>
-                    <a href="trademark.html" class="inline-flex items-center font-semibold transition-colors group" style="color: #7851A9;" onmouseover="this.style.color='#6b4696'" onmouseout="this.style.color='#7851A9'">
-                        Register Trademark
-                        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </a>
+                <div class="group service-card">
+                    <span class="service-accent" style="background: linear-gradient(90deg,#7851A9,#c084fc);"></span>
+                    <h3 class="service-title">Trademark Registration</h3>
+                    <p class="service-desc">Protect your brand identity with professional trademark registration services and legal protection.</p>
+                    <a href="trademark.html" class="service-cta">Register Trademark</a>
                 </div>
 
                 <!-- Smart Sales Analytics -->
-                <div class="group rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border bg-white" style="border-color: #d8d6f0;">
-                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style="background-color: #0d3d3d;">
-                        <i class="fa-solid fa-lightbulb text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4" style="color: #0d3d3d;">Smart Sales Analytics</h3>
-                    <p class="mb-6 leading-relaxed" style="color: #0d3d3d;">Know what's selling, what's not, and how to boost your revenue with data-driven insights.</p>
-                    <a href="hitworth.html" class="inline-flex items-center font-semibold transition-colors group" style="color: #7851A9;" onmouseover="this.style.color='#6b4696'" onmouseout="this.style.color='#7851A9'">
-                        Analyze Your Sales
-                        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </a>
+                <div class="group service-card">
+                    <span class="service-accent" style="background: linear-gradient(90deg,#0d3d3d,#06b6d4);"></span>
+                    <h3 class="service-title">Smart Sales Analytics</h3>
+                    <p class="service-desc">Know what's selling, what's not, and how to boost your revenue with data-driven insights.</p>
+                    <a href="hitworth.html" class="service-cta">Analyze Your Sales</a>
                 </div>
 
                 <!-- Stress-Free Taxes -->
-                <div class="group rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border bg-white" style="border-color: #d8d6f0;">
-                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style="background-color: #7851A9;">
-                        <i class="fa-solid fa-wallet text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4" style="color: #0d3d3d;">Stress-Free Taxes</h3>
-                    <p class="mb-6 leading-relaxed" style="color: #0d3d3d;">Stay compliant, save time, and never stress about tax season again with our expert tax services.</p>
-                    <a href="taxes.html" class="inline-flex items-center font-semibold transition-colors group" style="color: #7851A9;" onmouseover="this.style.color='#6b4696'" onmouseout="this.style.color='#7851A9'">
-                        File Your Taxes
-                        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </a>
+                <div class="group service-card">
+                    <span class="service-accent" style="background: linear-gradient(90deg,#f97316,#0d3d3d);"></span>
+                    <h3 class="service-title">Stress-Free Taxes</h3>
+                    <p class="service-desc">Stay compliant, save time, and never stress about tax season again with our expert tax services.</p>
+                    <a href="taxes.html" class="service-cta">File Your Taxes</a>
                 </div>
 
                 <!-- Seamless Bookkeeping -->
-                <div class="group rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border bg-white" style="border-color: #d8d6f0;">
-                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style="background-color: #0d3d3d;">
-                        <i class="fa-solid fa-clock text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4" style="color: #0d3d3d;">Seamless Bookkeeping</h3>
-                    <p class="mb-6 leading-relaxed" style="color: #0d3d3d;">No spreadsheets, no hassle, just real-time financial insights and automated bookkeeping solutions.</p>
-                    <a href="health-check.html" class="inline-flex items-center font-semibold transition-colors group" style="color: #7851A9;" onmouseover="this.style.color='#6b4696'" onmouseout="this.style.color='#7851A9'">
-                        Track Your Books
-                        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </a>
+                <div class="group service-card">
+                    <span class="service-accent" style="background: linear-gradient(90deg,#0d9488,#0d3d3d);"></span>
+                    <h3 class="service-title">Seamless Bookkeeping</h3>
+                    <p class="service-desc">No spreadsheets, no hassle, just real-time financial insights and automated bookkeeping solutions.</p>
+                    <a href="health-check.html" class="service-cta">Track Your Books</a>
                 </div>
             </div>
         </div>
