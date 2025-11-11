@@ -18,6 +18,8 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=finance_mode" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,200,0,0&icon_names=security" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * {
             margin: 0;
@@ -42,10 +44,11 @@
         }
 
         .hero-section {
-            min-height: 110vh;
+            /* reduce excessive vertical whitespace so content sits closer together */
+            min-height: 70vh;
             display: flex;
             align-items: center;
-            padding: 60px 40px;
+            padding: 40px 20px;
             background: linear-gradient(135deg, #eee5e0 0%, #eee5e0 100%);
         }
 
@@ -84,10 +87,53 @@
             max-width: 540px;
         }
 
+        /* Responsive overrides to ensure Tailwind-based hero scales on small screens */
+        @media (max-width: 640px) {
+            .hero-left h1 {
+                font-size: 28px !important;
+                line-height: 1.12 !important;
+                margin-bottom: 12px !important;
+                text-align: center !important;
+            }
+
+            .hero-left p {
+                font-size: 16px !important;
+                line-height: 1.5 !important;
+                margin-bottom: 18px !important;
+                text-align: center !important;
+                max-width: 100% !important;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+                /* push content below fixed header on small screens (reduced) */
+                margin-top: 48px !important;
+            }
+
+            .hero-left {
+                padding-right: 0 !important;
+                padding-left: 8px !important;
+                padding-right: 8px !important;
+            }
+
+            /* center the hero buttons on small screens */
+            .hero-left .hero-buttons {
+                justify-content: center !important;
+            }
+
+            /* Make the right image behave on small screens */
+            .w-full.max-w-lg {
+                max-width: 92% !important;
+                margin: 0 auto !important;
+            }
+        }
+
         .hero-buttons {
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
+            justify-content: flex-start;
         }
 
         .btn-large {
@@ -1084,6 +1130,104 @@
                 border: 2px solid #ffffff;
             }
         }
+
+        /* Wealth Empires card background scaling */
+        .we-card-bg img {
+            /* Fill the card fully in both dimensions so there are no side bars */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            transition: transform 0.45s ease, filter 0.45s ease;
+        }
+
+        /* Card sizing & content centering to match reference */
+        .we-hero-card {
+            min-height: 420px; /* increase card height to create the tall hero look */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .we-hero-card .card-content {
+            text-align: center;
+            color: #ffffff;
+            width: 100%;
+            max-width: 760px;
+            padding-left: 24px;
+            padding-right: 24px;
+            /* push content lower inside the card */
+            padding-top: 40px;
+        }
+
+        @media (min-width: 1024px) {
+            .we-hero-card { min-height: 480px; }
+        }
+
+        /* CTA hero responsive tweaks */
+        .cta-hero-section .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .cta-hero-section {
+                background-position: center !important;
+                padding: 20px 12px !important;
+                margin: 0 12px !important;
+                border-radius: 16px !important;
+            }
+
+            .cta-hero-section .hero-grid {
+                grid-template-columns: 1fr !important;
+                gap: 18px !important;
+            }
+
+            .cta-hero-section .hero-grid > div:first-child {
+                padding-left: 8px !important;
+                text-align: center !important;
+                order: 1;
+            }
+
+            .cta-hero-section .hero-grid > div:last-child {
+                order: 2;
+            }
+
+            .cta-hero-section .hero-grid img {
+                width: 100% !important;
+                height: auto !important;
+                display: block !important;
+                margin: 0 auto !important;
+                border-radius: 12px;
+            }
+
+            .cta-hero-section .hero-grid a {
+                padding-left: 14px !important;
+                padding-right: 14px !important;
+            }
+        }
+
+        /* Smaller CTA for the hero card */
+        .we-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px !important; /* reduce size */
+            font-size: 15px !important;
+            max-width: 280px !important;
+            width: auto !important;
+        }
+
+        @media (min-width: 768px) {
+            .we-hero-card .card-content { padding-top: 80px; }
+        }
+
     </style>
 </head>
 
@@ -1151,186 +1295,239 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-left">
-                    <h1><span style="font-weight: 400;">Wealth empires</span> India's 1st Startup Doctor
+    <!-- Hero Section (Modern Tailwind) -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="hero-content grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="hero-left text-center lg:text-left">
+                    
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6" style="color: #0d3d3d;">
+                        <span class="font-normal" style="color: #0d3d3d;">Wealth Empires</span><br>
+                        <span style="color: #7851A9;">India's #1 Startup Doctor</span>
                     </h1>
-                    <p>Do health check for
-                        your startup, its free!</p>
-                    <div class="hero-buttons">
-                        <a href="contact.html" class="btn-large btn-black">Contact Us</a>
-                        <a href="https://crm.wealthempires.in/" class="btn-large btn-primary" style="color: white;">Try
-                            Now</a>
+                    
+                    <p class="text-xl mb-8 max-w-2xl" style="color: #0d3d3d;">
+                        Get comprehensive health checks for your startup absolutely free! We diagnose, treat, and optimize your business for sustainable growth.
+                    </p>
+                    <!-- Hero CTAs -->
+                    <div class="hero-buttons mt-6" style="display:flex; gap:16px;">
+                        <a href="contact.html" class="btn-demo btn-large">Contact Us</a>
+                        <a href="https://crm.wealthempires.in/" class="btn-primary btn-large" style="color: white;">Try Now &rarr;</a>
                     </div>
-                    <div class="pagination-dots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
+                    
+                    
+                    
                 </div>
-                <div class="hero-right">
-                    <div>
-                        <img src="home.jpg" alt="" width="80%" height="auto">
+                
+                <!-- Right Image -->
+                <div class="flex justify-center lg:justify-end">
+                    <div class="w-full max-w-lg rounded-3xl overflow-hidden   p-2">
+                        <img src="home2.jpg" alt="Startup Health Check Dashboard" class="w-full h-auto rounded-2xl object-cover">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="gst-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Your Back Office. Simplified.</h2>
-                <p>Each tool is powerful on its own, but together? Game-changing.</p>
+    <!-- Services Section (Modern Tailwind) -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-extrabold mb-6" style="color: #000;">Your Back Office. <span style="color: #000;">Simplified.</span></h2>
+                <p class="text-xl max-w-3xl mx-auto mb-10" style="color: #0d3d3d;">Each tool is powerful on its own, but together? Game-changing. Transform your business operations with our comprehensive suite of services.</p>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://crm.wealthempires.in/" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white shadow-lg transition duration-200 transform hover:scale-105" style="background-color: #0d3d3d;" onmouseover="this.style.backgroundColor='#0d3d3d'" onmouseout="this.style.backgroundColor='#0d3d3d'">
+                        Start Incorporation
+                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
+                    <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 border-2 text-base font-medium rounded-xl bg-white transition duration-200" style="border-color: #0d3d3d; color: #0d3d3d;" onmouseover="this.style.backgroundColor='#d8d6f0'" onmouseout="this.style.backgroundColor='white'">
+                        Contact Us
+                    </a>
+                </div>
             </div>
-            <div class="section-cta">
-                <a href="https://crm.wealthempires.in/" style="background: #1a1a1a; color: white">Start
-                    Incorporation<span>›</span></a>
-                <a href="contact.html"
-                    style="background: transparent; color: #1a1a1a; border: 2px solid #e5e7eb;">Contact
-                    Us</a>
-            </div>
-            <div class="service-grid">
-                <!-- Company Incorporation -->
-                <div
-                    style="background: linear-gradient(135deg, #d9dcf0, rgb(131, 195, 211)); border-radius: 20px; padding: 36px; transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05); min-height: 280px; display: flex; flex-direction: column;">
-                    <div style="font-size: 44px;">
-                        <i class="fa-solid fa-building-circle-check"></i>
-                    </div>
 
-                    <h3 style="font-size: 1.4rem; margin-bottom: 14px; color: #1a1a1a; font-weight: 700;">Company
-                        Incorporation</h3>
-                    <p style="color: #5a5a5a; line-height: 1.6; margin-bottom: auto; font-size: 0.95rem;">Skip the
-                        paperwork. We set up your business so you can start selling faster.</p>
-                    <a href="incorporation.html"
-                        style="color: #8B7355; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 0.95rem;">Start
-                        Your Business <span>›</span></a>
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Company Incorporation -->
+                <div class="group rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border bg-white" style="border-color: #d8d6f0;">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style="background-color: #7851A9;">
+                        <i class="fa-solid fa-building-circle-check text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" style="color: #0d3d3d;">Company Incorporation</h3>
+                    <p class="mb-6 leading-relaxed" style="color: #0d3d3d;">Skip the paperwork. We set up your business so you can start selling faster with our streamlined incorporation process.</p>
+                    <a href="incorporation.html" class="inline-flex items-center font-semibold transition-colors group" style="color: #7851A9;" onmouseover="this.style.color='#6b4696'" onmouseout="this.style.color='#7851A9'">
+                        Start Your Business
+                        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
                 </div>
 
                 <!-- 360° Compliance -->
-                <div
-                    style="background: linear-gradient(135deg, #d5ecd6, #d5ecd6); border-radius: 20px; padding: 36px; transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05); min-height: 280px; display: flex; flex-direction: column;">
-                    <div style="font-size: 44px;">
-                        <i class="fa-solid fa-user-lock"></i>
+                <div class="group rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border bg-white" style="border-color: #d8d6f0;">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style="background-color: #0d3d3d;">
+                        <i class="fa-solid fa-user-lock text-2xl text-white"></i>
                     </div>
-                    <h3 style="font-size: 1.4rem; margin-bottom: 14px; color: #1a1a1a; font-weight: 700;">360°
-                        Compliance</h3>
-                    <p style="color: #5a5a5a; line-height: 1.6; margin-bottom: auto; font-size: 0.95rem;">End-to-end
-                        compliance management for all your business regulatory requirements.</p>
-                    <a href="360-compliance.html"
-                        style="color: #519ed1; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 0.95rem;">Stay
-                        Compliant <span>›</span></a>
+                    <h3 class="text-2xl font-bold mb-4" style="color: #0d3d3d;">360° Compliance</h3>
+                    <p class="mb-6 leading-relaxed" style="color: #0d3d3d;">End-to-end compliance management for all your business regulatory requirements with expert guidance.</p>
+                    <a href="360-compliance.html" class="inline-flex items-center font-semibold transition-colors group" style="color: #7851A9;" onmouseover="this.style.color='#6b4696'" onmouseout="this.style.color='#7851A9'">
+                        Stay Compliant
+                        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
                 </div>
 
                 <!-- Trademark Registration -->
-                <div
-                    style="background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%); border-radius: 20px; padding: 36px; transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05); min-height: 280px; display: flex; flex-direction: column;">
-                    <div style="font-size: 44px;">
-                        <i class="fa-solid fa-registered"></i>
+                <div class="group rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border bg-white" style="border-color: #d8d6f0;">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style="background-color: #7851A9;">
+                        <i class="fa-solid fa-registered text-2xl text-white"></i>
                     </div>
-                    <h3 style="font-size: 1.4rem; margin-bottom: 14px; color: #1a1a1a; font-weight: 700;">Trademark
-                        Registration</h3>
-                    <p style="color: #5a5a5a; line-height: 1.6; margin-bottom: auto; font-size: 0.95rem;">Protect your
-                        brand identity with professional trademark registration services.</p>
-                    <a href="trademark.html"
-                        style="color: #7B1FA2; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 0.95rem;">Register
-                        Trademark <span>›</span></a>
+                    <h3 class="text-2xl font-bold mb-4" style="color: #0d3d3d;">Trademark Registration</h3>
+                    <p class="mb-6 leading-relaxed" style="color: #0d3d3d;">Protect your brand identity with professional trademark registration services and legal protection.</p>
+                    <a href="trademark.html" class="inline-flex items-center font-semibold transition-colors group" style="color: #7851A9;" onmouseover="this.style.color='#6b4696'" onmouseout="this.style.color='#7851A9'">
+                        Register Trademark
+                        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
                 </div>
 
                 <!-- Smart Sales Analytics -->
-                <div
-                    style="background: linear-gradient(135deg, #d3d6ea 0%, #d3d6ea 100%); border-radius: 20px; padding: 36px; transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05); min-height: 280px; display: flex; flex-direction: column;">
-                    <div
-                        style="width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 24px;">
-                        <div style="font-size: 44px">
-                            <i class="fa-solid fa-lightbulb"></i>
-                        </div>
+                <div class="group rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border bg-white" style="border-color: #d8d6f0;">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style="background-color: #0d3d3d;">
+                        <i class="fa-solid fa-lightbulb text-2xl text-white"></i>
                     </div>
-                    <h3 style="font-size: 1.4rem; margin-bottom: 14px; color: #1a1a1a; font-weight: 700;">Smart Sales
-                        Analytics</h3>
-                    <p style="color: #5a5a5a; line-height: 1.6; margin-bottom: auto; font-size: 0.95rem;">Know what's
-                        selling, what's not, and how to boost your revenue.</p>
-                    <a href="hitworth.html"
-                        style="color: #B8457D; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 0.95rem;">Analyze
-                        Your Sales <span>›</span></a>
+                    <h3 class="text-2xl font-bold mb-4" style="color: #0d3d3d;">Smart Sales Analytics</h3>
+                    <p class="mb-6 leading-relaxed" style="color: #0d3d3d;">Know what's selling, what's not, and how to boost your revenue with data-driven insights.</p>
+                    <a href="hitworth.html" class="inline-flex items-center font-semibold transition-colors group" style="color: #7851A9;" onmouseover="this.style.color='#6b4696'" onmouseout="this.style.color='#7851A9'">
+                        Analyze Your Sales
+                        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
                 </div>
 
                 <!-- Stress-Free Taxes -->
-                <div
-                    style="background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%); border-radius: 20px; padding: 36px; transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05); min-height: 280px; display: flex; flex-direction: column;">
-                    <div
-                        style="width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 24px;">
-                        <div style="font-size: 44px">
-                            <i class="fa-solid fa-wallet"></i>
-                        </div>
+                <div class="group rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border bg-white" style="border-color: #d8d6f0;">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style="background-color: #7851A9;">
+                        <i class="fa-solid fa-wallet text-2xl text-white"></i>
                     </div>
-                    <h3 style="font-size: 1.4rem; margin-bottom: 14px; color: #1a1a1a; font-weight: 700;">Stress-Free
-                        Taxes</h3>
-                    <p style="color: #5a5a5a; line-height: 1.6; margin-bottom: auto; font-size: 0.95rem;">Stay
-                        compliant, save time, and never stress about tax season again.</p>
-                    <a href="taxes.html"
-                        style="color: #388E3C; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 0.95rem;">File
-                        Your Taxes <span>›</span></a>
+                    <h3 class="text-2xl font-bold mb-4" style="color: #0d3d3d;">Stress-Free Taxes</h3>
+                    <p class="mb-6 leading-relaxed" style="color: #0d3d3d;">Stay compliant, save time, and never stress about tax season again with our expert tax services.</p>
+                    <a href="taxes.html" class="inline-flex items-center font-semibold transition-colors group" style="color: #7851A9;" onmouseover="this.style.color='#6b4696'" onmouseout="this.style.color='#7851A9'">
+                        File Your Taxes
+                        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
                 </div>
 
                 <!-- Seamless Bookkeeping -->
-                <div
-                    style="background: linear-gradient(135deg, #E8EAF6 0%, #C5CAE9 100%); border-radius: 20px; padding: 36px; transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05); min-height: 280px; display: flex; flex-direction: column;">
-                    <div
-                        style="width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 24px;">
-                        <div style="font-size: 44px;">
-                            <i class="fa-solid fa-clock"></i>
-                        </div>
+                <div class="group rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border bg-white" style="border-color: #d8d6f0;">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" style="background-color: #0d3d3d;">
+                        <i class="fa-solid fa-clock text-2xl text-white"></i>
                     </div>
-                    <h3 style="font-size: 1.4rem; margin-bottom: 14px; color: #1a1a1a; font-weight: 700;">Seamless
-                        Bookkeeping</h3>
-                    <p style="color: #5a5a5a; line-height: 1.6; margin-bottom: auto; font-size: 0.95rem;">No
-                        spreadsheets, no hassle, just real-time financial insights.</p>
-                    <a href="health-check.html"
-                        style="color: #3949AB; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 0.95rem;">Track
-                        Your Books <span>›</span></a>
+                    <h3 class="text-2xl font-bold mb-4" style="color: #0d3d3d;">Seamless Bookkeeping</h3>
+                    <p class="mb-6 leading-relaxed" style="color: #0d3d3d;">No spreadsheets, no hassle, just real-time financial insights and automated bookkeeping solutions.</p>
+                    <a href="health-check.html" class="inline-flex items-center font-semibold transition-colors group" style="color: #7851A9;" onmouseover="this.style.color='#6b4696'" onmouseout="this.style.color='#7851A9'">
+                        Track Your Books
+                        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Wealth Empires Section -->
-    <section class="wealth-empires-section">
-        <div class="section-header">
-            <div class="resources-label">Resources</div>
-            <h1 class="main-heading">Why Wealth Empires?</h1>
-            <p class="description">
-                <span>We don't just set up your business, we set you up for success.</span>
-                <span>See how #WE stacks up against the competition.</span>
-            </p>
-        </div>
-
-        <div class="cards-container">
-            <div class="card">
-                <h2 class="card-title">Do It With Wealth Empires</h2>
-                <p class="card-subtitle">Build your dream. We'll handle the rest.</p>
-                <a href="#" class="btn btn-primary">
-                    Start your business
-                </a>
+    <!-- Why Wealth Empires Section (Modern Tailwind) -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                               
+                <h2 class="text-4xl lg:text-5xl font-extrabold mb-6" style="color: #000;">
+                    Why <span style="color: #000;">Wealth Empires?</span>
+                </h2>
+                
+                <p class="text-xl max-w-4xl mx-auto leading-relaxed" style="color: #0d3d3d;">
+                    We don't just set up your business, we set you up for success. 
+                    <span class="block mt-2">See how <span class="font-semibold" style="color: #7851A9;">#WE</span> stacks up against the competition.</span>
+                </p>
             </div>
 
-            <div class="card">
-                <h2 class="card-title">Do It Others</h2>
-                <p class="card-subtitle">Going solo? See how we compare.</p>
-                <a href="compareempires.html" class="btn btn-secondary">
-                    Compare
-                    <span class="arrow">→</span>
-                </a>
+            <!-- Cards Grid -->
+            <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Wealth Empires Card -->
+                <div class="group relative bg-white rounded-3xl p-0 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border overflow-hidden we-hero-card" style="border-color: #d8d6f0;">
+                    <!-- Gradient background -->
+                    <div class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-300" style="background: linear-gradient(135deg, #7851A9 0%, #0d3d3d 100%);"></div>
+                    <!-- Full-cover decorative background image (img/fa3.png) - behind content, covers card and respects rounded corners -->
+                    <div class="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none we-card-bg" aria-hidden="true">
+                        <!-- make image clearer: increase brightness and reduce overlay darkness -->
+                        <img src="fa3.png" alt="" class="w-full h-full object-cover" style="filter:brightness(0.92);" />
+                        <!-- lighter dark gradient overlay to improve visibility of the image while keeping text readable -->
+                        <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.28));"></div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="relative z-10 card-content">
+                        <!-- icon removed as requested -->
+                        
+                        <h3 class="text-2xl lg:text-4xl font-bold mb-4">Do It With Wealth Empires</h3>
+                        <p class="mb-8 leading-relaxed text-lg">Build your dream. We'll handle the rest. Get expert guidance, comprehensive support, and proven strategies for success.</p>
+
+                        <a href="https://crm.wealthempires.in/" class="we-cta inline-flex items-center justify-center mx-auto px-8 py-4 text-white font-semibold rounded-2xl shadow-lg transition-all duration-200 transform hover:scale-105 group" style="background: linear-gradient(135deg, #0d3d3d 0%, #0d3d3d 100%);">
+                            Start Your Business
+                            <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </a>
+                        
+                    </div>
+                </div>
+                <!-- Comparison Card -->
+                 <div class="group relative bg-white rounded-3xl p-0 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border overflow-hidden we-hero-card" style="border-color: #d8d6f0;">
+                    <!-- Gradient background -->
+                    <div class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-300" style="background: linear-gradient(135deg, #7851A9 0%, #0d3d3d 100%);"></div>
+                    <!-- Full-cover decorative background image (img/fa3.png) - behind content, covers card and respects rounded corners -->
+                    <div class="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none we-card-bg" aria-hidden="true">
+                        <!-- make image clearer: increase brightness and reduce overlay darkness -->
+                        <img src="fa1.png" alt="" class="w-full h-full object-cover" style="filter:brightness(0.92);" />
+                        <!-- lighter dark gradient overlay to improve visibility of the image while keeping text readable -->
+                        <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.28));"></div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="relative z-10 card-content">
+                        <!-- icon removed as requested -->
+                        
+                        <h3 class="text-2xl lg:text-4xl font-bold mb-4">Do It Others</h3>
+                        <p class="mb-8 leading-relaxed text-lg">Build your dream. We'll handle the rest. Get expert guidance, comprehensive support, and proven strategies for success.</p>
+
+                        <a href="https://crm.wealthempires.in/" class="we-cta inline-flex items-center justify-center mx-auto px-8 py-4 text-white font-semibold rounded-2xl shadow-lg transition-all duration-200 transform hover:scale-105 group" style="background: linear-gradient(135deg, #0d3d3d 0%, #0d3d3d 100%);">
+                            Start Your Business
+                            <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </a>
+                        
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Process Section -->
-    <section style="background: #f8fafc; padding: 80px 0;">
+    <section style="background: #f8fafc; padding: 40px 0;">
         <div class="container">
             <div class="perks-grid">
                 <div>
@@ -1341,10 +1538,10 @@
                         </span>
                     </div>
                     <h2
-                        style="font-size: 2.5rem; margin-bottom: 20px; color: #1a1a1a; font-weight: 700; line-height: 1.2;">
+                        style="font-size: 2.5rem; margin-bottom: 12px; color: #1a1a1a; font-weight: 700; line-height: 1.2;">
                         Wealth Empires Partners<br>Score ₹100K+ in Perks From Top Brands Worldwide.
                     </h2>
-                    <p style="font-size: 1.05rem; color: #64748b; margin-bottom: 32px; line-height: 1.6;">
+                    <p style="font-size: 1.05rem; color: #64748b; margin-bottom: 18px; line-height: 1.6;">
                         Exclusive deals, big savings, and founder-first tools.
                     </p>
                     <a href="our-partner.html"
@@ -1713,24 +1910,22 @@
         }
     </script>
 
+    
+
     <!-- CTA Section -->
-    <section
-        style="background: #7851a8; padding: 30px 0; margin: 0 50px; border-radius: 24px; position: relative; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-        <!-- Background Pattern -->
-        <div
-            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.03; background-image: radial-gradient(circle at 20% 50%, #ff6b35 0%, transparent 50%), radial-gradient(circle at 80% 20%, #f7931e 0%, transparent 50%), radial-gradient(circle at 40% 80%, #ffb347 0%, transparent 50%);">
-        </div>
+    <section class="cta-hero-section"
+        style="background-image: url('my story1.png'); background-size: cover; background-position: center right; padding: 30px 0; margin: 0 50px; border-radius: 24px; position: relative; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <!-- Dark overlay for contrast -->
+        <div style="position: absolute; inset:0; background: linear-gradient(rgba(138, 139, 139, 0.45), rgba(141, 142, 142, 0.35));"></div>
 
         <div class="container" style="position: relative; z-index: 2;">
-            <div class="hero-grid">
+            <div class="hero-grid"> 
                 <!-- Left Content -->
                 <div style="padding-left: 30px;">
                     <h2 style="font-size: 3rem; font-weight: 700; color: white; margin-bottom: 16px; line-height: 1.2;">
                         #WE<br>People First Company.
                     </h2>
-                    <p style="font-size: 1.1rem; color: white; margin-bottom: 32px;">
-                        Join Wealth Empires and start building today.
-                    </p>
+                    
                     <div style="display: flex; gap: 16px; flex-wrap: wrap;">
                         <a href="https://crm.wealthempires.in/"
                             style="background: #000; color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;">
@@ -1740,21 +1935,6 @@
                             style="background: white; color: #000; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; border: 1px solid #6d6969; transition: all 0.3s;">
                             Contact us
                         </a>
-                    </div>
-                </div>
-
-                <div
-                    style="margin-left: 70px; position: relative; width: 450px; height: 400px; background: #f8fafc; border-radius: 24px; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);">
-                    <!-- Partnership Hands Image -->
-                    <img src="our story.jpg" alt="Partnership Handshake"
-                        style="width: 400px; height: 360px; opacity: 0.8;">
-
-                    <!-- Decorative Elements -->
-                    <div
-                        style="position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; background: #c084fc; border-radius: 50%; opacity: 0.1;">
-                    </div>
-                    <div
-                        style="position: absolute; bottom: 20px; left: 20px; width: 30px; height: 30px; background: #10b981; border-radius: 50%; opacity: 0.1;">
                     </div>
                 </div>
             </div>
