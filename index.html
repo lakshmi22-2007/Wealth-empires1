@@ -1154,18 +1154,20 @@
         }
 
         .we-hero-card .card-content {
-            text-align: center;
+            text-align: left;
             color: #ffffff;
             width: 100%;
             max-width: 760px;
-            padding-left: 24px;
-            padding-right: 24px;
-            /* push content lower inside the card */
-            padding-top: 40px;
+            padding: 24px;
+            /* Position content at bottom of card */
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
         }
 
         @media (min-width: 1024px) {
-            .we-hero-card { min-height: 480px; }
+            .we-hero-card { min-height: 450px; }
         }
 
         /* CTA hero responsive tweaks */
@@ -1179,37 +1181,68 @@
         @media (max-width: 768px) {
             .cta-hero-section {
                 background-position: center !important;
-                padding: 20px 12px !important;
-                margin: 0 12px !important;
+                background-size: cover !important;
+                padding: 20px !important;
+                margin: 0 16px !important;
                 border-radius: 16px !important;
+                min-height: 350px !important;
+                display: flex !important;
+                align-items: flex-end !important;
             }
 
             .cta-hero-section .hero-grid {
-                grid-template-columns: 1fr !important;
-                gap: 18px !important;
+                display: block !important;
+                width: 100% !important;
             }
 
             .cta-hero-section .hero-grid > div:first-child {
-                padding-left: 8px !important;
+                background: transparent !important;
+                padding: 20px !important;
+                border-radius: 12px !important;
                 text-align: center !important;
-                order: 1;
             }
 
-            .cta-hero-section .hero-grid > div:last-child {
-                order: 2;
+            .cta-hero-section h2 {
+                color: white !important;
+                font-size: 1.8rem !important;
+                margin-bottom: 16px !important;
+                text-align: center !important;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+                font-weight: 700 !important;
             }
 
-            .cta-hero-section .hero-grid img {
+            .cta-hero-section div[style*="display: flex"] {
+                flex-direction: column !important;
+                gap: 10px !important;
+                align-items: center !important;
+            }
+
+            .cta-hero-section a {
                 width: 100% !important;
-                height: auto !important;
+                max-width: 250px !important;
+                text-align: center !important;
+                justify-content: center !important;
+                padding: 12px 20px !important;
+                font-size: 14px !important;
                 display: block !important;
-                margin: 0 auto !important;
-                border-radius: 12px;
+                border-radius: 50px !important;
+                text-decoration: none !important;
             }
 
-            .cta-hero-section .hero-grid a {
-                padding-left: 14px !important;
-                padding-right: 14px !important;
+            /* Enhanced button visibility without dark background */
+            .cta-hero-section a[href*="crm"] {
+                background: #000 !important;
+                color: white !important;
+                border: 2px solid #000 !important;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.4) !important;
+            }
+
+            .cta-hero-section a[href*="contact"] {
+                background: rgba(255, 255, 255, 0.95) !important;
+                color: #000 !important;
+                border: 2px solid rgba(255, 255, 255, 0.95) !important;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+                backdrop-filter: blur(10px) !important;
             }
         }
 
@@ -1224,8 +1257,9 @@
             width: auto !important;
         }
 
-        @media (min-width: 768px) {
-            .we-hero-card .card-content { padding-top: 80px; }
+        @media (max-width: 767px) {
+            .we-hero-card { min-height: 380px; }
+            .we-hero-card .card-content { padding: 16px; }
         }
 
         /* Service card professional styles */
@@ -1372,85 +1406,276 @@
     </section>
 
     <!-- Services Section (Modern Tailwind) -->
-    <section class="py-16 lg:py-24 bg-white">
+    <section class="py-4 lg:py-6 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Header -->
-            <div class="text-center mb-12">
-                <div style="max-width:900px; margin:0 auto;">
-                    <h2 class="text-4xl lg:text-5xl font-extrabold mb-4" style="color: #0d3d3d; line-height:1.05;">
-                        Your Back Office.
-                        <span style="display:block; color: #7851A9;">Simplified.</span>
-                    </h2>
+            <!-- Premium Single-Color Header Design -->
+            <div class="relative overflow-hidden rounded-3xl mb-6" style="background: linear-gradient(135deg, rgba(13,61,61,0.02) 0%, rgba(13,61,61,0.05) 100%);">
+                <!-- Geometric Background Elements -->
+                
 
-                    <div style="height:6px; width:84px; margin: 0 auto 18px; background: linear-gradient(90deg, #7851A9, #0d3d3d); border-radius:4px;"></div>
+                <!-- Content Container -->
+                <div class="relative px-6 py-5 lg:px-12 lg:py-6 text-center">
+                    <!-- Premium Badge -->
+                    <div class="inline-flex items-center gap-2 px-3 py-2 rounded-full mb-3" style="background: rgba(13,61,61,0.1); border: 1px solid rgba(13,61,61,0.2);">
+                        <div class="w-2 h-2 rounded-full animate-pulse" style="background: #0d3d3d;"></div>
+                        <span class="text-sm font-semibold tracking-wider uppercase" style="color: #0d3d3d;">Premium Back Office</span>
+                    </div>
 
-                    <p class="text-lg mx-auto mb-6" style="color: #475569; max-width:720px;">
-                        One place to handle incorporation, compliance, taxes, bookkeeping and trademark services — so you can focus on growing your business.
-                    </p>
+                    <!-- Main Heading with Elegant Typography -->
+                    <div class="max-w-4xl mx-auto mb-3">
+                        <h2 class="text-4xl lg:text-5xl font-bold leading-none mb-2" style="color: #0d3d3d; letter-spacing: -0.02em;">
+                            Your Back Office.
+                        </h2>
+                        <div class="flex items-center justify-center gap-4 mb-3">
+                            <div class="h-px flex-1 max-w-32" style="background: rgba(13,61,61,0.3);"></div>
+                            <h3 class="text-2xl lg:text-4xl font-bold" style="color: #7851A9;">Simplified.</h3>
+                            <div class="h-px flex-1 max-w-32" style="background: rgba(13,61,61,0.3);"></div>
+                        </div>
+                    </div>
 
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="https://crm.wealthempires.in/" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white shadow transition duration-200 transform hover:scale-105" style="background-color: #0d3d3d;">
-                            Start Incorporation
-                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- Elegant Description -->
+                    <div class="max-w-3xl mx-auto mb-5">
+                        <p class="text-xl lg:text-1xl leading-relaxed" style="color: rgba(13,61,61,0.8);">
+                            One sophisticated platform to handle incorporation, compliance, taxes, bookkeeping and trademark services — 
+                            <span class="font-semibold" style="color: #0d3d3d;">so you can focus on growing your business.</span>
+                        </p>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="flex flex-wrap justify-center items-center gap-8 mb-5 text-sm" style="color: rgba(13,61,61,0.7);">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full" style="background: #0d3d3d;"></div>
+                            <span class="font-medium">10,000+ Companies Served</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full" style="background: #0d3d3d;"></div>
+                            <span class="font-medium">99.9% Compliance Rate</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full" style="background: #0d3d3d;"></div>
+                            <span class="font-medium">24/7 Expert Support</span>
+                        </div>
+                    </div>
+
+                    <!-- Refined CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                        <a href="https://crm.wealthempires.in/" class="group relative inline-flex items-center justify-center px-4 py-3 text-lg font-semibold rounded-2xl text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 overflow-hidden" style="background: #0d3d3d;">
+                            <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                            <span class="relative">Start Incorporation</span>
+                            <svg class="relative ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                             </svg>
                         </a>
-                        <a href="contact.html" class="inline-flex items-center justify-center px-6 py-3 border-2 text-base font-medium rounded-lg bg-white transition duration-200" style="border-color: #0d3d3d; color: #0d3d3d;">
-                            Contact Us
+                        <a href="contact.html" class="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-2xl bg-white transition-all duration-300 hover:shadow-lg hover:-translate-y-1" style="border: 2px solid rgba(13,61,61,0.2); color: #0d3d3d;">
+                            <span>Contact Expert</span>
+                            <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
                         </a>
                     </div>
+
+                    <!-- Decorative Bottom Element -->
+                    
                 </div>
             </div>
 
-            <!-- Services Grid -->
+            <!-- Premium Single-Color Services Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Company Incorporation (redesigned) -->
-                <div class="group service-card">
-                    <span class="service-accent" style="background: linear-gradient(90deg,#7851A9,#0d3d3d);"></span>
-                    <h3 class="service-title">Company Incorporation</h3>
-                    <p class="service-desc">Skip the paperwork. We set up your business so you can start selling faster with our streamlined incorporation process.</p>
-                    <a href="incorporation.html" class="service-cta">Start Your Business</a>
+                <!-- Company Incorporation -->
+                <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 overflow-hidden" style="border-color: rgba(13,61,61,0.1);">
+                    
+                    
+                    <!-- Service Number -->
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg" style="background: #0d3d3d;">
+                            01
+                        </div>
+                        <div class="ml-4 h-px flex-1" style="background: linear-gradient(to right, #0d3d3d, transparent);"></div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-opacity-80 transition-colors" style="color: #0d3d3d;">
+                        Company Incorporation
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 text-base">
+                        Skip the paperwork. We set up your business so you can start selling faster with our streamlined incorporation process.
+                    </p>
+                    
+                    <!-- Enhanced CTA -->
+                    <div class="flex items-center justify-between">
+                        <a href="incorporation.html" class="group/cta inline-flex items-center text-lg font-semibold transition-all duration-300 hover:gap-3" style="color: #0d3d3d;">
+                            Start Your Business
+                            <svg class="ml-2 w-5 h-5 group-hover/cta:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity" style="background: #0d3d3d;">
+                            <div class="w-2 h-2 rounded-full bg-white"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 360° Compliance -->
-                <div class="group service-card">
-                    <span class="service-accent" style="background: linear-gradient(90deg,#0d3d3d,#7851A9);"></span>
-                    <h3 class="service-title">360° Compliance</h3>
-                    <p class="service-desc">End-to-end compliance management for all your business regulatory requirements with expert guidance.</p>
-                    <a href="360-compliance.html" class="service-cta">Stay Compliant</a>
+                <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 overflow-hidden" style="border-color: rgba(13,61,61,0.1);">
+                    
+                    
+                    <!-- Service Number -->
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg" style="background: #0d3d3d;">
+                            02
+                        </div>
+                        <div class="ml-4 h-px flex-1" style="background: linear-gradient(to right, #0d3d3d, transparent);"></div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-opacity-80 transition-colors" style="color: #0d3d3d;">
+                        360° Compliance
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 text-base">
+                        End-to-end compliance management for all your business regulatory requirements with expert guidance.
+                    </p>
+                    
+                    <!-- Enhanced CTA -->
+                    <div class="flex items-center justify-between">
+                        <a href="360-compliance.html" class="group/cta inline-flex items-center text-lg font-semibold transition-all duration-300 hover:gap-3" style="color: #0d3d3d;">
+                            Stay Compliant
+                            <svg class="ml-2 w-5 h-5 group-hover/cta:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity" style="background: #0d3d3d;">
+                            <div class="w-2 h-2 rounded-full bg-white"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Trademark Registration -->
-                <div class="group service-card">
-                    <span class="service-accent" style="background: linear-gradient(90deg,#7851A9,#c084fc);"></span>
-                    <h3 class="service-title">Trademark Registration</h3>
-                    <p class="service-desc">Protect your brand identity with professional trademark registration services and legal protection.</p>
-                    <a href="trademark.html" class="service-cta">Register Trademark</a>
+                <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 overflow-hidden" style="border-color: rgba(13,61,61,0.1);">
+                   
+                    
+                    <!-- Service Number -->
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg" style="background: #0d3d3d;">
+                            03
+                        </div>
+                        <div class="ml-4 h-px flex-1" style="background: linear-gradient(to right, #0d3d3d, transparent);"></div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-opacity-80 transition-colors" style="color: #0d3d3d;">
+                        Trademark Registration
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 text-base">
+                        Protect your brand identity with professional trademark registration services and legal protection.
+                    </p>
+                    
+                    <!-- Enhanced CTA -->
+                    <div class="flex items-center justify-between">
+                        <a href="trademark.html" class="group/cta inline-flex items-center text-lg font-semibold transition-all duration-300 hover:gap-3" style="color: #0d3d3d;">
+                            Register Trademark
+                            <svg class="ml-2 w-5 h-5 group-hover/cta:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity" style="background: #0d3d3d;">
+                            <div class="w-2 h-2 rounded-full bg-white"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Smart Sales Analytics -->
-                <div class="group service-card">
-                    <span class="service-accent" style="background: linear-gradient(90deg,#0d3d3d,#06b6d4);"></span>
-                    <h3 class="service-title">Smart Sales Analytics</h3>
-                    <p class="service-desc">Know what's selling, what's not, and how to boost your revenue with data-driven insights.</p>
-                    <a href="hitworth.html" class="service-cta">Analyze Your Sales</a>
+                <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 overflow-hidden" style="border-color: rgba(13,61,61,0.1);">
+                   
+                    
+                    <!-- Service Number -->
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg" style="background: #0d3d3d;">
+                            04
+                        </div>
+                        <div class="ml-4 h-px flex-1" style="background: linear-gradient(to right, #0d3d3d, transparent);"></div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-opacity-80 transition-colors" style="color: #0d3d3d;">
+                        Smart Sales Analytics
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 text-base">
+                        Know what's selling, what's not, and how to boost your revenue with data-driven insights.
+                    </p>
+                    
+                    <!-- Enhanced CTA -->
+                    <div class="flex items-center justify-between">
+                        <a href="hitworth.html" class="group/cta inline-flex items-center text-lg font-semibold transition-all duration-300 hover:gap-3" style="color: #0d3d3d;">
+                            Analyze Your Sales
+                            <svg class="ml-2 w-5 h-5 group-hover/cta:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity" style="background: #0d3d3d;">
+                            <div class="w-2 h-2 rounded-full bg-white"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Stress-Free Taxes -->
-                <div class="group service-card">
-                    <span class="service-accent" style="background: linear-gradient(90deg,#f97316,#0d3d3d);"></span>
-                    <h3 class="service-title">Stress-Free Taxes</h3>
-                    <p class="service-desc">Stay compliant, save time, and never stress about tax season again with our expert tax services.</p>
-                    <a href="taxes.html" class="service-cta">File Your Taxes</a>
+                <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 overflow-hidden" style="border-color: rgba(13,61,61,0.1);">
+                  
+                    <!-- Service Number -->
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg" style="background: #0d3d3d;">
+                            05
+                        </div>
+                        <div class="ml-4 h-px flex-1" style="background: linear-gradient(to right, #0d3d3d, transparent);"></div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-opacity-80 transition-colors" style="color: #0d3d3d;">
+                        Stress-Free Taxes
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 text-base">
+                        Stay compliant, save time, and never stress about tax season again with our expert tax services.
+                    </p>
+                    
+                    <!-- Enhanced CTA -->
+                    <div class="flex items-center justify-between">
+                        <a href="taxes.html" class="group/cta inline-flex items-center text-lg font-semibold transition-all duration-300 hover:gap-3" style="color: #0d3d3d;">
+                            File Your Taxes
+                            <svg class="ml-2 w-5 h-5 group-hover/cta:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity" style="background: #0d3d3d;">
+                            <div class="w-2 h-2 rounded-full bg-white"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Seamless Bookkeeping -->
-                <div class="group service-card">
-                    <span class="service-accent" style="background: linear-gradient(90deg,#0d9488,#0d3d3d);"></span>
-                    <h3 class="service-title">Seamless Bookkeeping</h3>
-                    <p class="service-desc">No spreadsheets, no hassle, just real-time financial insights and automated bookkeeping solutions.</p>
-                    <a href="health-check.html" class="service-cta">Track Your Books</a>
+                <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 overflow-hidden" style="border-color: rgba(13,61,61,0.1);">
+                   
+                    
+                    <!-- Service Number -->
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg" style="background: #0d3d3d;">
+                            06
+                        </div>
+                        <div class="ml-4 h-px flex-1" style="background: linear-gradient(to right, #0d3d3d, transparent);"></div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-opacity-80 transition-colors" style="color: #0d3d3d;">
+                        Seamless Bookkeeping
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 text-base">
+                        No spreadsheets, no hassle, just real-time financial insights and automated bookkeeping solutions.
+                    </p>
+                    
+                    <!-- Enhanced CTA -->
+                    <div class="flex items-center justify-between">
+                        <a href="health-check.html" class="group/cta inline-flex items-center text-lg font-semibold transition-all duration-300 hover:gap-3" style="color: #0d3d3d;">
+                            Track Your Books
+                            <svg class="ml-2 w-5 h-5 group-hover/cta:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity" style="background: #0d3d3d;">
+                            <div class="w-2 h-2 rounded-full bg-white"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1473,7 +1698,7 @@
             </div>
 
             <!-- Cards Grid -->
-            <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-8 max-w-3xl mx-auto">
                 <!-- Wealth Empires Card -->
                 <div class="group relative bg-white rounded-3xl p-0 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border overflow-hidden we-hero-card" style="border-color: #d8d6f0;">
                     <!-- Gradient background -->
@@ -1488,18 +1713,15 @@
 
                     <!-- Content -->
                     <div class="relative z-10 card-content">
-                        <!-- icon removed as requested -->
-                        
-                        <h3 class="text-2xl lg:text-4xl font-bold mb-4">Do It With Wealth Empires</h3>
-                        <p class="mb-8 leading-relaxed text-lg">Build your dream. We'll handle the rest. Get expert guidance, comprehensive support, and proven strategies for success.</p>
+                        <h3 class="text-xl lg:text-2xl font-bold mb-2 text-white">Do It With Wealth Empires</h3>
+                        <p class="mb-4 leading-relaxed text-sm lg:text-base text-gray-200">Build your dream. We'll handle the rest.</p>
 
-                        <a href="https://crm.wealthempires.in/" class="we-cta inline-flex items-center justify-center mx-auto px-8 py-4 text-white font-semibold rounded-2xl shadow-lg transition-all duration-200 transform hover:scale-105 group" style="background: linear-gradient(135deg, #0d3d3d 0%, #0d3d3d 100%);">
-                            Start Your Business
-                            <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <a href="https://crm.wealthempires.in/" class="inline-flex items-center text-sm font-semibold text-white hover:text-gray-200 transition-colors group">
+                            Create a Free Account
+                            <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                             </svg>
                         </a>
-                        
                     </div>
                 </div>
                 <!-- Comparison Card -->
@@ -1516,18 +1738,15 @@
 
                     <!-- Content -->
                     <div class="relative z-10 card-content">
-                        <!-- icon removed as requested -->
-                        
-                        <h3 class="text-2xl lg:text-4xl font-bold mb-4">Do It Others</h3>
-                        <p class="mb-8 leading-relaxed text-lg">Build your dream. We'll handle the rest. Get expert guidance, comprehensive support, and proven strategies for success.</p>
+                        <h3 class="text-xl lg:text-2xl font-bold mb-2 text-white">Do it Yourself</h3>
+                        <p class="mb-4 leading-relaxed text-sm lg:text-base text-gray-200">Going solo? See how we compare.</p>
 
-                        <a href="https://crm.wealthempires.in/" class="we-cta inline-flex items-center justify-center mx-auto px-8 py-4 text-white font-semibold rounded-2xl shadow-lg transition-all duration-200 transform hover:scale-105 group" style="background: linear-gradient(135deg, #0d3d3d 0%, #0d3d3d 100%);">
-                            Start Your Business
-                            <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <a href="compareempires.html" class="inline-flex items-center text-sm font-semibold text-white hover:text-gray-200 transition-colors group">
+                            Compare
+                            <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                             </svg>
                         </a>
-                        
                     </div>
                 </div>
             </div>
@@ -1952,55 +2171,120 @@
     <!-- Footer -->
     <style>
         @media (max-width: 768px) {
-
             /* Stack header items vertically */
             .footer-header-content {
                 flex-direction: column;
                 gap: 20px;
-                /* Adds space between logo and contact info */
             }
 
             .header-divider {
                 display: none;
-                /* Hide the vertical divider line */
             }
 
-            /* Stack the main content columns */
+            /* Perfect accordion-style footer content */
             .footer-content {
                 flex-direction: column;
-                text-align: center;
-                /* Center-aligns the text in columns */
+                padding: 0 20px;
+                gap: 0;
             }
 
             .footer-column {
-                margin-bottom: 20px;
-                /* Adds space between stacked columns */
+                margin-bottom: 0;
+                border-bottom: 1px solid #f0f0f0;
             }
 
+            .footer-column:last-child {
+                border-bottom: none;
+            }
+
+            /* Dropdown header styling - matches reference */
             .footer-column h3 {
-                margin-top: 0;
-                /* Removes extra space for headings after the first one */
+                margin: 0;
+                padding: 18px 0;
+                font-size: 16px;
+                font-weight: 500;
+                color: #333;
+                cursor: pointer;
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #fff;
+                transition: all 0.3s ease;
+                text-align: left;
+            }
+
+            .footer-column h3:hover {
+                background: #f8f9fa;
+            }
+
+            /* Dropdown arrow */
+            .footer-column h3::after {
+                content: '▼';
+                font-size: 12px;
+                color: #999;
+                transform: rotate(0deg);
+                transition: transform 0.3s ease;
+            }
+
+            .footer-column h3.active::after {
+                transform: rotate(180deg);
+            }
+
+            /* Dropdown content */
+            .footer-column ul {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                background: #fff;
+            }
+
+            .footer-column ul.active {
+                max-height: 500px;
+                padding: 0 0 20px 0;
+            }
+
+            .footer-column ul li {
+                margin: 0;
+                padding: 8px 0;
+            }
+
+            .footer-column ul li a {
+                color: #666;
+                text-decoration: none;
+                font-size: 14px;
+                display: block;
+                transition: color 0.2s ease;
+                text-align: left;
+            }
+
+            .footer-column ul li a:hover {
+                color: #2563eb;
+            }
+
+            /* Hide secondary headings (Templates, Partnership, Quick links) on mobile */
+            .footer-column h3[style*="margin-top"] {
+                display: none;
             }
 
             /* Stack bottom links and social media vertically */
             .footer-bottom-content {
                 flex-direction: column-reverse;
-                /* Shows copyright at the bottom */
                 gap: 20px;
-                /* Adds space between elements */
                 text-align: center;
             }
 
             .footer-links {
                 display: flex;
                 flex-direction: column;
-                /* Stack policy links */
                 gap: 10px;
             }
 
             .footer-links span {
                 display: none;
-                /* Hide the pipe dividers */
             }
 
             .footer-right {
@@ -2141,6 +2425,84 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile footer accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Only activate on mobile devices
+            if (window.innerWidth <= 768) {
+                initFooterAccordion();
+            }
+            
+            // Reinitialize on window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth <= 768) {
+                    initFooterAccordion();
+                } else {
+                    resetFooterAccordion();
+                }
+            });
+        });
+
+        function initFooterAccordion() {
+            const footerColumns = document.querySelectorAll('.footer-column');
+            
+            footerColumns.forEach(column => {
+                const heading = column.querySelector('h3');
+                const list = column.querySelector('ul');
+                
+                if (heading && list && !heading.hasAttribute('style')) {
+                    // Initially collapse all sections
+                    list.classList.remove('active');
+                    heading.classList.remove('active');
+                    
+                    // Remove any existing click listeners
+                    const newHeading = heading.cloneNode(true);
+                    heading.parentNode.replaceChild(newHeading, heading);
+                    
+                    // Add click listener
+                    newHeading.addEventListener('click', function() {
+                        const newList = column.querySelector('ul');
+                        const isActive = newList.classList.contains('active');
+                        
+                        // Close all other sections
+                        footerColumns.forEach(otherColumn => {
+                            const otherList = otherColumn.querySelector('ul');
+                            const otherHeading = otherColumn.querySelector('h3');
+                            if (otherList && otherHeading && !otherHeading.hasAttribute('style')) {
+                                otherList.classList.remove('active');
+                                otherHeading.classList.remove('active');
+                            }
+                        });
+                        
+                        // Toggle current section
+                        if (!isActive) {
+                            newList.classList.add('active');
+                            newHeading.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        function resetFooterAccordion() {
+            const footerColumns = document.querySelectorAll('.footer-column');
+            
+            footerColumns.forEach(column => {
+                const heading = column.querySelector('h3');
+                const list = column.querySelector('ul');
+                
+                if (heading && list) {
+                    list.classList.remove('active');
+                    heading.classList.remove('active');
+                    
+                    // Remove click listeners
+                    const newHeading = heading.cloneNode(true);
+                    heading.parentNode.replaceChild(newHeading, heading);
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
