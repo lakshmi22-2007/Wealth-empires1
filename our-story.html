@@ -1011,6 +1011,68 @@
             </div>
         </div>
     </section>
+    <script>
+        // Count-up animation for stat numbers in Our Impact section
+        document.addEventListener('DOMContentLoaded', function(){
+            (function(){
+                var section = document.querySelector('.numbers-section-v2');
+                if(!section) return;
+                var numbers = Array.prototype.slice.call(section.querySelectorAll('.stat-number'));
+                if(!numbers.length) return;
+
+                function formatValue(val, format){
+                    if(format === 'compact'){
+                        // convert 10000 -> 10k, 15000 -> 15k
+                        if(val >= 1000){
+                            var k = Math.round(val/1000);
+                            return k + 'k';
+                        }
+                        return String(val);
+                    }
+                    // commas
+                    return val.toLocaleString();
+                }
+
+                function animate(el, target, format, duration){
+                    var start = 0; var startTime = null; duration = duration || 1400;
+                    function step(timestamp){
+                        if(!startTime) startTime = timestamp;
+                        var progress = Math.min((timestamp - startTime) / duration, 1);
+                        // easeOutCubic
+                        var eased = 1 - Math.pow(1 - progress, 3);
+                        var current = Math.floor(eased * (target - start) + start);
+                        el.textContent = formatValue(current, format) + '+';
+                        if(progress < 1){
+                            window.requestAnimationFrame(step);
+                        } else {
+                            // final exact
+                            el.textContent = formatValue(target, format) + '+';
+                            el.setAttribute('aria-label', String(target));
+                        }
+                    }
+                    window.requestAnimationFrame(step);
+                }
+
+                var triggered = false;
+                var io = new IntersectionObserver(function(entries){
+                    entries.forEach(function(entry){
+                        if(entry.isIntersecting && !triggered){
+                            triggered = true;
+                            numbers.forEach(function(el, idx){
+                                var target = parseInt(el.getAttribute('data-target') || el.textContent.replace(/[^0-9]/g,''), 10) || 0;
+                                var format = el.getAttribute('data-format') || 'commas';
+                                // slightly stagger
+                                setTimeout(function(){ animate(el, target, format, 1200 + (idx*200)); }, idx * 180);
+                            });
+                            io.disconnect();
+                        }
+                    });
+                }, { threshold: 0.2 });
+
+                io.observe(section);
+            })();
+        });
+    </script>
     <!-- Hero Section -->
 
 
@@ -1060,99 +1122,170 @@
 
     <!-- Why We Started Section -->
 
-    <!-- Our Impact Section - Timeline Design -->
-    <section class="impact-showcase"
-        style="background: #f8fafc; padding: 40px 0; position: relative; overflow: hidden;">
-        <div class="container"
-            style="max-width: 1400px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2;">
-            <div style="text-align: center;" class="impact-header">
-                <h2 class="impact-heading"
-                    style="font-size: 3rem; font-weight: 500; color: #1a1a1a; margin-bottom: 20px; letter-spacing: -2px; line-height: 1.1;">
-                    Empowering Dreams,<br>
-                    <span style="color: #1a1a1a;">Delivering Results</span>
-                </h2>
-                <p class="impact-subtext"
-                    style="color: #64748b; font-size: 1.3rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
-                    Every milestone achieved is a testament to our commitment to your success
-                </p>
+    <!-- Our Impact — Illustrated Story + Timeline -->
+    <section class="our-impact-illustrated" aria-label="Our impact" style="padding:64px 20px; background:transparent;">
+        <style>
+            .impact-wrap { max-width:1200px; margin:0 auto; }
+            .impact-header { text-align:center; margin-bottom:28px; }
+            .impact-grid { display:grid; grid-template-columns: 1fr 420px; gap:36px; align-items:start; }
+
+            /* Timeline column with filling effect */
+            .timeline { position:relative; padding-left:28px; }
+            /* subtle track (light model) */
+            .timeline::before { content:''; position:absolute; left:12px; top:0; bottom:0; width:6px; border-radius:6px; background:linear-gradient(180deg, #f1f5f9 0%, #eef2ff 100%); opacity:1; }
+            /* fill element grows from top to bottom when in-view - light pastel fill */
+            .timeline .timeline-fill { position:absolute; left:12px; top:0; width:6px; height:0%; border-radius:6px; background:linear-gradient(180deg,#dbeafe 0%, #bfdbfe 100%); box-shadow:0 6px 18px rgba(99,102,241,0.06); transition:height 600ms cubic-bezier(.2,.9,.2,1); transform-origin:top; }
+
+            .timeline-item { position:relative; margin-bottom:32px; padding-left:18px; opacity:0; transform:translateX(-8px); transition:opacity .6s ease, transform .6s ease; transition-delay:var(--i,0ms); }
+            .timeline-item.in-view { opacity:1; transform:none; }
+
+            .timeline-dot { position:absolute; left:5px; top:6px; width:14px; height:14px; border-radius:50%; background:#fff; border:4px solid #fff; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+            /* dot inner ring colored to match the light fill */
+            .timeline-dot::after { content:''; position:absolute; left:4px; top:4px; width:6px; height:6px; border-radius:50%; background:#dbeafe; box-shadow:0 2px 8px rgba(27, 78, 168, 0.06); }
+
+            .timeline-item h4 { margin:0 0 6px; font-size:18px; color:#0b1220; }
+            .timeline-item p { margin:0 0 8px; color:#465; }
+            .timeline-item .stat { font-weight:700; color:#0b6; }
+
+            /* Illustration column */
+            .illustration { position:relative; display:flex; align-items:center; justify-content:center; }
+            .illustration img { width:100%; max-width:400px; height:auto; display:block; background:transparent; border:none; }
+            .stats-overlay { position:absolute; right:12px; top:12px; display:flex; flex-direction:column; gap:12px; }
+            .stat-card { background:#fff; padding:14px 18px; border-radius:12px; box-shadow:0 12px 36px rgba(15,23,42,0.08); text-align:center; min-width:140px; }
+            .stat-card .num { font-size:28px; font-weight:800; color:#0b1220; }
+            .stat-card .label { font-size:13px; color:#667; margin-top:6px; }
+
+            /* Callout badge */
+            .callout { position:absolute; left:14px; bottom:18px; background:#fff; padding:10px 14px; border-radius:10px; box-shadow:0 8px 24px rgba(15,23,42,0.08); }
+            .callout .big { font-weight:800; font-size:20px; color:#0b1220; }
+
+            @media (max-width:900px) {
+                .impact-grid { grid-template-columns: 1fr; gap:22px; }
+                .illustration { order:2; }
+                .timeline { order:1; padding-left:18px; }
+                .timeline::before { left:10px; width:4px; }
+                .timeline .timeline-fill { left:10px; width:4px; }
+                .timeline-dot { left:0; }
+                .timeline-dot::after { left:3px; top:3px; width:6px; height:6px; }
+                .timeline-item { padding-left:14px; margin-bottom:26px; }
+                .stats-overlay { position:static; flex-direction:row; justify-content:center; gap:12px; margin-top:14px; }
+                .callout { position:static; margin-top:12px; left:auto; bottom:auto; }
+            }
+
+            /* small phones */
+            @media (max-width:480px) {
+                .our-impact-illustrated { padding:36px 12px; }
+                .impact-wrap { padding-left:6px; padding-right:6px; }
+                .impact-header h2 { font-size:1.6rem; }
+                .timeline::before { left:8px; width:4px; }
+                .timeline .timeline-fill { left:8px; width:4px; }
+                .timeline-dot { left:0; top:4px; transform:scale(1.05); }
+                .timeline-item { padding-left:12px; }
+                .stat-card { min-width:110px; padding:12px; }
+                .stats-overlay { flex-wrap:wrap; gap:8px; position:static; margin-top:12px; }
+                .callout { position:static; margin-top:12px; left:auto; bottom:auto; }
+                .illustration img { max-width:320px; }
+            }
+        </style>
+
+        <div class="impact-wrap">
+            <div class="impact-header">
+                <h2 style="font-size:2.4rem; color:#0b1220; margin:0 0 8px;">Our Impact</h2>
+                <p style="color:#576; max-width:720px; margin:0 auto;">Transforming visions into successful, compliant businesses.</p>
             </div>
 
-            <section style="background: #fafafa; padding: 50px 0;">
-                <div class="container">
-                    <div style="text-align: center; margin-bottom: 60px;">
-                        <h2 style="font-size: 2.8rem; color: #2d2d2d; font-weight: 700;">Our Impact</h2>
-                        <p style="font-size: 1.1rem; color: #5a5a5a; max-width: 600px; margin: 12px auto 0;">
-                            Transforming visions into successful, compliant businesses.</p>
+            <div class="impact-grid">
+                <div class="timeline" aria-hidden="false">
+                    <div class="timeline-fill" aria-hidden="true"></div>
+                    <div class="timeline-item">
+                        
+                        <h4>Cost Savings</h4>
+                        <p>Saved startups in hidden legal costs through transparent pricing and smart solutions.</p>
+                        <div class="stat" style="color:#a16207;">Average 60% cost reduction per client</div>
                     </div>
 
-                    <div class="impact-grid">
-                        <div class="timeline-column-left">
-                            <div class="impact-timeline-card">
-                                <div class="card-content">
-                                    <i class="fa-solid fa-indian-rupee-sign"></i>
-                                    <div class="text-content">
-                                        <h3>Cost Savings</h3>
-                                        <p>Saved startups in hidden legal costs through transparent pricing and smart
-                                            solutions.</p>
-                                        <div class="highlight-text" style="color: #a16207;">Average 60% cost reduction
-                                            per client</div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="timeline-item">
+                        
+                        <h4>Risk Prevention</h4>
+                        <p>Protected <strong>500+ businesses</strong> from compliance penalties through proactive guidance.</p>
+                        <div class="stat" style="color:#4338ca;">Zero compliance violations for our clients</div>
+                    </div>
 
-                            <div class="impact-timeline-card">
-                                <div class="card-content">
-                                    <i class="fa-solid fa-shield-halved"></i>
-                                    <div class="text-content">
-                                        <h3>Risk Prevention</h3>
-                                        <p>Protected <strong>500+ businesses</strong> from compliance penalties through
-                                            proactive guidance.</p>
-                                        <div class="highlight-text" style="color: #4338ca;">Zero compliance violations
-                                            for our clients</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="timeline-center">
-                            <div class="timeline-line-desktop">
-                                <div class="timeline-dot dot-1"></div>
-                                <div class="timeline-dot dot-2"></div>
-                                <div class="timeline-dot dot-3"></div>
-                            </div>
-                        </div>
-
-                        <div class="timeline-column-right">
-                            <div class="impact-timeline-card">
-                                <div class="card-content">
-                                    <i class="fa-solid fa-arrow-trend-up"></i>
-                                    <div class="text-content">
-                                        <h3>Growth Focus</h3>
-                                        <p>Enabled <strong>1000+ entrepreneurs</strong> to focus on scaling while we
-                                            handle complexities.</p>
-                                        <div class="highlight-text" style="color: #047857;">3x faster business scaling
-                                            average</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="impact-stats-box">
-                                <div class="impact-stats-grid">
-                                    <div>
-                                        <div class="stat-number">2500+</div>
-                                        <div class="stat-label">Dreams Realized</div>
-                                    </div>
-                                    <div>
-                                        <div class="stat-number">99.8%</div>
-                                        <div class="stat-label">Success Rate</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="timeline-item">
+                        
+                        <h4>Growth Focus</h4>
+                        <p>Enabled <strong>1000+ entrepreneurs</strong> to focus on scaling while we handle complexities.</p>
+                        <div class="stat" style="color:#047857;">3x faster business scaling average</div>
                     </div>
                 </div>
-            </section>
+
+                <div class="illustration" role="img" aria-label="Illustration showing growth and impact">
+                    <img src="360-compliance.jpg" alt="Illustration" />
+
+                    
+                   
+                </div>
+            </div>
         </div>
+
+        <script>
+            // Animate timeline fill and stagger reveal for items when section scrolls into view
+            (function(){
+                var timeline = document.querySelector('.timeline');
+                if(!timeline) return;
+
+                var items = Array.prototype.slice.call(timeline.querySelectorAll('.timeline-item'));
+                var fill = timeline.querySelector('.timeline-fill');
+
+                var io = new IntersectionObserver(function(entries){
+                    entries.forEach(function(entry){
+                                if(entry.isIntersecting){
+                                    // grow the fill in slow steps synchronized with items
+                                    timeline.classList.add('in-view');
+                                    if(fill && items.length){
+                                        try{
+                                            // wait a tick so layout (images/fonts) stabilizes before measuring
+                                            setTimeout(function(){
+                                                var stepDelay = 600; // ms between steps (controls overall slow fill)
+                                                // compute positions (bottom of each item)
+                                                var positions = items.map(function(it){ return Math.round(it.offsetTop + it.offsetHeight); });
+
+                                                // ensure final target equals the total scrollHeight of timeline
+                                                var totalH = timeline.scrollHeight || (positions[positions.length-1] + 12);
+                                                // cap positions so none exceed totalH
+                                                positions = positions.map(function(p){ return Math.min(p, totalH); });
+
+                                                // animate to each position in sequence
+                                                positions.forEach(function(pos, idx){
+                                                    setTimeout(function(){
+                                                        fill.style.height = (pos + 6) + 'px';
+                                                    }, idx * stepDelay);
+                                                });
+
+                                                // final ensure the fill reaches the bottom
+                                                setTimeout(function(){ fill.style.height = (totalH + 8) + 'px'; }, positions.length * stepDelay + 80);
+                                            }, 60);
+                                        }catch(e){
+                                            fill.style.height = '100%';
+                                        }
+                                    }
+
+                                    // reveal items with stagger (slightly faster than fill steps so they appear as the line reaches them)
+                                    items.forEach(function(it, idx){
+                                        var revealDelay = 520; // ms
+                                        it.style.setProperty('--i', (idx * revealDelay) + 'ms');
+                                        setTimeout(function(){ it.classList.add('in-view'); }, idx * revealDelay + 140);
+                                    });
+
+                                    // disconnect observer once triggered
+                                    io.disconnect();
+                                }
+                    });
+                }, { threshold: 0.18 });
+
+                io.observe(timeline);
+            })();
+        </script>
     </section>
 
     <!-- Our Promise Section -->
@@ -1218,28 +1351,71 @@
         </div>
     </section>
 
-    <!-- Statistics Section -->
-    <section class="impact-section">
-        <div class="section-header">
-            <h1 class="section-title">Our Impact in numbers</h1>
-            <p class="section-description">Talent is everywhere. But opportunity is not.</p>
-        </div>
+    <!-- Statistics Section - Redesigned bold tiles + contact card -->
+    <section class="numbers-section-v2" aria-label="Impact numbers" style="padding:56px 18px; background:linear-gradient(180deg, #fbfdff, #ffffff);">
+        <style>
+            .numbers-v2 { max-width:1200px; margin:0 auto; display:grid; grid-template-columns: 1fr; gap:28px; align-items:center; }
+            .numbers-v2 .left { padding:10px 6px; }
+            .numbers-v2 .right { display:flex; align-items:center; justify-content:center; }
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">10k+</div>
-                <p class="stat-description">Happy Customers</p>
+            .stat-grid { display:flex; gap:18px; }
+            .stat-tile { flex:1; background:#fff; border-radius:14px; padding:28px 20px; box-shadow:0 18px 50px rgba(15,23,42,0.06); display:flex; align-items:center; gap:14px; }
+            .stat-icon { width:56px; height:56px; border-radius:12px; background:linear-gradient(180deg,#eef2ff,#f8fbff); display:flex; align-items:center; justify-content:center; font-size:20px; color:#1e40af; box-shadow:inset 0 1px 0 rgba(255,255,255,0.6); }
+            .stat-body { display:flex; flex-direction:column; }
+            .stat-number { font-size:40px; font-weight:800; color:#071124; line-height:1; }
+            .stat-label { color:#556; margin-top:6px; font-size:14px; }
+
+            .contact-card { width:100%; max-width:300px; background:linear-gradient(180deg,#ffffff,#fbfdff); padding:18px; border-radius:14px; box-shadow:0 18px 48px rgba(15,23,42,0.06); display:flex; gap:12px; align-items:center; }
+            .contact-card img { width:56px; height:56px; border-radius:10px; object-fit:cover; }
+            .contact-info { display:flex; flex-direction:column; }
+            .contact-name { font-weight:700; color:#071124; }
+            .contact-links { display:flex; gap:8px; align-items:center; flex-wrap:wrap; color:#374151; }
+            .contact-links a { color:#0b5cff; text-decoration:none; font-weight:600; }
+
+            @media (max-width:980px){
+                .numbers-v2 { grid-template-columns: 1fr; }
+                .stat-grid { flex-direction:column; }
+                .contact-card { margin-top:8px; }
+            }
+            @media (max-width:520px){
+                .stat-number { font-size:32px; }
+                .stat-icon { width:48px; height:48px; }
+            }
+        </style>
+
+        <div class="numbers-v2">
+            <div class="left">
+                <h2 style="font-size:2rem; margin:0 0 6px; color:#071124;">Our Impact in numbers</h2>
+                <p style="color:#596; margin:0 0 18px;">Talent is everywhere. But opportunity is not.</p>
+
+                <div class="stat-grid">
+                    <div class="stat-tile" aria-hidden="false">
+                        <div class="stat-icon"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
+                        <div class="stat-body">
+                                <div class="stat-number" data-target="10000" data-format="compact" aria-label="10000">0</div>
+                                <div class="stat-label">Happy Customers</div>
+                            </div>
+                    </div>
+
+                    <div class="stat-tile">
+                        <div class="stat-icon"><i class="fa-solid fa-star" aria-hidden="true"></i></div>
+                        <div class="stat-body">
+                            <div class="stat-number" data-target="1200" data-format="commas" aria-label="1200">0</div>
+                            <div class="stat-label">5 star reviews</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-tile">
+                        <div class="stat-icon"><i class="fa-solid fa-globe" aria-hidden="true"></i></div>
+                        <div class="stat-body">
+                            <div class="stat-number" data-target="175" data-format="commas" aria-label="175">0</div>
+                            <div class="stat-label">Countries</div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="stat-card">
-                <div class="stat-number">1,200+</div>
-                <p class="stat-description">5 star reviews</p>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-number">175+</div>
-                <p class="stat-description">Countries</p>
-            </div>
+            <!-- contact card removed as requested -->
         </div>
     </section>
 
