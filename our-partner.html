@@ -805,6 +805,91 @@
             }
         }
     </style>
+
+    <style>
+        /* Mobile footer accordion styles (copied from index pattern) */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                padding: 0 20px;
+                gap: 0;
+            }
+
+            .footer-column {
+                margin-bottom: 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .footer-column:last-child {
+                border-bottom: none;
+            }
+
+            .footer-column h3 {
+                margin: 0;
+                padding: 18px 0;
+                font-size: 16px;
+                font-weight: 500;
+                color: #333;
+                cursor: pointer;
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #fff;
+                transition: all 0.3s ease;
+                text-align: left;
+            }
+
+            .footer-column h3:hover { background: #f8f9fa; }
+
+            .footer-column h3::after {
+                content: '▼';
+                font-size: 12px;
+                color: #999;
+                transform: rotate(0deg);
+                transition: transform 0.3s ease;
+            }
+
+            .footer-column h3.active::after { transform: rotate(180deg); }
+
+            .footer-column ul {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                background: #fff;
+            }
+
+            .footer-column ul.active {
+                max-height: 500px;
+                padding: 0 0 20px 0;
+            }
+
+            .footer-column ul li { margin: 0; padding: 8px 0; }
+
+            .footer-column ul li a {
+                color: #666;
+                text-decoration: none;
+                font-size: 14px;
+                display: block;
+                transition: color 0.2s ease;
+                text-align: left;
+            }
+
+            .footer-column ul li a:hover { color: #2563eb; }
+
+            /* Hide secondary headings (Templates, Partnership, Quick links) on mobile */
+            .footer-column h3[style*="margin-top"] { display: none; }
+
+            .footer-bottom-content { flex-direction: column-reverse; gap: 20px; text-align: center; }
+            .footer-links { display: flex; flex-direction: column; gap: 10px; }
+            .footer-links span { display: none; }
+            .footer-right { flex-direction: column; gap: 15px; }
+        }
+    </style>
+
     <footer class="footer-container">
         <!-- Top Header Section -->
         <div class="footer-header">
@@ -1002,6 +1087,85 @@
             }
         });
     </script>
-</body>
+        </script>
 
-</html>
+        <script>
+            // Mobile footer accordion functionality (copied from index pattern)
+            document.addEventListener('DOMContentLoaded', function() {
+                // Only activate on mobile devices
+                if (window.innerWidth <= 768) {
+                    initFooterAccordion();
+                }
+
+                // Reinitialize on window resize
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth <= 768) {
+                        initFooterAccordion();
+                    } else {
+                        resetFooterAccordion();
+                    }
+                });
+            });
+
+            function initFooterAccordion() {
+                const footerColumns = document.querySelectorAll('.footer-column');
+
+                footerColumns.forEach(column => {
+                    const heading = column.querySelector('h3');
+                    const list = column.querySelector('ul');
+
+                    if (heading && list && !heading.hasAttribute('style')) {
+                        // Initially collapse all sections
+                        list.classList.remove('active');
+                        heading.classList.remove('active');
+
+                        // Remove any existing click listeners
+                        const newHeading = heading.cloneNode(true);
+                        heading.parentNode.replaceChild(newHeading, heading);
+
+                        // Add click listener
+                        newHeading.addEventListener('click', function() {
+                            const newList = column.querySelector('ul');
+                            const isActive = newList.classList.contains('active');
+
+                            // Close all other sections
+                            footerColumns.forEach(otherColumn => {
+                                const otherList = otherColumn.querySelector('ul');
+                                const otherHeading = otherColumn.querySelector('h3');
+                                if (otherList && otherHeading && !otherHeading.hasAttribute('style')) {
+                                    otherList.classList.remove('active');
+                                    otherHeading.classList.remove('active');
+                                }
+                            });
+
+                            // Toggle current section
+                            if (!isActive) {
+                                newList.classList.add('active');
+                                newHeading.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+
+            function resetFooterAccordion() {
+                const footerColumns = document.querySelectorAll('.footer-column');
+
+                footerColumns.forEach(column => {
+                    const heading = column.querySelector('h3');
+                    const list = column.querySelector('ul');
+
+                    if (heading && list) {
+                        list.classList.remove('active');
+                        heading.classList.remove('active');
+
+                        // Remove click listeners
+                        const newHeading = heading.cloneNode(true);
+                        heading.parentNode.replaceChild(newHeading, heading);
+                    }
+                });
+            }
+        </script>
+    </body>
+
+    </html>
