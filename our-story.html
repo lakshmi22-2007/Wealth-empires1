@@ -263,10 +263,36 @@
             grid-column: 1;
             grid-row: 2;
             background: #0d3d3d;
-            color: white;
+            color: #fff;
             display: flex;
             align-items: center;
             padding: 15px;
+        }
+        /* Ensure headings and paragraphs inside the materials card are white and smaller (override global rules) */
+        .image-card.materials .card-content h3 {
+            color: #ffffff !important;
+            font-size: 20px !important;
+            line-height: 1.25 !important;
+            margin: 0 0 8px 0 !important;
+        }
+
+        .image-card.materials .card-content p {
+            color: #ffffff !important;
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+            opacity: 0.95 !important;
+        }
+
+        /* Slightly smaller on small screens */
+        @media (max-width: 600px) {
+            .image-card.materials .card-content h3 {
+                font-size: 18px !important;
+            }
+
+            .image-card.materials .card-content p {
+                font-size: 13px !important;
+            }
         }
 
         .image-card.beach {
@@ -1000,7 +1026,7 @@
             </div>
 
             <div class="image-card materials">
-                <div class="card-content">
+                <div class="card-content" style="color: #ffffff;">
                     <h3>We Help You To Grow Your Business.</h3>
                     <p>We are dedicated to delivering outstanding results through strategic expertise and unwavering
                         commitment.</p>

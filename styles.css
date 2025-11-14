@@ -728,6 +728,12 @@ nav {
   background: #fff;
 }
 
+.advantages-modern {
+  padding: 0 0 60px 0;
+  margin-top: -30px;
+  background: #fff;
+}
+
 .advantages-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -830,7 +836,7 @@ nav {
 
 /* Requirements Section */
 .requirements {
-  padding: 80px 0;
+  padding: 0 0 80px 0;
   background: #f8fafc;
 }
 
@@ -924,21 +930,50 @@ nav {
   gap: 12px;
 }
 
+/* Enforce a single solid badge appearance globally to avoid overlapping shapes */
+.step-number {
+  background: #0b3333 !important; /* brand teal */
+  color: #ffffff !important;
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: none !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.step-number::before,
+.step-number::after {
+  display: none !important;
+  content: none !important;
+}
+
 .step-number span {
-  width: 48px;
-  height: 48px;
-  background: #0c3737;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
+  /* Make inner span neutral so only the outer .step-number circle is visible */
+  width: auto;
+  height: auto;
+  background: transparent;
+  color: inherit;
+  border-radius: 0;
+  display: inline-block;
+  align-items: initial;
+  justify-content: initial;
+  font-size: inherit;
   font-weight: 700;
+  padding: 0;
+  margin: 0;
 }
 
 .step-icon {
   font-size: 32px;
+}
+
+/* Hide decorative step-icon globally to avoid double-shape/badge overlap */
+.step-icon {
+  display: none !important;
 }
 
 .step-content h3 {
@@ -1194,67 +1229,178 @@ nav {
   font-weight: bold;
 }
 
-/* Deliverables Section */
-.deliverables {
-  padding: 0px 0;
-  background: #fff;
+/* Clean Deliverables Design - Monochrome */
+.deliverables-new {
+  padding: 0 0 60px 0;
+  background: #ffffff;
+  position: relative;
 }
 
-.deliverables-grid {
+.deliverables-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.deliverables-header h2 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 16px;
+}
+
+.header-underline {
+  width: 80px;
+  height: 3px;
+  background: #000000;
+  margin: 0 auto 24px;
+  border-radius: 2px;
+}
+
+.deliverables-subtitle {
+  font-size: 18px;
+  color: #666666;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.deliverables-showcase {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  margin-top: 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.deliverable-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.deliverable-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+  border-color: #000000;
+}
+
+.card-number {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+  color: #ffffff;
+  background: #000000;
+}
+
+.card-content h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  padding-right: 60px;
+}
+
+.card-content p {
+  color: #666666;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-accent {
+  width: 100%;
+  height: 3px;
+  background: #000000;
+  border-radius: 2px;
+  margin-top: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .deliverables-showcase {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 16px;
+  }
+  
+  .deliverables-header h2 {
+    font-size: 36px;
+  }
+  
+  .deliverable-card {
+    padding: 20px 22px;
+  }
+  
+  .card-content h3 {
+    font-size: 20px;
+    padding-right: 50px;
+  }
 }
 
 .deliverable-item {
-  background: #fff;
-  padding: 24px;
-  border-radius: 12px;
+  background: #ffffff;
+  padding: 36px 28px;
+  border-radius: 16px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.deliverable-item:nth-child(1) {
-  background: #e5e8f5;
-  /* Light Yellow */
-}
-
-.deliverable-item:nth-child(2) {
-  background: #e5e8f5;
-  /* Light Pink */
-}
-
-.deliverable-item:nth-child(3) {
-  background: #e5e8f5;
-  /* Light Green */
-}
-
-.deliverable-item:nth-child(4) {
-  background: #e5e8f5;
-  /* Light Blue */
-}
-
-.deliverable-item:nth-child(5) {
-  background: #e5e8f5;
-  /* Light Beige */
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .deliverable-item:hover {
-  transform: translateY(-2px);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.06);
 }
 
 .deliverable-item h3 {
-  color: #1a1a1a;
-  font-size: 1rem;
+  color: #000000;
+  font-size: 1.05rem;
   margin-bottom: 8px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .deliverable-item p {
-  color: #64748b;
+  color: rgba(0,0,0,0.7);
   font-size: 14px;
+  margin: 0;
+}
+
+/* Responsive: 2 columns on tablet, 1 column on mobile */
+@media (max-width: 1024px) {
+  .deliverables-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .deliverables-grid {
+    grid-template-columns: 1fr;
+  }
+  .deliverables {
+    padding: 28px 0;
+  }
+  .deliverable-item {
+    padding: 20px;
+    border-radius: 12px;
+  }
 }
 
 /* Footer */
@@ -2460,6 +2606,172 @@ footer {
 /* ============== RESPONSIVE MOBILE FIX ============== */
 /* ================================================= */
 
+/* ================================================= */
+/* ============== COMPANY REGISTRATION PROCESS ====== */
+/* ================================================= */
+
+.process {
+  padding: 0 0 64px 0;
+  margin-top: -40px;
+  background: #ffffff;
+}
+
+.process .section-title h2 {
+  font-size: 32px;
+  color: #111111;
+}
+
+.process .section-title p {
+  color: #555555;
+  margin-top: 8px;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1200px;
+  margin: 32px auto 0 auto;
+}
+
+.process-card {
+  display: flex !important;
+  gap: 20px;
+  align-items: flex-start;
+  background: transparent !important;
+  border-radius: 12px;
+  padding: 22px;
+  border: none;
+  box-shadow: none !important;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.process-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.08);
+}
+
+.process-number {
+  flex-shrink: 0;
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 50% !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06) !important;
+}
+
+/* Hide numeric circular badges per request; use plain tag + title layout */
+.process-number {
+  display: none !important;
+}
+
+.process-card { gap: 12px !important; }
+.process-card .process-body { margin-left: 0 !important; }
+
+/* ensure grid/card rules take precedence in case of earlier resets */
+.process-grid > .process-card {
+  display: flex !important;
+}
+
+.process-card .process-number {
+  margin-right: 14px !important;
+}
+
+.process-body h3 {
+  margin: 0 0 8px 0;
+  font-size: 22px;
+  color: #0b0b0b;
+  font-weight: 700;
+}
+
+.process-body p {
+  margin: 0 0 10px 0;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.process-tag {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #111827;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* colored tag variants to match reference */
+.process-tag.tag-yellow { background: #fdf3c7; color: #6b4d00; }
+.process-tag.tag-green  { background: #e6f7ee; color: #0b6b4f; }
+.process-tag.tag-blue   { background: #eef5ff; color: #184b8c; }
+.process-tag.tag-indigo { background: #f0eefc; color: #3b2b7a; }
+.process-tag.tag-gray   { background: #f5f5f5; color: #374151; }
+
+/* vertical column separators on wide screens */
+.process-grid > .process-card { border-right: 1px solid #e6e6e6; padding-right: 28px; }
+.process-grid > .process-card:nth-child(3n) { border-right: none; padding-right: 18px; }
+.process-grid { align-items: start; }
+
+/* remove separators on medium/smaller screens */
+@media (max-width: 1024px) {
+  .process-grid > .process-card { border-right: none; padding-right: 18px; }
+}
+
+/* adjust spacing to match the reference look */
+.process { padding-top: 48px; padding-bottom: 32px; }
+.process .section-title { text-align: center; margin-bottom: 28px; }
+.process .section-title h2 { font-size: 36px; font-weight:800; }
+.process .section-title p { max-width: 780px; margin: 8px auto 0 auto; color: #6b7280; }
+
+/* Responsive: 2 columns */
+@media (max-width: 1024px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive: stacked cards on mobile */
+@media (max-width: 768px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+    margin: 20px auto 0 auto;
+    gap: 18px;
+  }
+
+  .process-card {
+    flex-direction: column;
+    padding: 18px;
+  }
+
+  .process-number {
+    width: 56px;
+    height: 56px;
+    font-size: 18px;
+  }
+}
+
+/* Small phones: slightly tighter */
+@media (max-width: 480px) {
+  .process {
+    padding: 40px 12px;
+  }
+
+  .process-number {
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+  }
+}
+
+/* End process styles */
+
+
 @media (max-width: 992px) {
   .impact-grid {
     /* Switch to a single column layout */
@@ -2517,4 +2829,28 @@ footer {
   .impact-stats-box {
     display: none;
   }
+}
+
+/* Hide specific footer subsections on mobile: Templates, Quick links, Partnership */
+@media (max-width: 768px) {
+  /* First footer column: hide the second heading (Templates) and its list */
+  .footer-content > .footer-column:nth-child(1) h3:nth-of-type(2),
+  .footer-content > .footer-column:nth-child(1) ul:nth-of-type(2),
+  /* Second footer column: hide the second heading (Quick links) and its list */
+  .footer-content > .footer-column:nth-child(2) h3:nth-of-type(2),
+  .footer-content > .footer-column:nth-child(2) ul:nth-of-type(2),
+  /* Fourth footer column: hide the second heading (Partnership) and its list */
+  .footer-content > .footer-column:nth-child(4) h3:nth-of-type(2),
+  .footer-content > .footer-column:nth-child(4) ul:nth-of-type(2) {
+    display: none !important;
+  }
+
+  /* If you prefer to remove the entire column on mobile instead of just the subsection,
+     you can hide the whole column with the selector below (commented out):
+  .footer-content > .footer-column:nth-child(1),
+  .footer-content > .footer-column:nth-child(2),
+  .footer-content > .footer-column:nth-child(4) {
+    display: none !important;
+  }
+  */
 }

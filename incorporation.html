@@ -98,12 +98,20 @@
             padding-left: 20px;
         }
 
+        /* hero image default styling - force no background/border so image sits flush */
         .hero-image {
             width: 100%;
             max-width: 650px;
             height: auto;
-            object-fit: contain;
+            object-fit: cover;
+            border-radius: 8px !important;
+            box-shadow: none !important; /* remove subtle boxed shadow */
+            background: transparent !important; /* remove background color from global stylesheet */
+            padding: 0 !important; /* remove any inset padding applied elsewhere */
+            border: none !important; /* remove visible border */
+            overflow: hidden !important;
             animation: fadeInUp 0.8s ease-out;
+            display: block;
         }
 
         @keyframes fadeInUp {
@@ -166,71 +174,108 @@
         @media (max-width: 768px) {
             
             .hero-section {
-                padding: 40px 20px;
+                padding: 60px 20px 40px 20px;
                 min-height: auto;
             }
 
             .hero-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 30px;
             }
 
+            /* show text first, image becomes second block on mobile */
             .hero-left {
                 padding-right: 0;
                 text-align: center;
+                order: 1;
             }
 
             .hero-left h1 {
-                font-size: 42px;
+                font-size: 32px;
+                line-height: 1.2;
+                margin-bottom: 16px;
             }
 
             .hero-left p {
-                font-size: 17px;
+                font-size: 16px;
                 margin-left: auto;
                 margin-right: auto;
+                margin-bottom: 24px;
+                max-width: 100%;
             }
 
             .hero-right {
-                display: none;
+                display: block;
                 padding-left: 0;
-                order: -1;
+                order: 2;
+                text-align: center;
             }
 
             .hero-image {
+                width: 100%;
                 max-width: 100%;
+                height: auto;
+                max-height: 360px;
+                object-fit: cover;
             }
 
             .pagination-dots {
                 justify-content: center;
+                margin-top: 20px;
             }
 
-            .cta-button {
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .btn-large {
                 width: 100%;
                 max-width: 280px;
+                padding: 14px 24px !important;
             }
         }
 
         @media (max-width: 480px) {
             .hero-section {
-                padding: 100px 16px 0px 16px;
+                padding: 40px 16px 30px 16px;
+            }
+
+            /* Ensure fixed header (rounded pill) doesn't overlap hero headline on small screens */
+            .hero-section {
+                padding-top: 120px; /* space equal to header height + breathing room */
             }
 
             .hero-left h1 {
-                font-size: 36px;
+                font-size: 28px;
             }
 
             .hero-left p {
-                font-size: 16px;
-                margin-bottom: 28px;
+                font-size: 15px;
+                margin-bottom: 20px;
             }
 
-            .cta-button {
-                padding: 12px 28px;
-                font-size: 15px;
+            .hero-buttons {
+                gap: 10px;
+            }
+
+            .btn-large {
+                padding: 12px 20px !important;
+                font-size: 14px !important;
+                max-width: 260px;
             }
 
             .pagination-dots {
-                margin-top: 30px;
+                margin-top: 16px;
+            }
+
+            /* mobile: keep hero image as a distinct full-width block below the text */
+            .hero-image {
+                max-height: 260px;
+                object-fit: cover;
+                width: 100%;
             }
         }
 
@@ -397,68 +442,358 @@
             }
         }
 
+        /* Requirements Section Mobile */
         @media (max-width: 768px) {
             .cards-container {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 16px;
             }
 
             .story-card {
-                min-height: 500px;
+                min-height: auto;
+                padding: 0;
             }
 
             .card-brand,
+            .card-brand2,
             .card-sales {
-                padding: 45px 35px;
+                padding: 24px 20px;
+                min-height: auto;
             }
 
             .card-brand h2,
+            .card-brand2 h2,
             .card-sales h2 {
-                font-size: 48px;
+                font-size: 24px;
+                margin-bottom: 16px;
+                line-height: 1.3;
             }
 
             .card-brand p,
+            .card-brand2 p,
             .card-sales p {
-                font-size: 18px;
-            }
-
-            .card-icon {
-                width: 70px;
-                height: 70px;
+                font-size: 14px;
+                line-height: 1.5;
             }
 
             .card-image {
-                min-height: 400px;
+                min-height: 200px;
             }
         }
 
         @media (max-width: 480px) {
-            body {
-                padding: 20px 16px;
+            .story-section {
+                padding: 0;
             }
 
             .story-card {
-                border-radius: 30px;
-                min-height: 450px;
+                border-radius: 16px;
+                margin-top: 16px;
             }
 
             .card-brand,
+            .card-brand2,
             .card-sales {
-                padding: 40px 70px;
-                
+                padding: 20px 16px;
             }
 
             .card-brand h2,
+            .card-brand2 h2,
             .card-sales h2 {
-                font-size: 40px;
+                font-size: 20px;
+                margin-bottom: 12px;
             }
 
             .card-brand p,
+            .card-brand2 p,
             .card-sales p {
-                font-size: 16px;
+                font-size: 13px;
+            }
+        }
+
+        /* Modern Architectural Advantages Design */
+        .advantages-modern {
+            padding: 60px 0 40px 0;
+            background: #ffffff;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .header-line {
+            width: 60px;
+            height: 4px;
+            background: #1a1a1a;
+            margin: 0 auto 24px;
+            border-radius: 2px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #666666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .advantages-layout {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, auto);
+            gap: 2px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #f5f5f5;
+            padding: 2px;
+        }
+
+        .advantage-block {
+            background: #ffffff;
+            position: relative;
+            padding: 40px 32px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .advantage-block:hover {
+            background: #1a1a1a;
+            color: #ffffff;
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+        .advantage-block:hover .block-number {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .advantage-block:hover .block-content h3 {
+            color: #ffffff;
+        }
+
+        .advantage-block:hover .block-content p {
+            color: #cccccc;
+        }
+
+        .large-block {
+            grid-column: span 2;
+            min-height: 200px;
+        }
+
+        .medium-block {
+            grid-column: span 2;
+            min-height: 180px;
+        }
+
+        .small-block {
+            grid-column: span 2;
+            min-height: 160px;
+        }
+
+        .block-number {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: all 0.4s ease;
+        }
+
+        .block-content h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            transition: color 0.4s ease;
+        }
+
+        .block-content p {
+            font-size: 15px;
+            color: #666666;
+            line-height: 1.6;
+            margin: 0;
+            transition: color 0.4s ease;
+        }
+
+        /* Specific grid positioning for architectural layout */
+        .advantage-block:nth-child(1) { grid-column: 1 / 3; grid-row: 1; }
+        .advantage-block:nth-child(2) { grid-column: 3 / 5; grid-row: 1; }
+        .advantage-block:nth-child(3) { grid-column: 1 / 3; grid-row: 2; }
+        .advantage-block:nth-child(4) { grid-column: 3 / 5; grid-row: 2; }
+        .advantage-block:nth-child(5) { grid-column: 1 / 3; grid-row: 3; }
+        .advantage-block:nth-child(6) { grid-column: 3 / 5; grid-row: 3; }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .advantages-modern {
+                padding: 50px 0 30px 0;
             }
 
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .advantages-layout {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1px;
+            }
+
+            .advantage-block:nth-child(1) { grid-column: 1 / 3; }
+            .advantage-block:nth-child(2) { grid-column: 1 / 2; }
+            .advantage-block:nth-child(3) { grid-column: 2 / 3; }
+            .advantage-block:nth-child(4) { grid-column: 1 / 2; }
+            .advantage-block:nth-child(5) { grid-column: 2 / 3; }
+            .advantage-block:nth-child(6) { grid-column: 1 / 3; }
+
+            .large-block,
+            .medium-block,
+            .small-block {
+                grid-column: auto;
+                min-height: 160px;
+            }
+
+            .section-header h2 {
+                font-size: 36px;
+            }
         }
+
+        @media (max-width: 768px) {
+            .advantages-modern {
+                padding: 40px 20px 25px 20px;
+            }
+
+            .advantages-layout {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                background: transparent;
+                padding: 0;
+            }
+
+            .advantage-block {
+                background: #f8f9fa;
+                border: 1px solid #e9ecef;
+                border-radius: 12px;
+                padding: 20px;
+                min-height: auto !important;
+                grid-column: auto !important;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            }
+
+            .advantage-block:hover {
+                background: #1a1a1a;
+                border-color: #1a1a1a;
+                transform: translateY(-2px);
+            }
+
+            .section-header {
+                margin-bottom: 32px;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+                line-height: 1.2;
+            }
+
+            .section-header p {
+                font-size: 16px;
+                padding: 0 10px;
+            }
+
+            .block-content h3 {
+                font-size: 22px;
+                margin-bottom: 12px;
+            }
+
+            .block-content p {
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+            .block-number {
+                width: 32px;
+                height: 32px;
+                font-size: 12px;
+                top: 20px;
+                right: 20px;
+                border-width: 1px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .advantages-modern {
+                padding: 30px 16px 20px 16px;
+            }
+
+            .section-header {
+                margin-bottom: 24px;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+                margin-bottom: 16px;
+            }
+
+            .section-header p {
+                font-size: 15px;
+                padding: 0 5px;
+            }
+
+            .header-line {
+                width: 40px;
+                height: 3px;
+                margin-bottom: 20px;
+            }
+
+            .advantage-block {
+                padding: 20px 18px;
+                border-radius: 10px;
+            }
+
+            .block-content h3 {
+                font-size: 20px;
+                margin-bottom: 10px;
+                padding-right: 40px;
+            }
+
+            .block-content p {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .block-number {
+                width: 28px;
+                height: 28px;
+                font-size: 11px;
+                top: 18px;
+                right: 18px;
+            }
+        }
+
+        /* Process styles moved to styles.css (modern, responsive, monochrome) */
     </style>
 </head>
 
@@ -532,7 +867,7 @@
                 <div class="hero-right">
 
                     <div>
-                        <img src="incorporation.jpg" alt="heroimage" width="90%" height=100%>
+                        <img src="incorporation.jpg" alt="hero image" class="hero-image">
                     </div>
                 </div>
                 <div class="hero-left">
@@ -555,46 +890,62 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="advantages" class="advantages">
+    <!-- Why Choose Private Limited Company - Modern Architectural Design -->
+    <section id="advantages" class="advantages-modern">
         <div class="container">
-            <div class="section-title">
+            <div class="section-header">
+                <div class="header-line"></div>
                 <h2>Why Choose Private Limited Company?</h2>
-                <p>A Private Limited Company Incorporation is one of India's most popular business structures. It offers
-                    several advantages, let us explain.</p>
+                <p>A Private Limited Company Incorporation is one of India's most popular business structures. It offers several advantages, let us explain.</p>
             </div>
-            <div class="advantages-grid">
-                <div class="advantage-card">
-                    <h3>Distinct Legal Identity</h3>
-                    <p>A Private Limited Company possesses an independent legal entity distinct from its proprietors. It
-                        has the capacity to own assets, engage in contractual agreements, and initiate or defend legal
-                        actions under its own name.</p>
+            
+            <div class="advantages-layout">
+                <div class="advantage-block large-block">
+                    <div class="block-number">01</div>
+                    <div class="block-content">
+                        <h3>Distinct Legal Identity</h3>
+                        <p>A Private Limited Company possesses an independent legal entity distinct from its proprietors. It has the capacity to own assets, engage in contractual agreements, and initiate or defend legal actions under its own name.</p>
+                    </div>
                 </div>
-                <div class="advantage-card">
-                    <h3>Continuous Existence</h3>
-                    <p>The company's existence persists irrespective of shifts in shareholders or directors. Its
-                        existence is not contingent upon the lifespan of its associates.</p>
+                
+                <div class="advantage-block small-block">
+                    <div class="block-number">02</div>
+                    <div class="block-content">
+                        <h3>Continuous Existence</h3>
+                        <p>The company's existence persists irrespective of shifts in shareholders or directors. Its existence is not contingent upon the lifespan of its associates.</p>
+                    </div>
                 </div>
-                <div class="advantage-card">
-                    <h3>Ease of Funding & Investments</h3>
-                    <p>Raising capital by issuing shares to investors, venture capitalists, or angel investors is
-                        easier. This structure attracts external investment and removes capital worries when an
-                        entrepreneur starts a company.</p>
+                
+                <div class="advantage-block medium-block">
+                    <div class="block-number">03</div>
+                    <div class="block-content">
+                        <h3>Ease of Funding & Investments</h3>
+                        <p>Raising capital by issuing shares to investors, venture capitalists, or angel investors is easier. This structure attracts external investment and removes capital worries when an entrepreneur starts a company.</p>
+                    </div>
                 </div>
-                <div class="advantage-card">
-                    <h3>Tax Benefits</h3>
-                    <p>Private Limited Companies may qualify for various tax benefits and exemptions, making them
-                        tax-efficient entities.</p>
+                
+                <div class="advantage-block small-block">
+                    <div class="block-number">04</div>
+                    <div class="block-content">
+                        <h3>Tax Benefits</h3>
+                        <p>Private Limited Companies may qualify for various tax benefits and exemptions, making them tax-efficient entities.</p>
+                    </div>
                 </div>
-                <div class="advantage-card">
-                    <h3>Credibility and Trust</h3>
-                    <p>Having "Pvt. Ltd." in your company name often instills more confidence and trust in clients,
-                        customers, suppliers, and partners.</p>
+                
+                <div class="advantage-block medium-block">
+                    <div class="block-number">05</div>
+                    <div class="block-content">
+                        <h3>Credibility and Trust</h3>
+                        <p>Having "Pvt. Ltd." in your company name often instills more confidence and trust in clients, customers, suppliers, and partners.</p>
+                    </div>
                 </div>
-                <div class="advantage-card">
-                    <h3>Regulatory Compliance</h3>
-                    <p>Private Limited Companies follow well-defined compliance and governance norms, which ensures
-                        transparency.</p>
+                
+                <div class="advantage-block large-block">
+                    <div class="block-number">06</div>
+                    <div class="block-content">
+                        <h3>Regulatory Compliance</h3>
+                        <p>Private Limited Companies follow well-defined compliance and governance norms, which ensures transparency.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -625,8 +976,8 @@
                         <div>
                             <h2>Company <br>name</h2>
                             <p>• Name should reflect the principal activity of the business <br>
-                                • Name should be unique <br>
-                                • Must comply with MCA naming guidelines
+                               • Name should be unique <br>
+                               • Must comply with MCA naming guidelines
                             </p>
                         </div>
                     </div>
@@ -635,10 +986,10 @@
                     <div class="story-card card-sales">
                         <div>
                             <h2>Registered Office Address</h2>
-                            <p>•Permanent address required for company registeration <br>
-                                •Business operations occur in this office <br>
-                                •All company documentation maintained here <br>
-                                •You can use your home address if no office available</p>
+                            <p>• Permanent address required for company registeration <br>
+                               • Business operations occur in this office <br>
+                               • All company documentation maintained here <br>
+                               • You can use your home address if no office available</p>
                         </div>
                     </div>
                 </div>
@@ -647,126 +998,127 @@
     </section>
 
     <!-- Process Section -->
+    <!-- Inline critical styles to ensure process layout renders immediately -->
+    <style>
+        /* High-priority inline rules for immediate rendering */
+        .process-grid { display: grid !important; grid-template-columns: repeat(3,1fr) !important; gap: 24px !important; max-width: 1200px !important; margin: 24px auto !important; align-items: start !important; }
+        .process-card { display: flex !important; gap: 12px !important; align-items: flex-start !important; background: transparent !important; border-radius: 12px !important; padding: 18px !important; }
+        /* hide numeric badges inline too so change is immediate */
+        .process-number { display: none !important; }
+        .process-body { margin-left: 0 !important; }
+        .process-body h3 { margin:0 0 8px 0 !important; font-size:22px !important; color:#0b0b0b !important; font-weight:700 !important; }
+        .process-tag { display:inline-block !important; padding:6px 10px !important; border-radius:999px !important; background:#f3f4f6 !important; color:#111827 !important; font-weight:600 !important; font-size:13px !important; margin-bottom:8px !important; display:block !important; }
+        @media (max-width: 1024px) { .process-grid { grid-template-columns: repeat(2,1fr) !important; } .process-grid > .process-card{ border-right: none !important; } }
+        @media (max-width: 768px) { .process-grid { grid-template-columns: 1fr !important; } .process-card{ flex-direction:column !important; } }
+    </style>
     <section id="process" class="process">
         <div class="container">
             <div class="section-title">
                 <h2>Company Registration Process</h2>
                 <p>Our streamlined 5-step process makes company registration simple and efficient with innovative
                     solutions</p>
-                <div class="process-timeline"></div>
             </div>
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">
-                        <span>1</span>
-                    </div>
-                    <div class="step-content">
+
+            <div class="process-grid">
+                <article class="process-card">
+                    <div class="process-number">1</div>
+                    <div class="process-body">
+                        <span class="process-tag tag-yellow">Creative</span>
                         <h3>Name Reservation (SPICe+ Part A)</h3>
-                        <p>Begin by completing the SPICe+ Part A form to secure a unique company name. This entails
-                            selecting the company type, class, category, and sub-category, specifying the primary
-                            division of industrial activity and offering a comprehensive business description.</p>
-                        <div class="step-badge">Creative</div>
+                        <p>Complete the SPICe+ Part A form to reserve a unique name — choose company type, class,
+                        primary industrial division and provide a concise business description.</p>
                     </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">
-                        <span>2</span>
-                        <div class="step-icon"></div>
-                    </div>
-                    <div class="step-content">
+                </article>
+
+                <article class="process-card">
+                    <div class="process-number">2</div>
+                    <div class="process-body">
+                        <span class="process-tag tag-green">Essential</span>
                         <h3>Acquire Digital Signature Certificate (DSC)</h3>
-                        <p>Every director and shareholder must secure a Digital Signature Certificate (DSC) issued by
-                            the Controller of Certification Agencies (CCA). This involves providing essential details
-                            such as passport-sized photos, PAN, Aadhaar Card, phone number, and email address.</p>
-                        <div class="step-badge">Essential</div>
+                        <p>Directors and shareholders obtain DSCs (issued by a CCA). Typical documents include
+                        passport photo, PAN, Aadhaar, phone and email details.</p>
                     </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">
-                        <span>3</span>
-                        <div class="step-icon"></div>
-                    </div>
-                    <div class="step-content">
+                </article>
+
+                <article class="process-card">
+                    <div class="process-number">3</div>
+                    <div class="process-body">
+                        <span class="process-tag tag-gray">Required</span>
                         <h3>Director Identification Number (DIN)</h3>
-                        <p>Obtain a Director Identification Number (DIN) if you intend to be a director in the company.
-                            DIN is essential for directors and needs to be provided in the registration form.</p>
-                        <div class="step-badge">Required</div>
+                        <p>Apply for DIN for any director to be listed in forms — a mandatory identity number for directors.</p>
                     </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">
-                        <span>4</span>
-                        <div class="step-icon"></div>
+                </article>
+
+                <article class="process-card">
+                    <div class="process-number">4</div>
+                    <div class="process-body">
+                        <span class="process-tag tag-blue">Detailed</span>
+                        <h3>MOA &amp; AOA Submission</h3>
+                        <p>Draft and sign the Memorandum and Articles of Association, secure digital signatures
+                        from subscribers/professionals and file AGILE-PRO-S for GST/EPFO/ESIC where applicable.</p>
                     </div>
-                    <div class="step-content">
-                        <h3>MOA and AOA Submission</h3>
-                        <p>Draft the Memorandum of Association (MOA) and Articles of Association (AOA) containing
-                            crucial company details. Obtain digital signatures from subscribers and professionals before
-                            submitting to MCA. Additionally, file AGILE-PRO-S form for GST, EPFO, ESIC registration.</p>
-                        <div class="step-badge">Detailed</div>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">
-                        <span>5</span>
-                        <div class="step-icon"></div>
-                    </div>
-                    <div class="step-content">
+                </article>
+
+                <article class="process-card">
+                    <div class="process-number">5</div>
+                    <div class="process-body">
+                        <span class="process-tag tag-indigo">Final</span>
                         <h3>Submit Company Details (SPICe+ Part B)</h3>
-                        <p>Provide comprehensive information concerning capital, registered office address, subscriber
-                            and directors' details, stamp duty, PAN and TAN application, and necessary attachments for
-                            company registration.</p>
-                        <div class="step-badge">Final</div>
+                        <p>Submit capital structure, registered office, subscribers and directors' details, stamp duty,
+                        PAN/TAN applications and required attachments to finalize registration.</p>
                     </div>
-                </div>
-            </div>
-            <div class="process-footer">
-                <div class="process-stats">
-                    <div class="stat-item">
-                        <h4>7-15 Days</h4>
-                        <p>Average Processing Time</p>
-                    </div>
-                    <div class="stat-item">
-                        <h4>99%</h4>
-                        <p>Success Rate</p>
-                    </div>
-                    <div class="stat-item">
-                        <h4>24/7</h4>
-                        <p>Expert Support</p>
-                    </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
 
 
-    <!-- Deliverables Section -->
-    <section class="deliverables">
+    <!-- Deliverables Section - Bold New Design -->
+    <section class="deliverables-new">
         <div class="container">
-            <div class="section-title">
+            <div class="deliverables-header">
                 <h2>What You'll Receive</h2>
-                <p>Upon successful document verification, the Ministry Of Corporate Affairs (MCA) will issue the
-                    following</p>
+                <div class="header-underline"></div>
+                <p class="deliverables-subtitle">Upon successful document verification, the Ministry of Corporate Affairs (MCA) will issue the following documents to establish your company legally.</p>
             </div>
-            <div class="deliverables-grid">
-                <div class="deliverable-item">
-                    <h3>Certificate of Incorporation (COI)</h3>
-                    <p>Official document proving your company's legal existence</p>
-                </div>
-                <div class="deliverable-item">
-                    <h3>Company Identification Number (CIN)</h3>
-                    <p>Unique identifier for your company</p>
-                </div>
-                <div class="deliverable-item">
-                    <h3>PAN</h3>
-                    <p>Permanent Account Number for tax purposes</p>
-                </div>
-                <div class="deliverable-item">
-                    <h3>TAN</h3>
-                    <p>Tax Deduction and Collection Account Number</p>
+            
+            <div class="deliverables-showcase">
+                <div class="deliverable-card card-1">
+                    <div class="card-number">01</div>
+                    <div class="card-content">
+                        <h3>Certificate of Incorporation (COI)</h3>
+                        <p>Official document proving your company's legal existence</p>
+                        <div class="card-accent"></div>
+                    </div>
                 </div>
 
+                <div class="deliverable-card card-2">
+                    <div class="card-number">02</div>
+                    <div class="card-content">
+                        <h3>Company Identification Number (CIN)</h3>
+                        <p>Unique identifier for your company</p>
+                        <div class="card-accent"></div>
+                    </div>
+                </div>
+
+                <div class="deliverable-card card-3">
+                    <div class="card-number">03</div>
+                    <div class="card-content">
+                        <h3>PAN</h3>
+                        <p>Permanent Account Number for tax purposes</p>
+                        <div class="card-accent"></div>
+                    </div>
+                </div>
+
+                <div class="deliverable-card card-4">
+                    <div class="card-number">04</div>
+                    <div class="card-content">
+                        <h3>TAN</h3>
+                        <p>Tax Deduction and Collection Account Number</p>
+                        <div class="card-accent"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -778,51 +1130,93 @@
     <!-- Footer -->
     <style>
      @media (max-width: 768px) {
-            
             /* Stack header items vertically */
             .footer-header-content {
                 flex-direction: column;
-                gap: 20px; /* Adds space between logo and contact info */
+                gap: 12px;
             }
 
             .header-divider {
-                display: none; /* Hide the vertical divider line */
+                display: none;
             }
 
-            /* Stack the main content columns */
+            /* Make footer columns collapse into accordion-style lists on mobile */
             .footer-content {
-                flex-direction: column;
-                text-align: center; /* Center-aligns the text in columns */
+                display: block;
             }
-            
+
             .footer-column {
-                margin-bottom: 20px; /* Adds space between stacked columns */
+                border-top: 1px solid rgba(0,0,0,0.04);
+                padding: 12px 0;
+                margin: 0;
             }
 
             .footer-column h3 {
-                margin-top: 0; /* Removes extra space for headings after the first one */
+                margin: 0;
+                font-size: 16px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+                padding: 6px 0;
+            }
+
+            /* Hide lists by default on mobile - will expand when parent has .open */
+            .footer-column ul {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.28s ease, padding 0.18s ease;
+                padding-left: 0;
+                margin: 0;
+            }
+
+            .footer-column.open ul {
+                max-height: 800px; /* large enough to show content */
+                padding-top: 10px;
+            }
+
+            .footer-column ul li {
+                padding: 6px 0;
             }
 
             /* Stack bottom links and social media vertically */
             .footer-bottom-content {
-                flex-direction: column-reverse; /* Shows copyright at the bottom */
-                gap: 20px; /* Adds space between elements */
+                display: flex;
+                flex-direction: column-reverse;
+                gap: 12px;
                 text-align: center;
+                padding-top: 12px;
             }
 
             .footer-links {
                 display: flex;
-                flex-direction: column; /* Stack policy links */
-                gap: 10px;
+                flex-direction: column;
+                gap: 8px;
+                align-items: center;
             }
 
             .footer-links span {
-                display: none; /* Hide the pipe dividers */
+                display: none;
             }
-            
+
             .footer-right {
+                display: flex;
                 flex-direction: column;
-                gap: 15px;
+                gap: 8px;
+                align-items: center;
+            }
+
+            /* Add a chevron indicator for accordion toggles */
+            .footer-column h3::after {
+                content: '\25BC';
+                font-size: 12px;
+                color: rgba(0,0,0,0.6);
+                transition: transform 0.25s ease;
+                margin-left: 8px;
+            }
+
+            .footer-column.open h3::after {
+                transform: rotate(180deg);
             }
         }
     </style>
@@ -1030,6 +1424,41 @@
                     document.body.style.overflow = '';
                 }
             });
+        });
+
+        // --- Footer accordion for mobile ---
+        function initFooterAccordion() {
+            const footerColumns = document.querySelectorAll('.footer-column');
+            footerColumns.forEach(col => {
+                const heading = col.querySelector('h3');
+                if (!heading) return;
+                // Make heading keyboard-focusable
+                heading.setAttribute('tabindex', '0');
+                heading.setAttribute('role', 'button');
+                heading.setAttribute('aria-expanded', col.classList.contains('open') ? 'true' : 'false');
+
+                const toggle = () => {
+                    if (window.innerWidth > 768) return; // only on mobile
+                    const isOpen = col.classList.toggle('open');
+                    heading.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                };
+
+                heading.addEventListener('click', toggle);
+                heading.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggle();
+                    }
+                });
+            });
+        }
+
+        // Initialize on DOM ready and on resize (to remove open states on desktop)
+        document.addEventListener('DOMContentLoaded', initFooterAccordion);
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                document.querySelectorAll('.footer-column.open').forEach(c => c.classList.remove('open'));
+            }
         });
 
         // Handle window resize

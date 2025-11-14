@@ -203,16 +203,21 @@
             transform: translateY(-8px) scale(1.02);
         }
 
+        /* Force hero image to render with rounded corners and no inner padding
+           (overrides global .hero-image container styles that add padding/background). */
         .hero-image {
             width: 100%;
             max-width: 100%;
             height: auto;
-            object-fit: contain;
+            object-fit: cover;
             display: block;
             border: none !important;
             box-shadow: none !important;
+            border-radius: 16px !important; /* rounded corners for hero image */
             background: transparent !important;
             background-color: transparent !important;
+            padding: 0 !important;
+            overflow: hidden !important;
         }
 
         /* Tablet responsive */
