@@ -32,10 +32,10 @@
         }
 
         .hero-section {
-            min-height: 100vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
-            padding: 60px 40px;
+            padding: 48px 40px;
             background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
         }
 
@@ -50,86 +50,59 @@
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: center;
+            margin-top: 40px;
         }
 
-        .hero-left {
-            padding-right: 20px;
-        }
-
+        /* Page-specific hero tweaks to match provided design */
         .hero-left h1 {
-            font-size: 64px;
-            font-weight: 700;
-            line-height: 1.2;
-            color: #1a1a1a;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
+            font-size: 72px; /* reduced slightly from 96px */
+            line-height: 1.0;
+            font-weight: 800;
+            color: #111111;
+            margin-bottom: 16px;
+            letter-spacing: -0.8px;
         }
 
         .hero-left p {
-            font-size: 20px;
-            line-height: 1.6;
-            color: #4a4a4a;
-            margin-bottom: 36px;
-            max-width: 540px;
+            font-size: 18px; /* subtle reduction */
+            color: #4b5563;
+            max-width: 560px;
+            line-height: 1.7;
+            margin-bottom: 24px;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 14p x 32px;
-            background-color: #2383E2;
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(35, 131, 226, 0.2);
-        }
-
-        .cta-button:hover {
-            background-color: #1a6ec4;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(35, 131, 226, 0.3);
-        }
-
-        .cta-button:active {
-            transform: translateY(0);
-        }
-
-        .hero-right {
+        /* Hero buttons (left) */
+        .hero-buttons {
             display: flex;
-            justify-content: center;
+            gap: 20px;
             align-items: center;
-            padding-left: 20px;
         }
 
-        .hero-image {
-            width: 100%;
-            max-width: 650px;
-            height: auto;
-            object-fit: contain;
-            animation: fadeInUp 0.8s ease-out;
+        .hero-buttons .btn-large {
+            padding: 14px 28px; /* slightly smaller */
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.07);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .hero-buttons .btn-black {
+            background: #ffffff;
+            color: #111111;
+            border: 1px solid rgba(0,0,0,0.06);
         }
 
-        .pagination-dots {
-            display: flex;
-            gap: 12px;
-            margin-top: 40px;
+        .hero-buttons .btn-primary {
+            background: #0b0606;
+            color: #fff !important;
+            border: none;
         }
+
+        /* Pagination dots styled like the reference */
+        .pagination-dots { display: flex; gap: 12px; margin-top: 28px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background-color: #d9d9d9; }
+        .dot.active { width: 44px; height: 12px; border-radius: 8px; background-color: #2383E2; }
+        .dot:not(.active) { opacity: 0.7; }
 
         .dot {
             width: 10px;
@@ -237,6 +210,114 @@
             .pagination-dots {
                 margin-top: 30px;
             }
+        }
+    </style>
+    <!-- Mobile footer accordion styles (copied from index.html pattern) -->
+    <style>
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                padding: 0 20px;
+                gap: 0;
+            }
+
+            .footer-column {
+                margin-bottom: 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .footer-column:last-child {
+                border-bottom: none;
+            }
+
+            .footer-column h3 {
+                margin: 0;
+                padding: 14px 0;
+                font-size: 16px;
+                font-weight: 600;
+                color: #222;
+                cursor: pointer;
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #fff;
+                transition: background 0.18s ease;
+                text-align: left;
+                outline: none;
+            }
+
+            .footer-column h3:hover,
+            .footer-column h3:focus {
+                background: #f8f9fa;
+            }
+
+            /* Use a slightly nicer glyph and faster rotation for responsiveness */
+            .footer-column h3::after {
+                content: '▾';
+                font-size: 12px;
+                color: #888;
+                transform: rotate(0deg);
+                transition: transform 0.18s ease;
+                margin-left: 8px;
+            }
+
+            .footer-column h3.active::after {
+                transform: rotate(180deg);
+            }
+
+            .footer-column ul {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                background: #fff;
+            }
+
+            .footer-column ul.active {
+                max-height: 800px; /* allow taller content to expand smoothly */
+                padding: 0 0 18px 0;
+            }
+
+            .footer-column ul li {
+                margin: 0;
+                padding: 8px 0;
+            }
+
+            .footer-column ul li a {
+                color: #666;
+                text-decoration: none;
+                font-size: 14px;
+                display: block;
+                transition: color 0.2s ease;
+                text-align: left;
+            }
+
+            .footer-column ul li a:hover {
+                color: #2563eb;
+            }
+
+            .footer-column h3[style*="margin-top"] {
+                display: none;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column-reverse;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-links span { display: none; }
+
+            .footer-right { flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
@@ -357,12 +438,12 @@
                     </p>
 
                     <div class="note-box"
-                        style="background: #e2e8f0; padding: 24px; border-radius: 12px; border-left: 4px solid #7851a9;">
+                        style="background: #e2e8f0; padding: 24px; border-radius: 12px; border-left: 4px solid #0d3d3d;">
                         <p style="font-style: italic; color: #2d3748; line-height: 1.6; margin: 0;">
-                            <strong>Our Compliance packages are designed to be affordable with high-quality service
+                            <emp>Our Compliance packages are designed to be affordable with high-quality service
                                 including, MCA filing, 360 degree accounting, RoC filing, government fees, stamp duties,
-                                documentation charges etc., for a seamless startup experience</strong>
-                        </p>
+                                documentation charges etc., for a seamless startup experience</emp>
+                        </>
                     </div>
                 </div>
 
@@ -417,59 +498,59 @@
                 <p>Comprehensive compliance services included in your annual package</p>
             </div>
             <div class="advantages-grid">
-                <div class="advantage-card" style="background: #E5E8F5;">
+                <div class="advantage-card" style="background: #fff; border: 1px solid #000;">
                     <h3>ADT-1 Filings</h3>
                     <p>Auditor Appointment Forms - Professional handling of statutory auditor appointment documentation
                         and filings.</p>
                 </div>
-                <div class="advantage-card" style="background: #E5E8F5;">
+                <div class="advantage-card" style="background: #fff; border: 1px solid #000;">
                     <h3>Board Resolution Preparation</h3>
                     <p>Drafting and preparing resolutions for board meetings with complete legal compliance and
                         professional documentation.</p>
                 </div>
-                <div class="advantage-card" style="background: #E5E8F5;">
+                <div class="advantage-card" style="background: #fff; border: 1px solid #000;">
                     <h3>Profit and Loss Statements</h3>
                     <p>Preparation of detailed Profit and Loss Statements ensuring accuracy and compliance with
                         accounting standards.</p>
                 </div>
-                <div class="advantage-card" style="background: #E5E8F5;">
+                <div class="advantage-card" style="background: #fff; border: 1px solid #000;">
                     <h3>Accounts Preparation</h3>
                     <p>Comprehensive preparation of company accounts with meticulous attention to detail and regulatory
                         requirements.</p>
                 </div>
-                <div class="advantage-card" style="background: #E5E8F5;">
+                <div class="advantage-card" style="background: #fff; border: 1px solid #000;">
                     <h3>Balance Sheet Preparation</h3>
                     <p>Accurate and compliant preparation of the balance sheet following all statutory norms and
                         accounting principles.</p>
                 </div>
-                <div class="advantage-card" style="background: #E5E8F5;">
+                <div class="advantage-card" style="background: #fff; border: 1px solid #000;">
                     <h3>AGM Report Preparation</h3>
                     <p>Drafting and filing the Annual General Meeting (AGM) report with comprehensive documentation.</p>
                 </div>
-                <div class="advantage-card" style="background: #E5E8F5;">
+                <div class="advantage-card" style="background: #fff; border: 1px solid #000;">
                     <h3>MGT-7 Filings</h3>
                     <p>Filing of the Annual Return with the Registrar of Companies ensuring timely compliance.</p>
                 </div>
-                <div class="advantage-card" style="background: #E5E8F5;">
+                <div class="advantage-card" style="background: #fff; border: 1px solid #000;">
                     <h3>AOC-4 Filings</h3>
                     <p>Filing of the Financial Statements and related documents with complete accuracy.</p>
                 </div>
-                <div class="advantage-card" style="background: #E5E8F5;">
+                <div class="advantage-card" style="background: #fff; border: 1px solid #000;">
                     <h3>DIN eKYC Filings</h3>
                     <p>Director Identification Number (DIN) eKYC compliance ensuring all directors meet regulatory
                         requirements.</p>
                 </div>
-                <div class="advantage-card" style="background: #E5E8F5;">
+                <div class="advantage-card" style="background: #fff; border: 1px solid #000;">
                     <h3>ITR-6 Filings</h3>
                     <p>Filing the Income Tax Return (ITR-6) for the company with professional tax planning and
                         compliance.</p>
                 </div>
-                <div class="advantage-card" style="background: #E5E8F5;">
+                <div class="advantage-card" style="background: #fff; border: 1px solid #000;">
                     <h3>DSC Renewal</h3>
                     <p>Timely renewal of Digital Signature Certificates for directors and signatories to ensure seamless
                         compliance.</p>
                 </div>
-                <div class="advantage-card" style="background: #E5E8F5;">
+                <div class="advantage-card" style="background: #fff; border: 1px solid #000;">
                     <h3>Auditor Consultation</h3>
                     <p>Professional consultation with auditors for compliance guidance and regulatory alignment.</p>
                 </div>
@@ -478,7 +559,43 @@
     </section>
 
     <!-- Additional Services Section -->
-    <section class="gst-section" style="background: whitesmoke;">
+    <style>
+    /* Page-local overrides for Additional Services: lavender background and padding */
+    .documents-section { background: #d8d6f0 !important; padding: 24px; border-radius: 12px; }
+    .documents-section h3, .documents-section p { color: #000000 !important; }
+    .documents-grid .document-item { background: #ffffff !important; color: #000000 !important; border: 1px solid rgba(0,0,0,0.06) !important; box-shadow: none !important; }
+    .documents-grid .document-item h4 { color: #000000 !important; }
+    .documents-grid .document-item .doc-description { color: #111111 !important; }
+    .documents-grid .document-item ul li { color: #111111 !important; }
+    .documents-grid .document-item ul li::before { color: #111111 !important; }
+    /* Make the first document-item use the requested lavender background (blend with section) */
+    .documents-grid .document-item:first-child { background: #fff !important; border: none !important; box-shadow: none !important; }
+    </style>
+
+    <section class="gst-section" style="background: transparent;">
+
+    <style>
+    /* Mobile adjustments: make the lavender panel fill the screen edges and stack cards */
+    @media (max-width: 768px) {
+        /* counter the .container horizontal padding so the colored panel reaches the edges */
+        .documents-section {
+            margin-left: -24px !important;
+            margin-right: -24px !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            border-radius: 8px !important;
+        }
+
+        .documents-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+        }
+
+        .documents-grid .document-item {
+            border-radius: 8px !important;
+        }
+    }
+    </style>
         <div class="container">
             <div class="documents-section">
                 <h3>Additional Services</h3>
@@ -561,7 +678,35 @@
             </div>
         </div>
     </section>
+     <!-- CTA Section -->
+    <section class="cta-hero-section"
+        style="background-image: url('my story1.png'); background-size: cover; background-position: center right; padding: 30px 0; margin: 0 50px; border-radius: 24px; position: relative; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <!-- Dark overlay for contrast -->
+        <div style="position: absolute; inset:0; background: linear-gradient(rgba(138, 139, 139, 0.45), rgba(141, 142, 142, 0.35));"></div>
 
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="hero-grid"> 
+                <!-- Left Content -->
+                <div style="padding-left: 30px;">
+                    <h2 style="font-size: 3rem; font-weight: 700; color: white; margin-bottom: 16px; line-height: 1.2;">
+                        #WE<br>People First Company.
+                    </h2>
+                    
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="https://crm.wealthempires.in/"
+                            style="background: #000; color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;">
+                            Start incorporation <span style="font-size: 1.2rem;">›</span>
+                        </a>
+                        <a href="contact.html"
+                            style="background: white; color: #000; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; border: 1px solid #6d6969; transition: all 0.3s;">
+                            Contact us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 
     <!-- Footer -->
     <!-- Footer -->
@@ -624,9 +769,8 @@
                 </div>
                 <div class="header-divider"></div>
                 <div class="contact-section">
-                    <a href="mailto:support@wealthempires.com" class="support-email">support@wealthempires.com </a>
-                    <span style="color: rgb(204, 199, 199);"> | </span>
-                    <a href="#" style="text-decoration: none; color: #2563ec; font-weight: 500;">+91 9884521264</a>
+                    <a href="mailto:support@wealthempires.com" class="support-email">support@wealthempires.com | +91 9884521264</a>
+                    
                 </div>
             </div>
         </div>
@@ -811,6 +955,101 @@
                 navContainer.style.backdropFilter = 'blur(20px)';
             }
         });
+    </script>
+    <script>
+        // Mobile footer accordion functionality (copied from index.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Only activate on mobile devices
+            if (window.innerWidth <= 768) {
+                initFooterAccordion();
+            }
+
+            // Reinitialize on window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth <= 768) {
+                    initFooterAccordion();
+                } else {
+                    resetFooterAccordion();
+                }
+            });
+        });
+
+        function initFooterAccordion() {
+            const footerColumns = document.querySelectorAll('.footer-column');
+
+            footerColumns.forEach(column => {
+                const heading = column.querySelector('h3');
+                const list = column.querySelector('ul');
+
+                if (heading && list && !heading.hasAttribute('style')) {
+                    // Initially collapse all sections
+                    list.classList.remove('active');
+                    heading.classList.remove('active');
+
+                    // Replace heading to remove previous listeners, then set accessibility attributes
+                    const newHeading = heading.cloneNode(true);
+                    heading.parentNode.replaceChild(newHeading, heading);
+                    newHeading.setAttribute('role', 'button');
+                    newHeading.setAttribute('tabindex', '0');
+                    newHeading.setAttribute('aria-expanded', 'false');
+
+                    // Add click listener
+                    newHeading.addEventListener('click', function() {
+                        const newList = column.querySelector('ul');
+                        const isActive = newList.classList.contains('active');
+
+                        // Close all other sections
+                        footerColumns.forEach(otherColumn => {
+                            const otherList = otherColumn.querySelector('ul');
+                            const otherHeading = otherColumn.querySelector('h3');
+                            if (otherList && otherHeading && !otherHeading.hasAttribute('style')) {
+                                otherList.classList.remove('active');
+                                otherHeading.classList.remove('active');
+                                otherHeading.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+
+                        // Toggle current section and aria state
+                        if (!isActive) {
+                            newList.classList.add('active');
+                            newHeading.classList.add('active');
+                            newHeading.setAttribute('aria-expanded', 'true');
+                        } else {
+                            newList.classList.remove('active');
+                            newHeading.classList.remove('active');
+                            newHeading.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    // Keyboard support: toggle on Enter or Space
+                    newHeading.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            newHeading.click();
+                        }
+                    });
+                }
+            });
+        }
+
+        function resetFooterAccordion() {
+            const footerColumns = document.querySelectorAll('.footer-column');
+
+            footerColumns.forEach(column => {
+                const heading = column.querySelector('h3');
+                const list = column.querySelector('ul');
+
+                if (heading && list) {
+                    list.classList.remove('active');
+                    heading.classList.remove('active');
+                    heading.setAttribute('aria-expanded', 'false');
+
+                    // Remove click listeners by replacing node
+                    const newHeading = heading.cloneNode(true);
+                    heading.parentNode.replaceChild(newHeading, heading);
+                }
+            });
+        }
     </script>
 </body>
 

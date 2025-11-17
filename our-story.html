@@ -1150,188 +1150,107 @@
 
     <!-- Why We Started Section -->
 
-    <!-- Our Impact — Illustrated Story + Timeline -->
-    <section class="our-impact-illustrated" aria-label="Our impact" style="padding:64px 20px; background:transparent;">
+    <!-- Our Impact — Four-column hero-style feature grid -->
+    <section class="our-impact-hero" aria-label="Our impact" style="padding:64px 20px; background:transparent;">
         <style>
-            .impact-wrap { max-width:1200px; margin:0 auto; }
-            .impact-header { text-align:center; margin-bottom:28px; }
-            .impact-grid { display:grid; grid-template-columns: 1fr 420px; gap:36px; align-items:start; }
+            .impact-hero { max-width:1200px; margin:0 auto; position:relative; }
+            .impact-grid-hero { display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:0; align-items:stretch; min-height:320px; background:#fff; }
 
-            /* Timeline column with filling effect */
-            .timeline { position:relative; padding-left:28px; }
-            /* subtle track (light model) */
-            .timeline::before { content:''; position:absolute; left:12px; top:0; bottom:0; width:6px; border-radius:6px; background:linear-gradient(180deg, #f1f5f9 0%, #eef2ff 100%); opacity:1; }
-            /* fill element grows from top to bottom when in-view - light pastel fill */
-            .timeline .timeline-fill { position:absolute; left:12px; top:0; width:6px; height:0%; border-radius:6px; background:linear-gradient(180deg,#dbeafe 0%, #bfdbfe 100%); box-shadow:0 6px 18px rgba(99,102,241,0.06); transition:height 600ms cubic-bezier(.2,.9,.2,1); transform-origin:top; }
+            /* Left large panel */
+            .hero-left { background:#fff; padding:40px 30px; border-right:2px solid #e5e7eb; display:flex; flex-direction:column; justify-content:center; }
+            .hero-left h2 { font-size:42px; line-height:1.1; margin:0 0 16px; color:#1f2937; font-weight:800; }
+            .hero-left .highlight { color:#7851a9; }
+            .hero-left .lead { color:#6b7280; font-size:16px; line-height:1.5; max-width:420px; }
 
-            .timeline-item { position:relative; margin-bottom:32px; padding-left:18px; opacity:0; transform:translateX(-8px); transition:opacity .6s ease, transform .6s ease; transition-delay:var(--i,0ms); }
-            .timeline-item.in-view { opacity:1; transform:none; }
+            /* Feature columns */
+            .feature { background:#fff; padding:32px 24px; border-right:1px solid #e5e7eb; display:flex; flex-direction:column; justify-content:flex-start; position:relative; }
+            .feature:last-child { border-right:none; }
+            .feature .icon-wrapper { margin-bottom:20px; }
+            .feature .icon { width:56px; height:56px; border-radius:12px; background:#7851a9; display:flex; align-items:center; justify-content:center; color:#fff; font-size:24px; }
+            .feature h4 { margin:0 0 12px; font-size:20px; color:#1f2937; font-weight:700; line-height:1.3; }
+            .feature p { margin:0 0 16px; color:#6b7280; font-size:14px; line-height:1.5; }
+            .feature .stat { font-weight:700; color:#7851a9; font-size:13px; }
 
-            .timeline-dot { position:absolute; left:5px; top:6px; width:14px; height:14px; border-radius:50%; background:#fff; border:4px solid #fff; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
-            /* dot inner ring colored to match the light fill */
-            .timeline-dot::after { content:''; position:absolute; left:4px; top:4px; width:6px; height:6px; border-radius:50%; background:#dbeafe; box-shadow:0 2px 8px rgba(27, 78, 168, 0.06); }
-
-            .timeline-item h4 { margin:0 0 6px; font-size:18px; color:#0b1220; }
-            .timeline-item p { margin:0 0 8px; color:#465; }
-            .timeline-item .stat { font-weight:700; color:#0b6; }
-
-            /* Illustration column */
-            .illustration { position:relative; display:flex; align-items:center; justify-content:center; }
-            .illustration img { width:100%; max-width:400px; height:auto; display:block; background:transparent; border:none; }
-            .stats-overlay { position:absolute; right:12px; top:12px; display:flex; flex-direction:column; gap:12px; }
-            .stat-card { background:#fff; padding:14px 18px; border-radius:12px; box-shadow:0 12px 36px rgba(15,23,42,0.08); text-align:center; min-width:140px; }
-            .stat-card .num { font-size:28px; font-weight:800; color:#0b1220; }
-            .stat-card .label { font-size:13px; color:#667; margin-top:6px; }
-
-            /* Callout badge */
-            .callout { position:absolute; left:14px; bottom:18px; background:#fff; padding:10px 14px; border-radius:10px; box-shadow:0 8px 24px rgba(15,23,42,0.08); }
-            .callout .big { font-weight:800; font-size:20px; color:#0b1220; }
-
-            @media (max-width:900px) {
-                .impact-grid { grid-template-columns: 1fr; gap:22px; }
-                .illustration { order:2; }
-                .timeline { order:1; padding-left:18px; }
-                .timeline::before { left:10px; width:4px; }
-                .timeline .timeline-fill { left:10px; width:4px; }
-                .timeline-dot { left:0; }
-                .timeline-dot::after { left:3px; top:3px; width:6px; height:6px; }
-                .timeline-item { padding-left:14px; margin-bottom:26px; }
-                .stats-overlay { position:static; flex-direction:row; justify-content:center; gap:12px; margin-top:14px; }
-                .callout { position:static; margin-top:12px; left:auto; bottom:auto; }
+            /* Grid lines background */
+            .impact-hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: 
+                    linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+                    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+                background-size: 40px 40px;
+                opacity: 0.3;
+                pointer-events: none;
+                z-index: 0;
             }
+            .impact-grid-hero { position: relative; z-index: 1; }
 
-            /* small phones */
-            @media (max-width:480px) {
-                .our-impact-illustrated { padding:36px 12px; }
-                .impact-wrap { padding-left:6px; padding-right:6px; }
-                .impact-header h2 { font-size:1.6rem; }
-                .timeline::before { left:8px; width:4px; }
-                .timeline .timeline-fill { left:8px; width:4px; }
-                .timeline-dot { left:0; top:4px; transform:scale(1.05); }
-                .timeline-item { padding-left:12px; }
-                .stat-card { min-width:110px; padding:12px; }
-                .stats-overlay { flex-wrap:wrap; gap:8px; position:static; margin-top:12px; }
-                .callout { position:static; margin-top:12px; left:auto; bottom:auto; }
-                .illustration img { max-width:320px; }
+            @media (max-width:1000px) {
+                .impact-grid-hero { grid-template-columns: 1fr; gap:20px; }
+                .hero-left { border-right:none; border-bottom:2px solid #e5e7eb; }
+                .feature { border-right:none; border-bottom:1px solid #e5e7eb; }
+                .feature:last-child { border-bottom:none; }
             }
         </style>
 
-        <div class="impact-wrap">
-            <div class="impact-header">
-                <h2 style="font-size:2.4rem; color:#0b1220; margin:0 0 8px;">Our Impact</h2>
-                <p style="color:#576; max-width:720px; margin:0 auto;">Transforming visions into successful, compliant businesses.</p>
-            </div>
+        <div class="impact-hero">
+            <div class="impact-grid-hero">
+                <div class="hero-left">
+                    <h2>Business that grows, <br>compliance that flows. <span class="highlight">Meet Wealth Empires.</span></h2>
+                    <p class="lead">Our expertise grows with you. Start with the level of support that fits your needs today and scale into fully compliant business flows when you're ready.</p>
+                </div>
 
-            <div class="impact-grid">
-                <div class="timeline" aria-hidden="false">
-                    <div class="timeline-fill" aria-hidden="true"></div>
-                    <div class="timeline-item">
-                        
+                <div class="feature">
+                    <div class="icon-wrapper">
+                        <div class="icon">CS</div>
+                    </div>
+                    <div>
                         <h4>Cost Savings</h4>
                         <p>Saved startups in hidden legal costs through transparent pricing and smart solutions.</p>
-                        <div class="stat" style="color:#a16207;">Average 60% cost reduction per client</div>
-                    </div>
-
-                    <div class="timeline-item">
-                        
-                        <h4>Risk Prevention</h4>
-                        <p>Protected <strong>500+ businesses</strong> from compliance penalties through proactive guidance.</p>
-                        <div class="stat" style="color:#4338ca;">Zero compliance violations for our clients</div>
-                    </div>
-
-                    <div class="timeline-item">
-                        
-                        <h4>Growth Focus</h4>
-                        <p>Enabled <strong>1000+ entrepreneurs</strong> to focus on scaling while we handle complexities.</p>
-                        <div class="stat" style="color:#047857;">3x faster business scaling average</div>
+                        <div class="stat">Average 60% cost reduction per client</div>
                     </div>
                 </div>
 
-                <div class="illustration" role="img" aria-label="Illustration showing growth and impact">
-                    <img src="360-compliance.jpg" alt="Illustration" />
+                <div class="feature">
+                    <div class="icon-wrapper">
+                        <div class="icon">RP</div>
+                    </div>
+                    <div>
+                        <h4>Risk Prevention</h4>
+                        <p>Protected 500+ businesses from compliance penalties through proactive guidance.</p>
+                        <div class="stat">Zero compliance violations for our clients</div>
+                    </div>
+                </div>
 
-                    
-                   
+                <div class="feature">
+                    <div class="icon-wrapper">
+                        <div class="icon">GF</div>
+                    </div>
+                    <div>
+                        <h4>Growth Focus</h4>
+                        <p>Enabled 1000+ entrepreneurs to focus on scaling while we handle complexities.</p>
+                        <div class="stat">3x faster business scaling average</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <script>
-            // Animate timeline fill and stagger reveal for items when section scrolls into view
-            (function(){
-                var timeline = document.querySelector('.timeline');
-                if(!timeline) return;
-
-                var items = Array.prototype.slice.call(timeline.querySelectorAll('.timeline-item'));
-                var fill = timeline.querySelector('.timeline-fill');
-
-                var io = new IntersectionObserver(function(entries){
-                    entries.forEach(function(entry){
-                                if(entry.isIntersecting){
-                                    // grow the fill in slow steps synchronized with items
-                                    timeline.classList.add('in-view');
-                                    if(fill && items.length){
-                                        try{
-                                            // wait a tick so layout (images/fonts) stabilizes before measuring
-                                            setTimeout(function(){
-                                                var stepDelay = 600; // ms between steps (controls overall slow fill)
-                                                // compute positions (bottom of each item)
-                                                var positions = items.map(function(it){ return Math.round(it.offsetTop + it.offsetHeight); });
-
-                                                // ensure final target equals the total scrollHeight of timeline
-                                                var totalH = timeline.scrollHeight || (positions[positions.length-1] + 12);
-                                                // cap positions so none exceed totalH
-                                                positions = positions.map(function(p){ return Math.min(p, totalH); });
-
-                                                // animate to each position in sequence
-                                                positions.forEach(function(pos, idx){
-                                                    setTimeout(function(){
-                                                        fill.style.height = (pos + 6) + 'px';
-                                                    }, idx * stepDelay);
-                                                });
-
-                                                // final ensure the fill reaches the bottom
-                                                setTimeout(function(){ fill.style.height = (totalH + 8) + 'px'; }, positions.length * stepDelay + 80);
-                                            }, 60);
-                                        }catch(e){
-                                            fill.style.height = '100%';
-                                        }
-                                    }
-
-                                    // reveal items with stagger (slightly faster than fill steps so they appear as the line reaches them)
-                                    items.forEach(function(it, idx){
-                                        var revealDelay = 520; // ms
-                                        it.style.setProperty('--i', (idx * revealDelay) + 'ms');
-                                        setTimeout(function(){ it.classList.add('in-view'); }, idx * revealDelay + 140);
-                                    });
-
-                                    // disconnect observer once triggered
-                                    io.disconnect();
-                                }
-                    });
-                }, { threshold: 0.18 });
-
-                io.observe(timeline);
-            })();
-        </script>
     </section>
 
     <!-- Our Promise Section -->
     <section style="background: #ffffff; padding: 0px 0px 70px 0px; position: relative; overflow: hidden;">
         <div class="container">
-            <div
-                style="position: absolute; top: 10%; right: 5%; width: 120px; height: 120px; background: #c084fc; border-radius: 50%; opacity: 0.05; z-index: 1;">
-            </div>
-            <div
-                style="position: absolute; bottom: 15%; left: 8%; width: 80px; height: 80px; background: #10b981; border-radius: 50%; opacity: 0.05; z-index: 1;">
-            </div>
-
+           
             <div style="position: relative; z-index: 2;" class="promise-content-wrap">
                 <div style="text-align: center; margin-bottom: 80px;" class="promise-header">
-                    <h2 style="font-size: 2.8rem; margin-bottom: 24px; color: #1a1a1a; font-weight: 700; letter-spacing: -1px;"
+                    <h2 style="font-size: 2.6rem; margin-bottom: 24px; color: #1a1a1a; font-weight: 700; letter-spacing: -1px;"
                         class="promise-heading">
                         Our Promise</h2>
-                    <p style="font-size: 1.2rem; color: #64748b; max-width: 600px; margin: 0 auto;"
+                    <p style="font-size: 1.0rem; color: #64748b; max-width: 600px; margin: 0 auto;"
                         class="promise-subtext">Building lasting
                         partnerships through trust, transparency, and unwavering commitment to your success.</p>
                 </div>
@@ -1341,34 +1260,29 @@
 
                     <div style="display: flex; justify-content: center; align-items: flex-start;"
                         class="promise-visual-container">
-                        <div style="position: relative; width: 450px; height: 500px; background: #f8fafc; border-radius: 24px; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);"
+                        <div style="position: relative; width: 450px; height: 400px; background: #fff; border-radius: 24px; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);"
                             class="promise-image-box">
                             <img src="ourpromise.jpg" alt="Partnership Handshake"
                                 style="width: 350px; height: 350px; opacity: 0.8; object-fit: contain;"
                                 class="promise-image">
 
-                            <div
-                                style="position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; background: #c084fc; border-radius: 50%; opacity: 0.1;">
-                            </div>
-                            <div
-                                style="position: absolute; bottom: 20px; left: 20px; width: 30px; height: 30px; background: #10b981; border-radius: 50%; opacity: 0.1;">
-                            </div>
+                           
                         </div>
                     </div>
 
                     <div style="padding-left: 20px;" class="promise-text-content">
                         <div style="margin-bottom: 40px;" class="promise-title-group">
-                            <h3 style="font-size: 2.2rem; color: #1a1a1a; margin-bottom: 20px; font-weight: 700; line-height: 1.2;"
+                            <h3 style="font-size: 2.0rem; color: #1a1a1a; margin-bottom: 20px; font-weight: 700; line-height: 1.2;"
                                 class="promise-h3-1">
                                 We are not just accountants or auditors.</h3>
-                            <h3 style="font-size: 2.2rem; color: #667eea; margin-bottom: 32px; font-weight: 700; line-height: 1.2;"
+                            <h3 style="font-size: 1.8rem; color: #7851A9; margin-bottom: 32px; font-weight: 700; line-height: 1.2;"
                                 class="promise-h3-2">
                                 We are partners in your growth journey.</h3>
                         </div>
 
-                        <div style="background: #f8fafc; padding: 32px; border-radius: 16px; border-left: 4px solid #667eea;"
+                        <div style="background: #f8fafc; padding: 32px; border-radius: 16px; border-left: 4px solid #7851A9;"
                             class="promise-quote-box">
-                            <p style="font-size: 1.2rem; color: #1a1a1a; margin: 0; line-height: 1.7; font-weight: 500;"
+                            <p style="font-size: 1.0rem; color: #1a1a1a; margin: 0; line-height: 1.7; font-weight: 500;"
                                 class="promise-quote">
                                 At Wealth Empires, we measure our success not by balance sheets, but by the number of
                                 dreams that take flight because we made compliance simple.</p>
@@ -1378,8 +1292,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Statistics Section - Clean centered stat tiles -->
+ <!-- Statistics Section - Clean centered stat tiles -->
     <section class="numbers-section-v2" aria-label="Impact numbers" style="padding:64px 20px; background:linear-gradient(180deg,#fbfdff,#ffffff);">
         <style>
             .numbers-wrap { max-width:1200px; margin:0 auto; }
@@ -1401,46 +1314,88 @@
         </style>
 
         <div class="numbers-wrap">
-            <div class="numbers-header">
+            <div class="numbers-header" style="text-align: center;">
                 <h2>Our Impact in numbers</h2>
                 <p>Talent is everywhere. But opportunity is not.</p>
             </div>
 
-            <div class="cards-row" role="list" aria-label="key metrics">
-                <!-- Large centered numeric tiles -->
-                <div class="stat-card" role="listitem">
-                    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;">
-                        <div style="font-size:14px;color:#2563eb;font-weight:700;letter-spacing:0.6px;">Happy Customers</div>
-                        <div style="display:flex;align-items:center;gap:12px;">
-                            <div style="width:6px;height:48px;background:linear-gradient(180deg,#60a5fa,#1e3a8a);border-radius:3px;"></div>
-                            <div class="stat-number" data-target="10000" data-format="compact" aria-label="10000" style="font-size:48px;font-weight:900;color:#071124;">0</div>
-                        </div>
-                    </div>
-                </div>
+            <style>
+                /* Narrower card layout: use minmax to set a comfortable minimum width, center cards and cap max width */
+                .impact-grid { display: grid; grid-template-columns: repeat(3, minmax(240px, 1fr)); gap:24px; align-items:stretch; justify-items:center; }
+                .impact-card { border-radius:12px; padding:30px 20px; color:#071124; display:flex; flex-direction:column; justify-content:flex-start; gap:14px; min-height:300px; box-shadow:0 18px 50px rgba(15,23,42,0.06); max-width:360px; width:100%; }
+                .impact-number { font-size:64px; font-weight:800; line-height:0.95; color:#0b1220; }
+                .impact-label { font-size:15px; font-weight:700; color:rgba(11,18,32,0.85); }
+                .impact-quote { font-size:14px; color:rgba(11,18,32,0.75); line-height:1.6; margin-top:6px; flex:1; max-height:6.6em; overflow:hidden; }
+                .impact-author { font-weight:700; color:#0b1220; margin-top:8px; }
 
-                <div class="stat-card" role="listitem">
-                    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;">
-                        <div style="font-size:14px;color:#a855f7;font-weight:700;letter-spacing:0.6px;">5 star reviews</div>
-                        <div style="display:flex;align-items:center;gap:12px;">
-                            <div style="width:6px;height:48px;background:linear-gradient(180deg,#c084fc,#7c3aed);border-radius:3px;"></div>
-                            <div class="stat-number" data-target="1200" data-format="commas" aria-label="1200" style="font-size:48px;font-weight:900;color:#071124;">0</div>
-                        </div>
-                    </div>
-                </div>
+                /* Individual card backgrounds (pastel gradients like the attachment) */
+                .impact-card.c-1 { background: linear-gradient(180deg,#f3f0ff 0%, #faf8fc 100%); }
+                .impact-card.c-2 { background: linear-gradient(180deg,#f0fff7 0%, #f8fffb 100%); }
+                .impact-card.c-3 { background: linear-gradient(180deg,#fff7f7 0%, #fffdfa 100%); }
+                .impact-card.c-4 { background: linear-gradient(180deg,#f7fbff 0%, #fbfeff 100%); }
 
-                <div class="stat-card" role="listitem">
-                    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;">
-                        <div style="font-size:14px;color:#059669;font-weight:700;letter-spacing:0.6px;">Countries</div>
-                        <div style="display:flex;align-items:center;gap:12px;">
-                            <div style="width:6px;height:48px;background:linear-gradient(180deg,#34d399,#047857);border-radius:3px;"></div>
-                            <div class="stat-number" data-target="175" data-format="commas" aria-label="175" style="font-size:48px;font-weight:900;color:#071124;">0</div>
-                        </div>
+                /* Accent number color tweaks per card */
+                .impact-card.c-1 .impact-number { color:#2c0743; }
+                .impact-card.c-2 .impact-number { color:#0f5132; }
+                .impact-card.c-3 .impact-number { color:#4a0b0b; }
+                .impact-card.c-4 .impact-number { color:#062a44; }
+
+                @media (max-width:1000px) { .impact-grid { grid-template-columns: repeat(2, minmax(220px, 1fr)); } }
+                @media (max-width:600px) { .impact-grid { grid-template-columns: 1fr; } .impact-card { min-height:220px; padding:18px; } .impact-number { font-size:48px; } }
+            </style>
+
+            <div class="impact-grid" role="list" aria-label="impact metrics">
+                <article class="impact-card c-1" role="listitem">
+                    <div class="impact-label">Happy Customers</div>
+                    <div class="impact-number">10k+</div>
+                    <p class="impact-quote">“Our customers find the process seamless — we focus on growth while they trust our compliance.”</p>
+                    <div class="impact-author">Paco Lebron, ProdigyTeks</div>
+                </article>
+
+                <article class="impact-card c-2" role="listitem">
+                    <div class="impact-label">5 star reviews</div>
+                    <div class="impact-number">1,200+</div>
+                    <p class="impact-quote">“Feedback like this shows we deliver real value — consistently high ratings from satisfied clients.”</p>
+                    <div class="impact-author">Matthew Fenton, Selectgroup</div>
+                </article>
+
+                <article class="impact-card c-3" role="listitem">
+                    <div class="impact-label">Countries</div>
+                    <div class="impact-number">175+</div>
+                    <p class="impact-quote">“Our services reach founders across borders — bringing opportunity where it's needed most.”</p>
+                    <div class="impact-author">Jordan Boden, OneIT Solutions</div>
+                </article>
+            </div>
+        </div>
+    </section>
+     <!-- CTA Section -->
+    <section class="cta-hero-section"
+        style="background-image: url('my story1.png'); background-size: cover; background-position: center right; padding: 30px 0; margin: 0 50px; border-radius: 24px; position: relative; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <!-- Dark overlay for contrast -->
+        <div style="position: absolute; inset:0; background: linear-gradient(rgba(138, 139, 139, 0.45), rgba(141, 142, 142, 0.35));"></div>
+
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="hero-grid"> 
+                <!-- Left Content -->
+                <div style="padding-left: 30px;">
+                    <h2 style="font-size: 3rem; font-weight: 700; color: white; margin-bottom: 16px; line-height: 1.2;">
+                        #WE<br>People First Company.
+                    </h2>
+                    
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="https://crm.wealthempires.in/"
+                            style="background: #000; color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;">
+                            Start incorporation <span style="font-size: 1.2rem;">›</span>
+                        </a>
+                        <a href="contact.html"
+                            style="background: white; color: #000; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; border: 1px solid #6d6969; transition: all 0.3s;">
+                            Contact us
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <style>
         /* Mobile footer accordion styles (copied from index pattern) */
@@ -1535,9 +1490,8 @@
                 </div>
                 <div class="header-divider"></div>
                 <div class="contact-section">
-                    <a href="mailto:support@wealthempires.com" class="support-email">support@wealthempires.com </a>
-                    <span style="color: rgb(204, 199, 199);"> | </span>
-                    <a href="#" style="text-decoration: none; color: #2563ec; font-weight: 500;">+91 9884521264</a>
+                    <a href="mailto:support@wealthempires.com" class="support-email">support@wealthempires.com | +91 9884521264 </a>
+                    
                 </div>
             </div>
         </div>
