@@ -464,7 +464,7 @@
             .card-brand h2,
             .card-brand2 h2,
             .card-sales h2 {
-                font-size: 24px;
+                font-size: 20px;
                 margin-bottom: 16px;
                 line-height: 1.3;
             }
@@ -472,7 +472,7 @@
             .card-brand p,
             .card-brand2 p,
             .card-sales p {
-                font-size: 14px;
+                font-size: 12px;
                 line-height: 1.5;
             }
 
@@ -500,14 +500,14 @@
             .card-brand h2,
             .card-brand2 h2,
             .card-sales h2 {
-                font-size: 20px;
+                font-size: 18px;
                 margin-bottom: 12px;
             }
 
             .card-brand p,
             .card-brand2 p,
             .card-sales p {
-                font-size: 13px;
+                font-size: 10px;
             }
         }
 
@@ -974,7 +974,7 @@
                     <!-- Image Card -->
                     <div class="story-card card-brand2" style="background-color: #0b3333;">
                         <div>
-                            <h2>Company <br>name</h2>
+                            <h2>Company name</h2>
                             <p>• Name should reflect the principal activity of the business <br>
                                • Name should be unique <br>
                                • Must comply with MCA naming guidelines
@@ -1122,6 +1122,59 @@
             </div>
         </div>
     </section>
+    <!-- CTA Section (responsive) -->
+    <section class="cta-hero-section" style="margin: 24px 24px; border-radius: 24px; position: relative; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 6px 30px rgba(0,0,0,0.08);">
+        <!-- full image placed as an absolutely positioned element so entire image stays visible -->
+        <img src="my story1.png" alt="" aria-hidden="true" class="cta-bg-img">
+        <style>
+            /* Push the image slightly beyond the right edge for a stronger visual overlap and bump zoom a bit */
+            .cta-bg-img { position: absolute; right: -6%; left: auto; top: 0; height: 100%; width: auto; max-width: 75%; object-fit: contain; z-index: 0; pointer-events: none; transform: scale(1.30); transform-origin: right center; }
+            @media (max-width: 1200px) { .cta-bg-img { right: -4%; left: auto; max-width: 70%; transform: scale(1.25); } }
+            @media (max-width: 900px) { .cta-bg-img { display:none; } }
+            .cta-overlay { position:absolute; inset:0; background: linear-gradient(rgba(255,255,255,0.82), rgba(255,255,255,0.78)); z-index:1; }
+            .cta-inner { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:28px 32px; display:grid; grid-template-columns: 1fr auto; gap:20px; align-items:center; }
+            .cta-left { padding:8px 12px; }
+            .cta-left h2 { font-size:48px; margin:0; line-height:1.05; color:#111827; font-weight:800; }
+            .cta-left p { margin:8px 0 0; color:#374151; font-size:16px; }
+            .cta-actions { display:flex; gap:14px; align-items:center; }
+            .cta-btn { display:inline-flex; align-items:center; justify-content:center; padding:12px 28px; border-radius:999px; text-decoration:none; font-weight:700; transition:all .18s ease; }
+            .btn-primary { background:#0f1724; color:#fff; border: none; }
+            .btn-primary:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(15,23,42,0.12); }
+            .btn-ghost { background:#fff; color:#0f1724; border:1px solid #d1d5db; }
+            .btn-ghost:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(15,23,42,0.06); }
+            .cta-right { text-align:right; padding-right:12px; }
+            .cta-right p { margin:0; color:#6b21a8; font-weight:600; }
+
+            @media (max-width:900px) {
+                .cta-inner { grid-template-columns: 1fr; text-align:left; padding:20px; }
+                .cta-right { text-align:left; padding:0; }
+                .cta-actions { margin-top:12px; }
+                .cta-left h2 { font-size:34px; }
+            }
+            @media (max-width:480px) {
+                .cta-left h2 { font-size:28px; }
+                .cta-btn { width:100%; padding:10px 16px; }
+                .cta-actions { flex-direction:column; gap:10px; }
+            }
+        </style>
+
+        <!-- subtle overlay for contrast -->
+        <div class="cta-overlay" aria-hidden="true"></div>
+
+        <div class="cta-inner">
+            <div class="cta-left">
+                <h2>#WE<br>People First Company.</h2>
+                <p class="cta-sub">Made In Chennai. Made For The World.</p>
+
+                <div class="cta-actions" role="group" aria-label="Call to actions">
+                    <a class="cta-btn btn-primary" href="https://crm.wealthempires.in/">Start incorporation <span style="margin-left:8px;font-size:1.1rem;">›</span></a>
+                    <a class="cta-btn btn-ghost" href="contact.html">Contact us</a>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
 
 
 
@@ -1229,9 +1282,8 @@
                 </div>
                 <div class="header-divider"></div>
                 <div class="contact-section">
-                    <a href="mailto:support@wealthempires.com" class="support-email">support@wealthempires.com </a>
-                    <span style="color: rgb(204, 199, 199);"> | </span>
-                    <a href="#" style="text-decoration: none; color: #2563ec; font-weight: 500;">+91 9884521264</a>
+                    <a href="mailto:support@wealthempires.com" class="support-email">support@wealthempires.com | +91 9884521264</a>
+                   
                 </div>
             </div>
         </div>

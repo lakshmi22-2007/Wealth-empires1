@@ -190,9 +190,11 @@
             }
 
             .hero-right {
-                display: none;
+                display: block;
                 padding-left: 0;
-                order: -1;
+                order: 2;
+                text-align: center;
+                margin-top: 12px;
             }
 
             .hero-image {
@@ -265,35 +267,47 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
-
+        /* Black & White card design for How it works */
         .stat-card {
-            background-color: #eeede8;
-            border-radius: 8px;
-            padding: 48px 30px;
-            transition: transform 0.2s ease;
+            background-color: #ffffff;
+            border: 1px solid #e6e7eb;
+            border-radius: 12px;
+            padding: 28px 22px;
+            text-align: center;
+            transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+            cursor: default;
         }
 
         .stat-card:hover {
-            transform: translateY(-4px);
+            background-color: #0f1724; /* dark on hover */
+            color: #ffffff;
+            transform: translateY(-8px);
+            box-shadow: 0 12px 34px rgba(15, 23, 36, 0.12);
         }
 
         .stat-number {
-            font-size: 28px;
+            font-size: 18px;
             font-weight: 700;
-            line-height: 1.1;
-            color: #0c3737;
-            margin-bottom: 16px;
-            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: #111827;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
         }
 
         .stat-description {
-            font-size: 16px;
-            line-height: 1.5;
-            color: black;
+            font-size: 14px;
+            line-height: 1.45;
+            color: #6b7280;
             font-weight: 600;
         }
 
-        /* Tablet */
+        /* make sure text turns white on hover */
+        .stat-card:hover .stat-number,
+        .stat-card:hover .stat-description {
+            color: inherit;
+        }
+
+        /* Tablet adjustments */
         @media (max-width: 968px) {
             .section-title {
                 font-size: 44px;
@@ -308,61 +322,66 @@
             }
 
             .stat-card {
-                padding: 40px 32px;
+                padding: 24px 18px;
             }
 
             .stat-number {
-                font-size: 64px;
+                font-size: 20px;
+                line-height: 1.25;
             }
         }
 
-        /* Mobile */
+        /* Mobile adjustments: make cards compact and readable */
         @media (max-width: 640px) {
             body {
-                padding: 40px 16px;
+                padding: 20px 12px;
             }
 
             .section-header {
-                margin-bottom: 32px;
+                margin-bottom: 18px;
             }
 
             .section-title {
-                font-size: 36px;
+                font-size: 32px;
             }
 
             .section-description {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
-                gap: 16px;
+                gap: 12px;
             }
 
             .stat-card {
-                padding: 36px 28px;
+                padding: 16px 14px;
             }
 
             .stat-number {
-                font-size: 56px;
+                font-size: 16px;
+                line-height: 1.35;
+                font-weight: 700;
+                margin-bottom: 6px;
             }
 
             .stat-description {
-                font-size: 15px;
+                font-size: 14px;
+                line-height: 1.4;
             }
         }
 
         @media (max-width: 480px) {
             .section-title {
-                font-size: 32px;
+                font-size: 28px;
             }
 
             .stat-number {
-                font-size: 30px;
+                font-size: 15px;
             }
 
             .stat-card {
-                padding: 32px 24px;
+                padding: 12px 12px;
             }
         }
     </style>
@@ -438,9 +457,9 @@
             <div class="hero-content">
                 <div class="hero-right">
 
-                    <div>
-                        <img src="trademark.jpg" alt="heroimage" width="100%" height=100%>
-                    </div>
+                        <div>
+                            <img src="trademark.jpg" alt="heroimage" class="hero-image">
+                        </div>
                 </div>
                 <div class="hero-left">
                     <h1>Trademark <br> Registration Services</h1>
@@ -463,63 +482,68 @@
     </section>
 
 
-    <!-- Why Trademark Registration Important Section -->
-    <section class="gst-section">
+    <!-- Why Trademark Registration Important (Black & White cards) -->
+    <section class="gst-section tw-why-section">
         <div class="container">
             <div class="section-title">
                 <h2>Why is Trademark Registration Important?</h2>
-                <p>Registering your trademark is crucial because it helps protect your brand's identity, builds trust
-                    with customers, and ensures your business stands out in a crowded market.</p>
+                <p class="lead">Registering your trademark is crucial because it helps protect your brand's identity, builds trust with customers, and ensures your business stands out in a crowded market.</p>
             </div>
-            <div class="gst-content">
-                <div class="advantages-grid"
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;">
-                    <div class="advantage-card" style="background: #E5E8F5;">
-                        <h3>Legal Protection</h3>
-                        <p>A trademark protects your brand from being copied or used by others without permission, which
-                            helps keep your business unique.</p>
-                    </div>
-                    <div class="advantage-card" style="background: #E5E8F5;">
-                        <h3>Trademark Search</h3>
-                        <p>Doing a trademark search ensures that your brand name or logo is original and hasn't been
-                            taken by someone else.</p>
-                    </div>
-                    <div class="advantage-card" style="background: #E5E8F5;">
-                        <h3>Online Registration</h3>
-                        <p>Registering your trademark online gives your brand legal protection in India and other
-                            countries.</p>
-                    </div>
-                    <div class="advantage-card" style="background: #E5E8F5;">
-                        <h3>Valuable Asset</h3>
-                        <p>A trademark becomes a valuable asset for your business, helping build your reputation and
-                            brand recognition.</p>
-                    </div>
-                    <div class="advantage-card" style="background: #E5E8F5;">
-                        <h3>Attract Customers</h3>
-                        <p>A registered trademark helps make your brand easily recognizable, drawing in both loyal and
-                            new customers.</p>
-                    </div>
-                    <div class="advantage-card" style="background: #E5E8F5;">
-                        <h3>Legal Action</h3>
-                        <p>If someone tries to use your trademark without permission, you have the right to take legal
-                            action to stop them.</p>
-                    </div>
-                    <div class="advantage-card" style="background: #E5E8F5;">
-                        <h3>Renewal</h3>
-                        <p>A trademark lasts for ten years and can be renewed, giving your brand long-term protection.
-                        </p>
-                    </div>
-                    <div class="advantage-card" style="background: #E5E8F5;">
-                        <h3>Grow Your Business</h3>
-                        <p>A trademark helps grow your business by making your brand stand out, increasing its value
-                            over time.</p>
-                    </div>
-                    <div class="advantage-card" style="background: #E5E8F5;">
-                        <h3>Global Protection</h3>
-                        <p>You can register your trademark internationally to protect your brand in other countries as
-                            well.</p>
-                    </div>
-                </div>
+
+            <div class="tw-grid" aria-label="Trademark benefits">
+                <article class="tw-card">
+                    <div class="tw-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+                    <h3>Legal Protection</h3>
+                    <p>A trademark prevents others from copying your brand, keeping your business unique and protected.</p>
+                </article>
+
+                <article class="tw-card">
+                    <div class="tw-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></div>
+                    <h3>Trademark Search</h3>
+                    <p>Performing a search ensures your name or logo is original and reduces risk of rejection.</p>
+                </article>
+
+                <article class="tw-card">
+                    <div class="tw-icon"><i class="fa-solid fa-globe" aria-hidden="true"></i></div>
+                    <h3>Online Registration</h3>
+                    <p>Register online to obtain official protection across jurisdictions and strengthen your rights.</p>
+                </article>
+
+                <article class="tw-card">
+                    <div class="tw-icon"><i class="fa-solid fa-gem" aria-hidden="true"></i></div>
+                    <h3>Valuable Asset</h3>
+                    <p>Trademarks become business assets that increase brand value and attract investment.</p>
+                </article>
+
+                <article class="tw-card">
+                    <div class="tw-icon"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
+                    <h3>Attract Customers</h3>
+                    <p>A registered trademark helps customers recognize and trust your brand, driving loyalty.</p>
+                </article>
+
+                <article class="tw-card">
+                    <div class="tw-icon"><i class="fa-solid fa-gavel" aria-hidden="true"></i></div>
+                    <h3>Legal Action</h3>
+                    <p>Registration gives you enforceable rights to stop unauthorized use of your mark.</p>
+                </article>
+
+                <article class="tw-card">
+                    <div class="tw-icon"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i></div>
+                    <h3>Renewal</h3>
+                    <p>Trademarks last long and can be renewed, providing sustained protection for your brand.</p>
+                </article>
+
+                <article class="tw-card">
+                    <div class="tw-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+                    <h3>Grow Your Business</h3>
+                    <p>Protection helps scale your brand and increases market value over time.</p>
+                </article>
+
+                <article class="tw-card">
+                    <div class="tw-icon"><i class="fa-solid fa-plane" aria-hidden="true"></i></div>
+                    <h3>Global Protection</h3>
+                    <p>International registration expands your brand's protection beyond borders.</p>
+                </article>
             </div>
         </div>
     </section>
@@ -566,8 +590,7 @@
                 <h3>Required Documents</h3>
                 <p>Essential documents needed for trademark registration</p>
 
-                <div
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; max-width: 800px; margin: 40px auto;">
+                <div class="document-grid">
                     <div class="document-item">
                         <h4>MSME (Or) Incorporation Certificate</h4>
                         <p class="doc-description">Business registration proof to establish legal entity status</p>
@@ -674,8 +697,8 @@
 
     <style>
         .gst-section {
-            background: #f8fafc;
-            padding: 0px 0 30px 0px;
+            background: #ffffff;
+            padding: 8px 0 8px 0px;
         }
 
         .section-title {
@@ -718,7 +741,7 @@
             background: white;
             padding: 24px;
             border-radius: 16px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #7851a9;
             margin-top: 32px;
         }
 
@@ -748,23 +771,34 @@
             color: #667eea;
         }
 
+        /* Make certificate image area fully fluid and centered */
         .certificate-image {
-            width: 80%;
+            width: 100%;
             height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .certificate-image .image-box {
             background: white;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            max-width: 720px;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0 auto;
+            overflow: hidden;
         }
 
         .certificate-image img {
             width: 100%;
             height: auto;
+            display: block;
             border-radius: 12px;
             border: 1px solid #e5e7eb;
+            max-width: 100%;
         }
 
         .certificate-image p {
@@ -775,20 +809,182 @@
             line-height: 1.6;
         }
 
+        /* Required Documents responsive grid */
+        .document-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            max-width: 100%;
+            margin: 8px auto;
+            padding: 0 8px;
+            box-sizing: border-box;
+        }
+
+        .document-item {
+            background: #000000; /* black grid box */
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px;
+            padding: 6px 8px; /* vertical padding */
+            box-shadow: 0 4px 12px rgba(2,6,23,0.10);
+            color: #ffffff;
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
+            min-height: 140px; /* increase box height on desktop */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .document-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(2,6,23,0.12);
+        }
+
+        .document-item h4 {
+            margin: 0 0 8px 0;
+            font-size: 1.05rem;
+            color: #ffffff;
+        }
+
+        .doc-description {
+            margin: 0 0 12px 0;
+            color: #e6e7eb;
+            font-size: 0.98rem;
+            line-height: 1.4;
+        }
+
+        .document-item ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .document-item ul li {
+            margin-bottom: 6px;
+            color: #e6e7eb;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 640px) {
+            .document-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                padding: 0 8px;
+            }
+
+            .document-item {
+                padding: 8px 10px;
+                min-height: 110px; /* slightly taller on mobile */
+            }
+
+            .document-item h4 { font-size: 1rem; text-align: center; margin-bottom:6px; }
+            .doc-description { text-align: center; margin-bottom:6px; }
+            .document-item ul { padding-left: 14px; margin:0; }
+        }
+
+        /* Black & White cards for 'Why is Trademark Registration Important' */
+        .tw-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .tw-card {
+            background: #ffffff;
+            border: 1px solid #e6e7eb;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: left;
+            transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+            cursor: default;
+            min-height: 120px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .tw-card .tw-icon {
+            flex: 0 0 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f3f4f6;
+            color: #111827;
+            font-size: 20px;
+        }
+
+        .tw-card h3 {
+            margin: 0 0 6px 0;
+            font-size: 16px;
+            color: #0f1724;
+            line-height: 1.12;
+        }
+
+        .tw-card p {
+            margin: 0;
+            color: #6b7280;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .tw-card:hover {
+            background: #0f1724;
+            color: #ffffff;
+            transform: translateY(-6px);
+            box-shadow: 0 10px 28px rgba(15, 23, 36, 0.06);
+        }
+
+        .tw-card:hover .tw-icon {
+            background: #111827;
+            color: #ffffff;
+        }
+
+        /* Make sure text inside cards inherits white color on hover */
+        .tw-card:hover h3,
+        .tw-card:hover p {
+            color: inherit;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .tw-grid { grid-template-columns: 1fr; }
+            .tw-card { min-height: 110px; }
+        }
+
+        @media (max-width: 600px) {
+            .tw-grid { grid-template-columns: 1fr; }
+            .tw-card { padding: 14px; gap: 10px; text-align: center; flex-direction: column; align-items: center; }
+            .tw-card .tw-icon { flex: 0 0 40px; height: 40px; font-size: 16px; margin: 0 0 8px 0; }
+            .tw-card h3 { font-size: 15px; text-align: center; }
+            .tw-card p { font-size: 13px; text-align: center; }
+            .section-title, .section-title h2, .section-title .lead { text-align: center; }
+            .section-title .lead { font-size: 14px; line-height: 1.4; max-width: 720px; margin: 0 auto; }
+        }
+
         /* ✅ Responsive (Mobile View) */
         @media (max-width: 768px) {
             .certificate-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 20px;
             }
 
             .certificate-image {
                 order: 2;
                 /* Push image below content */
+                padding: 0 8px;
+            }
+
+            .certificate-image .image-box {
+                padding: 18px;
+                max-width: 100%;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.06);
             }
 
             .certificate-content {
                 order: 1;
+                padding: 0 8px;
             }
 
             .section-title h2 {
@@ -826,6 +1022,62 @@
             }
         }
     </style>
+     <!-- CTA Section (responsive) -->
+    <section class="cta-hero-section" style="margin: 24px 24px; border-radius: 24px; position: relative; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 6px 30px rgba(0,0,0,0.08);">
+        <!-- full image placed as an absolutely positioned element so entire image stays visible -->
+        <img src="my story1.png" alt="" aria-hidden="true" class="cta-bg-img">
+        <style>
+            /* Push the image slightly beyond the right edge for a stronger visual overlap and bump zoom a bit */
+            .cta-bg-img { position: absolute; right: -6%; left: auto; top: 0; height: 100%; width: auto; max-width: 75%; object-fit: contain; z-index: 0; pointer-events: none; transform: scale(1.30); transform-origin: right center; }
+            @media (max-width: 1200px) { .cta-bg-img { right: -4%; left: auto; max-width: 70%; transform: scale(1.25); } }
+            @media (max-width: 900px) { .cta-bg-img { display:none; } }
+            .cta-overlay { position:absolute; inset:0; background: linear-gradient(rgba(255,255,255,0.82), rgba(255,255,255,0.78)); z-index:1; }
+            .cta-inner { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:28px 32px; display:grid; grid-template-columns: 1fr auto; gap:20px; align-items:center; }
+            .cta-left { padding:8px 12px; }
+            .cta-left h2 { font-size:48px; margin:0; line-height:1.05; color:#111827; font-weight:800; }
+            .cta-left p { margin:8px 0 0; color:#374151; font-size:16px; }
+            .cta-actions { display:flex; gap:14px; align-items:center; }
+            .cta-btn { display:inline-flex; align-items:center; justify-content:center; padding:12px 28px; border-radius:999px; text-decoration:none; font-weight:700; transition:all .18s ease; }
+            .btn-primary { background:#0f1724; color:#fff; border: none; }
+            .btn-primary:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(15,23,42,0.12); }
+            .btn-ghost { background:#fff; color:#0f1724; border:1px solid #d1d5db; }
+            .btn-ghost:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(15,23,42,0.06); }
+            .cta-right { text-align:right; padding-right:12px; }
+            .cta-right p { margin:0; color:#6b21a8; font-weight:600; }
+
+            @media (max-width:900px) {
+                .cta-inner { grid-template-columns: 1fr; text-align:left; padding:20px; }
+                .cta-right { text-align:left; padding:0; }
+                .cta-actions { margin-top:12px; }
+                .cta-left h2 { font-size:34px; }
+            }
+            @media (max-width:480px) {
+                .cta-left h2 { font-size:28px; }
+                .cta-btn { width:100%; padding:10px 16px; }
+                .cta-actions { flex-direction:column; gap:10px; }
+            }
+        </style>
+
+        <!-- subtle overlay for contrast -->
+        <div class="cta-overlay" aria-hidden="true"></div>
+
+        <div class="cta-inner">
+            <div class="cta-left">
+                <h2>#WE<br>People First Company.</h2>
+                <p class="cta-sub">Made In Chennai. Made For The World.</p>
+
+                <div class="cta-actions" role="group" aria-label="Call to actions">
+                    <a class="cta-btn btn-primary" href="https://crm.wealthempires.in/">Start incorporation <span style="margin-left:8px;font-size:1.1rem;">›</span></a>
+                    <a class="cta-btn btn-ghost" href="contact.html">Contact us</a>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+
+
+
 
 
     <!-- Footer -->
@@ -852,13 +1104,16 @@
             }
 
             .footer-column {
-                margin-bottom: 20px;
+                margin-bottom: 12px;
                 /* Adds space between stacked columns */
             }
 
             .footer-column h3 {
                 margin-top: 0;
                 /* Removes extra space for headings after the first one */
+                line-height: 1.05;
+                padding: 6px 0;
+                font-size: 16px;
             }
 
             /* Stack bottom links and social media vertically */
@@ -886,6 +1141,68 @@
                 flex-direction: column;
                 gap: 15px;
             }
+
+            /* Footer accordion styles for mobile */
+            .footer-column h3 {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #fff;
+                transition: all 0.18s ease;
+                text-align: left;
+                padding: 4px 0;
+                line-height: 1.0;
+                font-size: 15px;
+                margin-bottom: 4px;
+            }
+
+            .footer-column h3::after {
+                content: '▼';
+                font-size: 10px;
+                color: #999;
+                transform: rotate(0deg);
+                transition: transform 0.18s ease;
+                margin-left: 8px;
+            }
+
+            .footer-column h3.active::after {
+                transform: rotate(180deg);
+            }
+
+            .footer-column ul {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                background: #fff;
+            }
+
+            .footer-column ul.active {
+                max-height: 420px;
+                padding: 4px 0 12px 0;
+            }
+
+            .footer-column ul li {
+                margin: 0;
+                padding: 4px 0;
+            }
+
+            .footer-column ul li a {
+                color: #666;
+                text-decoration: none;
+                font-size: 13px;
+                display: block;
+                transition: color 0.16s ease;
+                text-align: left;
+                padding-left: 2px;
+            }
+
+            .footer-column ul li a:hover {
+                color: #2563eb;
+            }
         }
     </style>
     <footer class="footer-container">
@@ -897,9 +1214,8 @@
                 </div>
                 <div class="header-divider"></div>
                 <div class="contact-section">
-                    <a href="mailto:support@wealthempires.com" class="support-email">support@wealthempires.com </a>
-                    <span style="color: rgb(204, 199, 199);"> | </span>
-                    <a href="#" style="text-decoration: none; color: #2563ec; font-weight: 500;">+91 9884521264</a>
+                    <a href="mailto:support@wealthempires.com" class="support-email">support@wealthempires.com | +91 9884521264</a>
+                   
                 </div>
             </div>
         </div>
@@ -1084,6 +1400,80 @@
                 navContainer.style.backdropFilter = 'blur(20px)';
             }
         });
+    </script>
+    <script>
+        // Footer accordion functionality for mobile (mirrors index.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.innerWidth <= 768) {
+                initFooterAccordion();
+            }
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth <= 768) {
+                    initFooterAccordion();
+                } else {
+                    resetFooterAccordion();
+                }
+            });
+        });
+
+        function initFooterAccordion() {
+            const footerColumns = document.querySelectorAll('.footer-column');
+
+            footerColumns.forEach(column => {
+                const heading = column.querySelector('h3');
+                const list = column.querySelector('ul');
+
+                if (heading && list && !heading.hasAttribute('data-accordion')) {
+                    heading.setAttribute('data-accordion', 'initialized');
+
+                    list.classList.remove('active');
+                    heading.classList.remove('active');
+
+                    const newHeading = heading.cloneNode(true);
+                    heading.parentNode.replaceChild(newHeading, heading);
+
+                    newHeading.addEventListener('click', function() {
+                        const newList = column.querySelector('ul');
+                        const isActive = newList.classList.contains('active');
+
+                        footerColumns.forEach(otherColumn => {
+                            const otherList = otherColumn.querySelector('ul');
+                            const otherHeading = otherColumn.querySelector('h3');
+                            if (otherList && otherHeading && !otherHeading.hasAttribute('style')) {
+                                otherList.classList.remove('active');
+                                otherHeading.classList.remove('active');
+                            }
+                        });
+
+                        if (!isActive) {
+                            newList.classList.add('active');
+                            newHeading.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        function resetFooterAccordion() {
+            const footerColumns = document.querySelectorAll('.footer-column');
+
+            footerColumns.forEach(column => {
+                const heading = column.querySelector('h3');
+                const list = column.querySelector('ul');
+
+                if (heading && list) {
+                    list.classList.remove('active');
+                    heading.classList.remove('active');
+
+                    if (heading.hasAttribute('data-accordion')) {
+                        heading.removeAttribute('data-accordion');
+                        const newHeading = heading.cloneNode(true);
+                        heading.parentNode.replaceChild(newHeading, heading);
+                    }
+                }
+            });
+        }
     </script>
 </body>
 

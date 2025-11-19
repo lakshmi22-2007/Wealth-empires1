@@ -7,7 +7,7 @@
     <title>Tax Services & GST Registration | Wealth Empires</title>
     <link rel="icon" type="image/jpeg" href="Wealth Empires.jpg">
     <link rel="shortcut icon" type="image/jpeg" href="Wealth Empires.jpg">
-    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="styles.css?v=9">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         * {
@@ -35,7 +35,8 @@
             min-height: 110vh;
             display: flex;
             align-items: center;
-            padding: 80px 100px;
+            /* move hero closer to left edge by reducing left padding */
+            padding: 80px 100px 80px 40px;
             background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
         }
 
@@ -49,8 +50,14 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
-            padding-left: 50px;
+            /* remove internal left padding so content aligns with section's left */
+            padding-left: 0;
             align-items: center;
+        }
+
+        /* prevent auto-centering of the container inside the hero so left edge stays aligned */
+        .hero-section > .container {
+            margin-left: 0;
         }
 
         .hero-left {
@@ -677,58 +684,43 @@
                         <div class="process-timeline"
                             style="width: 80px; height: 3px; background: #F4C430; margin: 16px auto 0; border-radius: 2px;">
                         </div>
-                        <div class="process-steps" style="display: grid; gap: 24px; margin-top: 48px;">
-                            <div class="step">
-                                <div class="step-number">
-                                    <span>1</span>
-                                </div>
-                                <div class="step-content">
+                        <ol class="gst-steps-grid" aria-label="GST Registration Steps">
+                            <li class="gst-card">
+                                <div class="card-body">
                                     <h3>Get in touch with our experts</h3>
-                                    <p>Book a slot with our GST experts and resolve all your queries. Our experienced
-                                        team will guide you through the entire process and answer any questions you may
-                                        have about GST registration.</p>
-                                    <span class="step-badge">Initial Consultation</span>
+                                    <p>Book a slot with our GST experts and resolve all your queries. Our experienced team will guide you through the entire process and answer any questions you may have about GST registration.</p>
+                                    <span class="card-badge">Initial Consultation</span>
                                 </div>
-                            </div>
-                            <div class="step">
-                                <div class="step-number">
-                                    <span>2</span>
-                                </div>
-                                <div class="step-content">
+                                <div class="step-circle" aria-hidden="true">01</div>
+                            </li>
+
+                            <li class="gst-card">
+                                <div class="card-body">
                                     <h3>Provide Business Information</h3>
-                                    <p>Provide the required documents and fill in essential business details such as
-                                        business name, SEZ unit, Principal place of business, additional places, mobile
-                                        number, email address, state, PAN card details for initiating the registration
-                                        process.</p>
-                                    <span class="step-badge">Document Collection</span>
+                                    <p>Provide the required documents and fill in essential business details such as business name, SEZ unit, principal place of business, additional places, mobile number, email address, state and PAN details to initiate registration.</p>
+                                    <span class="card-badge">Document Collection</span>
                                 </div>
-                            </div>
-                            <div class="step">
-                                <div class="step-number">
-                                    <span>3</span>
-                                </div>
-                                <div class="step-content">
+                                <div class="step-circle" aria-hidden="true">02</div>
+                            </li>
+
+                            <li class="gst-card">
+                                <div class="card-body">
                                     <h3>Filing for GST Registration</h3>
-                                    <p>Our team will file your GST registration application on the online portal. Once
-                                        filed, you'll receive an OTP for verification. We handle all the technical
-                                        aspects of the filing process to ensure accuracy.</p>
-                                    <span class="step-badge">Application Filing</span>
+                                    <p>Our team will file your GST registration application on the official portal and assist with OTP verification. We handle the technical filing to ensure accuracy and timely submission.</p>
+                                    <span class="card-badge">Application Filing</span>
                                 </div>
-                            </div>
-                            <div class="step">
-                                <div class="step-number">
-                                    <span>4</span>
-                                </div>
-                                <div class="step-content">
+                                <div class="step-circle" aria-hidden="true">03</div>
+                            </li>
+
+                            <li class="gst-card">
+                                <div class="card-body">
                                     <h3>Get your GSTIN</h3>
-                                    <p>Our team will provide you with the Application Reference Number (ARN) (also
-                                        called as temporary reference number) after successful verification. You can
-                                        track application status using the number. GST registration certificate will be
-                                        available on the official GST website after the process is completed.</p>
-                                    <span class="step-badge">Certificate Issued</span>
+                                    <p>After verification you will receive an Application Reference Number (ARN) to track the status. The GST registration certificate will be available on the official GST portal upon completion.</p>
+                                    <span class="card-badge">Certificate Issued</span>
                                 </div>
-                            </div>
-                        </div>
+                                <div class="step-circle" aria-hidden="true">04</div>
+                            </li>
+                        </ol>
 
                         <!-- Important Note -->
                         <div class="process-footer">
@@ -742,98 +734,62 @@
                     </div>
                 </section>
 
-                <!-- Benefits of GST Registration Section -->
-                <section class="advantages" style="background: #f8fafc;">
+                <!-- Benefits of GST Registration Section (Black & White theme) -->
+                <section class="advantages bw-advantages">
                     <div class="container">
                         <div class="section-title">
                             <h2>Benefits of Registering for GST</h2>
                             <p>Discover the advantages that GST registration brings to your business</p>
                         </div>
-                        <div class="advantages-grid">
-                            <div class="advantage-card">
-                                <div style="text-align: center; margin-bottom: 20px;">
-                                    <div
-                                        style="width: 60px; height: 60px; background: #E5E8F5; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 24px;">
-                                        <div style="font-size: 40px;">
-                                            <i class="fa-solid fa-scale-balanced"></i>
-                                        </div>
-                                    </div>
+
+                        <div class="benefits-grid" role="list">
+                            <article class="benefit-card" role="listitem">
+                                <div class="benefit-icon"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i></div>
+                                <div class="benefit-body">
+                                    <h4>Legal Recognition</h4>
+                                    <p>A firm can obtain legal recognition as a supplier of goods or services by registering for GST. This validates the company's legal status as an official entity.</p>
                                 </div>
-                                <h3>Legal Recognition</h3>
-                                <p>A firm can obtain legal recognition as a supplier of goods or services by registering
-                                    for GST. This validates the company's legal status as an official entity.</p>
-                            </div>
-                            <div class="advantage-card">
-                                <div style="text-align: center; margin-bottom: 20px;">
-                                    <div
-                                        style="width: 60px; height: 60px; background: #E5E8F5; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 24px;">
-                                        <div style="font-size: 40px;">
-                                            <i class="fa-regular fa-credit-card"></i>
-                                        </div>
-                                    </div>
+                            </article>
+
+                            <article class="benefit-card" role="listitem">
+                                <div class="benefit-icon"><i class="fa-regular fa-credit-card" aria-hidden="true"></i></div>
+                                <div class="benefit-body">
+                                    <h4>Input Tax Credit (ITC)</h4>
+                                    <p>Registered businesses can claim Input Tax Credit for GST paid on purchases, reducing their overall tax liability.</p>
                                 </div>
-                                <h3>Input Tax Credit (ITC)</h3>
-                                <p>Businesses that are registered can deduct the GST they pay on purchases from the GST
-                                    they collect on sales by claiming the Input Tax Credit. Consequently, the entire tax
-                                    liability is decreased.</p>
-                            </div>
-                            <div class="advantage-card">
-                                <div style="text-align: center; margin-bottom: 20px;">
-                                    <div
-                                        style="width: 60px; height: 60px; background: #E5E8F5; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 24px;">
-                                        <div style="font-size: 40px;">
-                                            <i class="fa-solid fa-bolt"></i>
-                                        </div>
-                                    </div>
+                            </article>
+
+                            <article class="benefit-card" role="listitem">
+                                <div class="benefit-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+                                <div class="benefit-body">
+                                    <h4>Simplified Process</h4>
+                                    <p>GST streamlines tax submission and payments through a single online portal, reducing compliance time and complexity.</p>
                                 </div>
-                                <h3>Simplified Process</h3>
-                                <p>The GST system has reduced the complexity and time needed for compliance by
-                                    streamlining the process for submitting taxes and making payments. With the help of
-                                    a single online platform, businesses can more effectively manage their tax
-                                    obligations.</p>
-                            </div>
-                            <div class="advantage-card">
-                                <div style="text-align: center; margin-bottom: 20px;">
-                                    <div
-                                        style="width: 60px; height: 60px; background: #E5E8F5; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 24px;">
-                                        <div style="font-size: 40px;">
-                                            <i class="fa-solid fa-paper-plane"></i>
-                                        </div>
-                                    </div>
+                            </article>
+
+                            <article class="benefit-card" role="listitem">
+                                <div class="benefit-icon"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></div>
+                                <div class="benefit-body">
+                                    <h4>Composition Scheme</h4>
+                                    <p>The Composition Scheme allows eligible small businesses to pay tax at a lower rate, reducing compliance burden and simplifying accounting.</p>
                                 </div>
-                                <h3>Composition Scheme</h3>
-                                <p>Composition Scheme Under GST for Small Businesses allows them to pay tax at a lower
-                                    Rate. This reduces their tax burden and compliance requirements, making it easier to
-                                    manage their finances.</p>
-                            </div>
-                            <div class="advantage-card">
-                                <div style="text-align: center; margin-bottom: 20px;">
-                                    <div
-                                        style="width: 60px; height: 60px; background: #E5E8F5; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 24px;">
-                                        <div style="font-size: 40px;">
-                                            <i class="fa-regular fa-handshake"></i>
-                                        </div>
-                                    </div>
+                            </article>
+
+                            <article class="benefit-card" role="listitem">
+                                <div class="benefit-icon"><i class="fa-regular fa-handshake" aria-hidden="true"></i></div>
+                                <div class="benefit-body">
+                                    <h4>Higher Threshold for GST Registration</h4>
+                                    <p>Only businesses with turnover above the prescribed threshold are required to register, which relieves many small firms from mandatory registration obligations.</p>
                                 </div>
-                                <h3>Higher Threshold for GST Registration</h3>
-                                <p>With a higher registration threshold, only businesses with an annual turnover above
-                                    ₹40 lakh are required to register for GST. This excludes many small businesses from
-                                    mandatory registration, easing their operational processes.</p>
-                            </div>
-                            <div class="advantage-card">
-                                <div style="text-align: center; margin-bottom: 20px;">
-                                    <div
-                                        style="width: 60px; height: 60px; background: #E5E8F5; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 24px;">
-                                        <div style="font-size: 40px;">
-                                            <i class="fa-solid fa-globe"></i>
-                                        </div>
-                                    </div>
+                            </article>
+
+                            <article class="benefit-card" role="listitem">
+                                <div class="benefit-icon"><i class="fa-solid fa-globe" aria-hidden="true"></i></div>
+                                <div class="benefit-body">
+                                    <h4>Eliminates the Cascading Effect of Taxes</h4>
+                                    <p>GST allows input tax credit across the supply chain, preventing tax-on-tax and lowering the final tax burden for consumers.</p>
                                 </div>
-                                <h3>Eliminates the Cascading Effect of Taxes</h3>
-                                <p>GST eliminates the cascading effect of taxes by allowing input tax credit across the
-                                    supply chain. This means that businesses can claim credit for the taxes paid on
-                                    purchases, reducing the overall tax burden on end consumers.</p>
-                            </div>
+                            </article>
                         </div>
                     </div>
                 </section>
@@ -942,6 +898,59 @@
             </div>
         </div>
     </section>
+     <!-- CTA Section (responsive) -->
+    <section class="cta-hero-section" style="margin: 24px 24px; border-radius: 24px; position: relative; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 6px 30px rgba(0,0,0,0.08);">
+        <!-- full image placed as an absolutely positioned element so entire image stays visible -->
+        <img src="my story1.png" alt="" aria-hidden="true" class="cta-bg-img">
+        <style>
+            /* Push the image slightly beyond the right edge for a stronger visual overlap and bump zoom a bit */
+            .cta-bg-img { position: absolute; right: -6%; left: auto; top: 0; height: 100%; width: auto; max-width: 75%; object-fit: contain; z-index: 0; pointer-events: none; transform: scale(1.30); transform-origin: right center; }
+            @media (max-width: 1200px) { .cta-bg-img { right: -4%; left: auto; max-width: 70%; transform: scale(1.25); } }
+            @media (max-width: 900px) { .cta-bg-img { display:none; } }
+            .cta-overlay { position:absolute; inset:0; background: linear-gradient(rgba(255,255,255,0.82), rgba(255,255,255,0.78)); z-index:1; }
+            .cta-inner { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:28px 32px; display:grid; grid-template-columns: 1fr auto; gap:20px; align-items:center; }
+            .cta-left { padding:8px 12px; }
+            .cta-left h2 { font-size:48px; margin:0; line-height:1.05; color:#111827; font-weight:800; }
+            .cta-left p { margin:8px 0 0; color:#374151; font-size:16px; }
+            .cta-actions { display:flex; gap:14px; align-items:center; }
+            .cta-btn { display:inline-flex; align-items:center; justify-content:center; padding:12px 28px; border-radius:999px; text-decoration:none; font-weight:700; transition:all .18s ease; }
+            .btn-primary { background:#0f1724; color:#fff; border: none; }
+            .btn-primary:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(15,23,42,0.12); }
+            .btn-ghost { background:#fff; color:#0f1724; border:1px solid #d1d5db; }
+            .btn-ghost:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(15,23,42,0.06); }
+            .cta-right { text-align:right; padding-right:12px; }
+            .cta-right p { margin:0; color:#6b21a8; font-weight:600; }
+
+            @media (max-width:900px) {
+                .cta-inner { grid-template-columns: 1fr; text-align:left; padding:20px; }
+                .cta-right { text-align:left; padding:0; }
+                .cta-actions { margin-top:12px; }
+                .cta-left h2 { font-size:34px; }
+            }
+            @media (max-width:480px) {
+                .cta-left h2 { font-size:28px; }
+                .cta-btn { width:100%; padding:10px 16px; }
+                .cta-actions { flex-direction:column; gap:10px; }
+            }
+        </style>
+
+        <!-- subtle overlay for contrast -->
+        <div class="cta-overlay" aria-hidden="true"></div>
+
+        <div class="cta-inner">
+            <div class="cta-left">
+                <h2>#WE<br>People First Company.</h2>
+                <p class="cta-sub">Made In Chennai. Made For The World.</p>
+
+                <div class="cta-actions" role="group" aria-label="Call to actions">
+                    <a class="cta-btn btn-primary" href="https://crm.wealthempires.in/">Start incorporation <span style="margin-left:8px;font-size:1.1rem;">›</span></a>
+                    <a class="cta-btn btn-ghost" href="contact.html">Contact us</a>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
 
 
 
@@ -1006,6 +1015,62 @@
                 flex-direction: column;
                 gap: 15px;
             }
+
+            /* Footer accordion styles (mobile) */
+            .footer-column h3 {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #fff;
+                transition: all 0.3s ease;
+                text-align: left;
+            }
+
+            .footer-column h3::after {
+                content: '▼';
+                font-size: 12px;
+                color: #999;
+                transform: rotate(0deg);
+                transition: transform 0.3s ease;
+            }
+
+            .footer-column h3.active::after {
+                transform: rotate(180deg);
+            }
+
+            .footer-column ul {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                background: #fff;
+            }
+
+            .footer-column ul.active {
+                max-height: 500px;
+                padding: 0 0 20px 0;
+            }
+
+            .footer-column ul li {
+                margin: 0;
+                padding: 8px 0;
+            }
+
+            .footer-column ul li a {
+                color: #666;
+                text-decoration: none;
+                font-size: 14px;
+                display: block;
+                transition: color 0.2s ease;
+                text-align: left;
+            }
+
+            .footer-column ul li a:hover {
+                color: #2563eb;
+            }
         }
     </style>
     <footer class="footer-container">
@@ -1017,9 +1082,8 @@
                 </div>
                 <div class="header-divider"></div>
                 <div class="contact-section">
-                    <a href="mailto:support@wealthempires.com" class="support-email">support@wealthempires.com </a>
-                    <span style="color: rgb(204, 199, 199);"> | </span>
-                    <a href="#" style="text-decoration: none; color: #2563ec; font-weight: 500;">+91 9884521264</a>
+                    <a href="mailto:support@wealthempires.com" class="support-email">support@wealthempires.com | +91 9884521264</a>
+                    
                 </div>
             </div>
         </div>
@@ -1256,6 +1320,87 @@
                 navContainer.style.backdropFilter = 'blur(20px)';
             }
         });
+    </script>
+
+    <script>
+        // Mobile footer accordion functionality (mirrors index.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.innerWidth <= 768) {
+                initFooterAccordion();
+            }
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth <= 768) {
+                    initFooterAccordion();
+                } else {
+                    resetFooterAccordion();
+                }
+            });
+        });
+
+        function initFooterAccordion() {
+            const footerColumns = document.querySelectorAll('.footer-column');
+
+            footerColumns.forEach(column => {
+                const heading = column.querySelector('h3');
+                const list = column.querySelector('ul');
+
+                if (heading && list && !heading.hasAttribute('data-accordion')) {
+                    // mark initialized
+                    heading.setAttribute('data-accordion', 'initialized');
+
+                    // Ensure collapsed initially
+                    list.classList.remove('active');
+                    heading.classList.remove('active');
+
+                    // Replace heading to remove previous listeners
+                    const newHeading = heading.cloneNode(true);
+                    heading.parentNode.replaceChild(newHeading, heading);
+
+                    newHeading.addEventListener('click', function() {
+                        const newList = column.querySelector('ul');
+                        const isActive = newList.classList.contains('active');
+
+                        // Close others
+                        footerColumns.forEach(otherColumn => {
+                            const otherList = otherColumn.querySelector('ul');
+                            const otherHeading = otherColumn.querySelector('h3');
+                            if (otherList && otherHeading && !otherHeading.hasAttribute('style')) {
+                                otherList.classList.remove('active');
+                                otherHeading.classList.remove('active');
+                            }
+                        });
+
+                        // Toggle current
+                        if (!isActive) {
+                            newList.classList.add('active');
+                            newHeading.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        function resetFooterAccordion() {
+            const footerColumns = document.querySelectorAll('.footer-column');
+
+            footerColumns.forEach(column => {
+                const heading = column.querySelector('h3');
+                const list = column.querySelector('ul');
+
+                if (heading && list) {
+                    list.classList.remove('active');
+                    heading.classList.remove('active');
+
+                    // Remove accordion marker and listeners
+                    if (heading.hasAttribute('data-accordion')) {
+                        heading.removeAttribute('data-accordion');
+                        const newHeading = heading.cloneNode(true);
+                        heading.parentNode.replaceChild(newHeading, heading);
+                    }
+                }
+            });
+        }
     </script>
 
 
