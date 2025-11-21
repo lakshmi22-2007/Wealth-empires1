@@ -34,169 +34,324 @@
         /* ========== NEW HERO REDESIGN ========== */
         
         .hero-section {
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            padding: 80px 24px 60px;
-            background: #ffffff;
+            padding: 80px 20px 60px;
+            background: #f8f9fa;
             position: relative;
-            overflow: hidden;
         }
 
         .container {
-            max-width: 1240px;
+            max-width: 1200px;
             margin: 0 auto;
             width: 100%;
-            position: relative;
-            z-index: 2;
         }
 
-        .hero-card {
+        .hero-wrapper {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: flex-start;
         }
 
         .hero-left {
-            animation: fadeInLeft 0.8s ease-out;
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Animated badge */
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #0d3d3d;
-            color: #fff;
-            padding: 8px 18px;
-            border-radius: 999px;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .hero-badge i {
-            font-size: 14px;
+            padding-right: 20px;
+            text-align: left;
         }
 
         .hero-left h1 {
-            font-size: 56px;
-            font-weight: 900;
-            line-height: 1.1;
-            color: #0f172a;
-            margin-bottom: 20px;
-            letter-spacing: -1.5px;
+            font-size: 42px;
+            font-weight: 400;
+            line-height: 1.2;
+            color: #333;
+            margin-bottom: 16px;
         }
 
-        .hero-left h1 .gradient-text {
-            color: #3b82f6;
+        .expert-text {
+            color: #28a745;
+            font-style: italic;
         }
 
-        .hero-left p {
-            font-size: 18px;
-            line-height: 1.75;
-            color: #475569;
-            margin-bottom: 32px;
-            max-width: 580px;
+        .hero-left > p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
         }
 
-        /* CTA buttons with modern design */
-        .hero-cta {
+        .features-list {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .feature-item {
             display: flex;
+            align-items: flex-start;
             gap: 16px;
-            flex-wrap: wrap;
-            align-items: center;
+            margin-bottom: 24px;
         }
 
-        .btn-primary-hero {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #0d3d3d;
-            color: #fff;
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 16px;
-            text-decoration: none;
-            box-shadow: 0 12px 32px rgba(59, 130, 246, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary-hero:hover {
-            background: #2563eb;
-            transform: translateY(-4px);
-            box-shadow: 0 16px 40px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn-secondary-hero {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #fff;
-            color: #0f172a;
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 16px;
-            text-decoration: none;
-            border: 2px solid #e2e8f0;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
-        }
-
-        .btn-secondary-hero:hover {
-            background: #f8fafc;
-            border-color: #cbd5e1;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
-        }
-
-        /* Hero right - floating card design */
-        .hero-right {
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: #28a745;
+            border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            animation: fadeInRight 0.8s ease-out 0.2s both;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 4px;
         }
 
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .feature-icon i {
+            font-size: 10px;
+            color: white;
         }
 
-        .hero-image-card {
-            position: relative;
-            background: transparent !important;
+        .feature-content {
+            text-align: left;
+        }
+
+        .feature-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+            text-align: left;
+        }
+
+        .feature-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        .support-text {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .support-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .support-link:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #28a745;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: #28a745;
+            color: white;
             border: none;
-            padding: 0;
-            transition: transform 0.3s ease;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #218838;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            background: #2d5a3d;
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .stats-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stats-content h2 {
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            line-height: 1.3;
+        }
+
+        .trusted-text {
+            font-style: italic;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            background: none;
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #90ee90;
+            margin-bottom: 8px;
+            display: block;
+            background: none;
+            background-color: transparent;
+        }
+
+        .stat-description {
+            font-size: 12px;
+            line-height: 1.3;
+            opacity: 0.9;
+            max-width: 150px;
+            margin: 0 auto;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .stats-section {
+                padding: 15px 20px !important;
+            }
+            
+            .stats-content {
+                margin-bottom: 10px !important;
+                padding-bottom: 10px !important;
+            }
+            
+            .connect-container {
+                padding: 10px 15px !important;
+                margin-top: -10px !important;
+            }
+            
+            .stats-grid {
+                gap: 10px !important;
+                margin: 10px 0 !important;
+            }
+            .hero-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-left {
+                padding-right: 0;
+                order: 1;
+            }
+            
+            .hero-right {
+                order: 2;
+            }
+            
+            .hero-left h1 {
+                font-size: 32px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .stats-content h2 {
+                font-size: 24px;
+            }
+            
+            .stats-grid {
+                flex-direction: column;
+                gap: 10px !important;
+            }
+            
+            .stat-item {
+                margin-bottom: 8px !important;
+                padding: 5px !important;
+            }
+            
+            .stat-number {
+                margin-bottom: 3px !important;
+                font-size: 2rem !important;
+            }
+            
+            .stat-description {
+                margin-bottom: 5px !important;
+                font-size: 0.8rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .stats-section {
+                padding: 15px 15px !important;
+            }
+            
+            .contact-form-card {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 60px 16px 40px;
+            }
+            
+            .stats-section {
+                padding: 40px 16px;
+            }
+            
+            .hero-left h1 {
+                font-size: 28px;
+            }
         }
 
         .hero-image-card:hover {
@@ -347,11 +502,11 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">Our Product <i class="fa-solid fa-caret-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="hitworth.html" class="dropdown-item">
-                                <span>HitWorth</span>
+                            <a href="https://aistartupdoctor.com/" class="dropdown-item">
+                                <span>Startup Doctor</span>
                             </a>
-                            <a href="health-check.html" class="dropdown-item">
-                                <span>Health Check</span>
+                            <a href="https://hitworth.wealthempires.in/" class="dropdown-item">
+                                <span>HitWorth</span>
                             </a>
                         </div>
                     </li>
@@ -373,31 +528,175 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <div class="hero-card">
+            <div class="hero-wrapper">
+                <!-- Left Side - Content -->
                 <div class="hero-left">
-                    <div class="hero-badge">
-                        <i class="fa-solid fa-bolt"></i>
-                        <span>GET IN TOUCH</span>
+                    <h1>Talk to an <span class="expert-text">Expert</span> Today</h1>
+                    <p>Get in touch with our team for any questions about wealth.</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Personalized Guidance from Experts</h4>
+                                <p>Get direct access to certified planning professionals.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Secure & Confidential Communication</h4>
+                                <p>Your questions and data are protected with bank-grade security.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Fast & Friendly Support</h4>
+                                <p>Our team is friendly, trained and—expert quick responses.</p>
+                            </div>
+                        </div>
                     </div>
-                    <h1>Let's discuss <span>your business needs</span></h1>
-                    <p>Need help with company registration, compliance, or tax planning? Our experts guide you every
-                        step of the way — fast, reliable, and tailored to your goals.</p>
-
-                    <div class="hero-cta">
-                        <a href="tel:+919884521264" class="btn-primary-hero">
-                            <i class="fa-solid fa-phone"></i>
-                            <span>Call Us Now</span>
-                        </a>
-                        <a href="https://crm.wealthempires.in/" class="btn-secondary-hero">
-                            <i class="fa-solid fa-rocket"></i>
-                            <span>Start Incorporation</span>
-                        </a>
+                    
+                    
+                </div>
+                
+                <!-- Right Side - Contact Form -->
+                <div class="hero-right">
+                    <div class="contact-form-card">
+                        <h3>Please enter your information</h3>
+                        <form class="contact-form" action="#" method="POST">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullname">Full Name</label>
+                                    <input type="text" id="fullname" name="fullname" placeholder="Enter full name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" placeholder="Enter email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="company">Company</label>
+                                    <input type="text" id="company" name="company" placeholder="Enter company" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Enter your message here..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
                     </div>
                 </div>
-
-                <div class="hero-right">
-                    <div class="hero-image-card">
-                        <img src="fa10.jpg" alt="Wealth Empires Business Consultation" class="hero-image">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="stats-content">
+            <h2>Wealthly Is The <span class="trusted-text">Trusted</span> Wealth Management Platform in 2025</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">10K</div>
+                    <div class="stat-description">Making estate planning simple and accessible worldwide</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2,000</div>
+                    <div class="stat-description">Making estate planning simple and accessible worldwide</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">80</div>
+                    <div class="stat-description">Making estate planning simple and accessible worldwide</div>
+                </div>
+            </div>
+        </div>
+        <div class="connect-container">
+            
+            <div class="contact-grid-modern">
+                <!-- Business Contact -->
+                <div class="modern-contact-card business-card">
+                    <div class="card-gradient-bg"></div>
+                    <div class="card-content">
+                        <div class="icon-container business-icon">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <h3 class="modern-card-title">Business Solutions</h3>
+                        <p class="modern-card-subtitle">Enterprise Growth & Compliance</p>
+                        <p class="modern-card-description">Scale your business with our comprehensive compliance solutions and strategic guidance.</p>
+                        <div class="contact-actions">
+                            <a href="mailto:business@wealthempires.in" class="primary-contact-btn">
+                                <i class="fa-solid fa-envelope"></i>
+                                business@wealthempires.in
+                            </a>
+                            <a href="tel:+919884521264" class="secondary-contact-btn">
+                                <i class="fa-solid fa-phone"></i>
+                                +91 9884521264
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Career Contact -->
+                <div class="modern-contact-card career-card">
+                    <div class="card-gradient-bg"></div>
+                    <div class="card-content">
+                        <div class="icon-container career-icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <h3 class="modern-card-title">Join Our Team</h3>
+                        <p class="modern-card-subtitle">Careers & Opportunities</p>
+                        <p class="modern-card-description">Students, freshers, and experienced professionals - discover your next career opportunity.</p>
+                        <div class="contact-actions">
+                            <a href="mailto:career@wealthempires.in" class="primary-contact-btn">
+                                <i class="fa-solid fa-envelope"></i>
+                                career@wealthempires.in
+                            </a>
+                            <a href="#" class="secondary-contact-btn">
+                                <i class="fa-solid fa-external-link-alt"></i>
+                                View Openings
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partnership Contact -->
+                <div class="modern-contact-card partnership-card">
+                    <div class="card-gradient-bg"></div>
+                    <div class="card-content">
+                        <div class="icon-container partnership-icon">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <h3 class="modern-card-title">Strategic Partnerships</h3>
+                        <p class="modern-card-subtitle">Collaborate & Grow</p>
+                        <p class="modern-card-description">Incubations, startup enablers, and strategic partnerships for mutual growth.</p>
+                        <div class="contact-actions">
+                            <a href="mailto:support@wealthempires.in" class="primary-contact-btn">
+                                <i class="fa-solid fa-envelope"></i>
+                                support@wealthempires.in
+                            </a>
+                            <a href="#" class="secondary-contact-btn">
+                                <i class="fa-solid fa-rocket"></i>
+                                Partnership Program
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -411,12 +710,13 @@
             <div class="contact-wrapper">
                 <!-- Left Side - Contact Info -->
                 <div class="contact-info-card">
-                    <div class="badge">GET IN TOUCH</div>
+                    <div class="contact-info-inner">
+                        <div class="badge">GET IN TOUCH</div>
 
-                    <h2>Let's Connect</h2>
-                    <p>We'd love to hear from you!</p>
+                        <h2>Let's Connect</h2>
+                        <p>We'd love to hear from you!</p>
 
-                    <div class="contact-items">
+                        <div class="contact-items">
                         <!-- Phone -->
                         <div class="contact-item">
                             <div class="contact-item-content">
@@ -459,6 +759,7 @@
                             </div>
                         </div>
                     </div>
+                    </div>
                 </div>
 
                 <!-- Right Side - Map -->
@@ -483,7 +784,7 @@
         }
 
         .contact-section {
-            padding: 0px 20px;
+            padding: 60px 0px;
             display: flex;
             background: #ffffff;
             position: relative;
@@ -491,29 +792,40 @@
         }
 
         .container {
-            max-width: 1300px;
+            width: 100%;
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
+        
+        .contact-info-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 40px;
+            padding-right: 40px;
+            text-align: center;
+        }
 
         .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
             align-items: stretch;
         }
 
-        /* Left Side - Contact Info (clean card style, removed glass effect) */
+        /* Contact Info Card */
         .contact-info-card {
             background: #ffffff; /* solid background */
             color: #0f172a;
-            border-radius: 20px;
-            padding: 48px 36px;
+            border-radius: 0;
+            padding: 40px 0;
             border: 1px solid #eef2f6;
             position: relative;
             overflow: visible;
-            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+            height: fit-content;
+            width: 100%;
+            margin: 0;
         }
 
         .badge {
@@ -531,40 +843,48 @@
         }
 
         .contact-info-card h2 {
-            font-size: 2.4rem;
+            font-size: 2rem;
             font-weight: 800;
             color: #0b1220;
-            margin-bottom: 10px;
-            line-height: 1.05;
+            margin-bottom: 8px;
+            line-height: 1.1;
             position: relative;
             z-index: 2;
+            text-align: center;
         }
 
         .contact-info-card>p {
             font-size: 1rem;
             color: #475569;
-            margin-bottom: 28px;
+            margin-bottom: 20px;
             font-weight: 400;
             position: relative;
             z-index: 2;
+            text-align: center;
         }
 
         .contact-items {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
             position: relative;
             z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .contact-item {
             background: #ffffff; /* remove glass/translucent backgrounds */
-            padding: 18px 20px;
-            border-radius: 12px;
+            padding: 20px 18px;
+            border-radius: 0;
             border: 1px solid #eef2f6;
             transition: transform 0.22s ease, box-shadow 0.22s ease;
             cursor: pointer;
-            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .contact-item:hover {
@@ -574,23 +894,25 @@
 
         .contact-item-content {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
+            text-align: center;
         }
 
         .icon-box {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 52px;
-            height: 52px;
+            width: 44px;
+            height: 44px;
             background: #0d3d3d; /* brand accent */
             color: #ffffff;
-            border-radius: 12px;
-            font-size: 1.2rem;
+            border-radius: 0;
+            font-size: 1.1rem;
             flex-shrink: 0;
             transition: transform 0.18s ease, box-shadow 0.18s ease;
-            box-shadow: 0 6px 18px rgba(13, 61, 61, 0.08);
+            box-shadow: 0 4px 12px rgba(13, 61, 61, 0.08);
         }
 
         .contact-item:hover .icon-box {
@@ -600,6 +922,7 @@
 
         .contact-text {
             flex: 1;
+            text-align: center;
         }
 
         .label {
@@ -625,16 +948,18 @@
             color: #0d3d3d;
         }
 
-        /* Right Side - Map */
+        /* Full Width Map */
         .map-container {
             background: #ffffff;
-            border-radius: 24px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-            height: 100%;
-            min-height: auto;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            height: 320px;
+            min-height: 320px;
             border: 1px solid #e5e7eb;
             position: relative;
+            width: 100%;
+            margin: 0;
         }
 
         .map-container iframe {
@@ -697,48 +1022,98 @@
         /* Tablet Responsive */
         @media (max-width: 1024px) {
             .contact-wrapper {
-                gap: 40px;
+                gap: 32px;
             }
 
             .contact-info-card h2 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .map-container {
-                min-height: 500px;
+                min-height: 280px;
+                height: 280px;
+            }
+            
+            .contact-info-inner {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            
+            .contact-info-card {
+                padding: 32px 0;
+            }
+            
+            .contact-items {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .contact-section {
-                padding: 60px 20px;
+                padding: 10px 0px;
             }
 
             .contact-wrapper {
-                /* switch to flex column on mobile so ordering works reliably */
                 display: flex;
                 flex-direction: column;
-                gap: 28px;
+                gap: 10px;
                 align-items: stretch;
             }
 
             .contact-info-card {
-                padding: 28px 20px;
+                padding: 15px 0;
                 text-align: center;
+                border-radius: 0;
+                margin: 0;
+                width: 100vw;
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
             }
 
             .contact-info-card h2 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
+                margin-bottom: 5px;
             }
 
             .contact-info-card>p {
                 font-size: 1rem;
-                margin-bottom: 36px;
+                margin-bottom: 10px;
+            }
+
+            .contact-info-inner {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .contact-items {
+                display: flex !important;
+                flex-direction: column !important;
+                grid-template-columns: none !important;
+                gap: 8px;
+                align-items: stretch;
             }
 
             .contact-item {
-                padding: 20px 22px;
+                padding: 12px 16px;
+                border-radius: 0;
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                text-align: left !important;
+            }
+
+            .contact-item-content {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center;
+                gap: 12px;
+                min-height: 40px;
+                width: 100%;
             }
 
             .contact-item:hover {
@@ -746,39 +1121,46 @@
             }
 
             .icon-box {
-                width: 48px;
-                height: 48px;
+                width: 40px;
+                height: 40px;
+                border-radius: 0;
+                flex: 0 0 auto;
+            }
+
+            .contact-item .contact-text { 
+                text-align: left;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
 
             /* Place the map below the contact card on mobile for better flow */
             .map-container {
-                min-height: 280px;
+                min-height: 220px;
+                height: 220px;
+                border-radius: 0;
                 order: 2;
+                margin: 0;
+                width: 100vw;
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
             }
 
-            .contact-items {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-                align-items: stretch;
+            .badge { 
+                margin-left: auto; 
+                margin-right: auto; 
+                display: block;
+                width: fit-content;
             }
-
-            .contact-item {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-            }
-
-            .contact-item .icon-box { flex: 0 0 auto; }
-
-            .contact-item .contact-text { text-align: left; }
-
-            .badge { margin-left: auto; margin-right: auto; }
         }
 
         @media (max-width: 480px) {
             .contact-section {
-                padding: 50px 16px;
+                padding: 8px 16px;
             }
 
             .contact-info-card {
@@ -798,20 +1180,48 @@
                 font-size: 0.7rem;
             }
 
+            .contact-items {
+                display: flex !important;
+                flex-direction: column !important;
+                grid-template-columns: none !important;
+                gap: 12px;
+            }
+            
             .contact-item {
                 padding: 18px 20px;
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                text-align: left !important;
+            }
+            
+            .contact-item-content {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center;
+                gap: 12px;
+                min-height: 44px;
+                width: 100%;
+            }
+            
+            .contact-item .contact-text { 
+                text-align: left;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
 
             .icon-box {
                 width: 44px;
                 height: 44px;
                 font-size: 1.3rem;
+                flex: 0 0 auto;
             }
         }
     </style>
     
     <!-- Let's Connect Section -->
-    <section class="lets-connect" style="padding: 100px 20px; background: linear-gradient(135deg, #0d3d3d 0%, #2c6e49 50%, #0d3d3d 100%);">
         <style>
             .connect-container {
                 max-width: 1200px;
@@ -867,135 +1277,193 @@
                 z-index: 2;
             }
             
-            .contact-grid {
+            .contact-grid-modern {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-                gap: 30px;
-                margin-top: 20px;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+                margin-top: 40px;
+                max-width: 1200px;
+                margin-left: auto;
+                margin-right: auto;
             }
             
-            .contact-card {
-                background: rgba(255,255,255,0.98);
-                border-radius: 24px;
-                padding: 40px 30px;
-                text-align: left;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-                border: 1px solid rgba(255,255,255,0.3);
-                transition: all 0.3s ease;
+            .modern-contact-card {
+                background: #ffffff;
+                border-radius: 20px;
+                padding: 0;
                 position: relative;
                 overflow: hidden;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                border: 1px solid rgba(255, 255, 255, 0.2);
             }
             
-            .contact-card::before {
-                content: '';
+            .modern-contact-card:hover {
+                transform: translateY(-12px) scale(1.02);
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            }
+            
+            .card-gradient-bg {
                 position: absolute;
                 top: 0;
                 left: 0;
                 right: 0;
                 height: 6px;
-                background: linear-gradient(90deg, #0d3d3d, #2c6e49);
-                border-radius: 24px 24px 0 0;
+                background: linear-gradient(135deg, #2d5a3d 0%, #28a745 100%);
             }
             
-            .contact-card:hover {
-                transform: translateY(-8px);
-                box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-            }
-            
-            .card-header {
-                display: flex;
-                align-items: center;
-                margin-bottom: 24px;
-            }
-            
-            .card-icon {
-                width: 56px;
-                height: 56px;
-                background: linear-gradient(135deg, #0d3d3d, #2c6e49);
-                border-radius: 16px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-right: 16px;
-                box-shadow: 0 4px 20px rgba(13,61,61,0.3);
-            }
-            
-            .card-icon svg {
-                width: 28px;
-                height: 28px;
-                color: #fff;
-                stroke: #fff;
-            }
-            
-            .card-title {
-                font-size: 1.6rem;
-                font-weight: 700;
-                color: #0d3d3d;
-                margin: 0;
-            }
-            
-            .card-description {
-                font-size: 1rem;
-                color: #666;
-                margin-bottom: 28px;
-                line-height: 1.6;
-            }
-            
-            .contact-details {
+            .card-content {
+                padding: 32px 24px;
+                text-align: center !important;
                 display: flex;
                 flex-direction: column;
-                gap: 12px;
-            }
-            
-            .contact-detail {
-                display: flex;
                 align-items: center;
-                padding: 16px 20px;
-                background: #f8f9fa;
-                border-radius: 14px;
-                transition: all 0.2s ease;
-                border-left: 4px solid #0d3d3d;
+                justify-content: center;
+            }
+
+            /* Force-center all card child elements to avoid any stray overrides */
+            .contact-grid-modern .card-content .modern-card-title,
+            .contact-grid-modern .card-content .modern-card-subtitle,
+            .contact-grid-modern .card-content .modern-card-description,
+            .contact-grid-modern .card-content .contact-actions,
+            .contact-grid-modern .card-content .primary-contact-btn,
+            .contact-grid-modern .card-content .secondary-contact-btn {
+                text-align: center !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            /* High-specificity fixes to override global .card-content h3/p rules */
+            .contact-grid-modern .card-content h3,
+            .contact-grid-modern .card-content p {
+                padding-right: 0 !important;
+                text-align: center !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
             
-            .contact-detail:hover {
-                background: #e9ecef;
-                transform: translateX(4px);
-            }
-            
-            .detail-icon {
-                width: 24px;
-                height: 24px;
-                background: #0d3d3d;
-                border-radius: 8px;
+            .icon-container {
+                width: 72px;
+                height: 72px;
+                border-radius: 20px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                margin-right: 14px;
-                flex-shrink: 0;
+                margin: 0 auto 24px;
+                position: relative;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+                background: linear-gradient(135deg, #2d5a3d 0%, #28a745 100%);
+                color: white;
             }
             
-            .detail-icon::after {
-                content: '●';
-                color: #fff;
-                font-size: 10px;
+            .icon-container i {
+                font-size: 28px;
             }
             
-            .contact-link {
-                color: #0d3d3d;
+            .modern-card-title {
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #2d3748;
+                margin: 0 0 12px 0;
+                line-height: 1.3;
+                text-align: center  ;
+                width: 100%;
+                display: block;
+            }
+            
+            .modern-card-subtitle {
+                font-size: 0.85rem;
                 font-weight: 600;
+                color: #718096;
+                margin: 0 0 20px 0;
+                text-transform: uppercase;
+                letter-spacing: 0.8px;
+                text-align: center;
+                width: 100%;
+                display: block;
+            }
+            
+            .modern-card-description {
+                font-size: 0.9rem;
+                color: #4a5568;
+                margin: 0 auto 28px auto;
+                line-height: 1.6;
+                text-align: center;
+                max-width: 280px;
+                width: 100%;
+                display: block;
+            }
+            
+            .contact-actions {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+                align-items: center;
+            }
+            
+            .primary-contact-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                padding: 12px 16px;
+                background: linear-gradient(135deg, #2d5a3d 0%, #28a745 100%);
+                color: white;
                 text-decoration: none;
-                font-size: 1rem;
-                transition: color 0.2s;
-            }
-            
-            .contact-link:hover {
-                color: #2c6e49;
-            }
-            
-            .contact-phone {
-                color: #0d3d3d;
+                border-radius: 10px;
                 font-weight: 600;
-                font-size: 1rem;
+                font-size: 0.85rem;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(45, 90, 61, 0.3);
+                text-align: center;
+                width: 100%;
+                white-space: nowrap;
+            }
+            
+            .primary-contact-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(45, 90, 61, 0.4);
+            }
+            
+            .secondary-contact-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                padding: 10px 16px;
+                background: transparent;
+                color: #4a5568;
+                text-decoration: none;
+                border: 2px solid #e2e8f0;
+                border-radius: 10px;
+                font-weight: 500;
+                font-size: 0.85rem;
+                transition: all 0.3s ease;
+                text-align: center;
+                width: 100%;
+                white-space: nowrap;
+            }
+            
+            .secondary-contact-btn:hover {
+                border-color: #cbd5e0;
+                color: #2d3748;
+                background: #f7fafc;
+                transform: translateY(-1px);
+            }
+            
+            @media (max-width: 1024px) and (min-width: 769px) {
+                .contact-grid-modern {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 28px;
+                }
+                .modern-contact-card:last-child {
+                    grid-column: 1 / -1;
+                    max-width: 50%;
+                    margin: 0 auto;
+                }
             }
             
             @media (max-width: 768px) {
@@ -1005,90 +1473,49 @@
                     border-radius: 24px; 
                 }
                 .connect-hero h2 { font-size: 2.5rem; }
-                .contact-grid { 
+                .contact-grid-modern { 
                     grid-template-columns: 1fr; 
-                    gap: 20px; 
+                    gap: 10px;
+                    margin-top: 10px;
                 }
-                .contact-card { padding: 30px 20px; }
+                .modern-contact-card { 
+                    margin: 0 auto;
+                    max-width: 400px;
+                }
+                .card-content { 
+                    padding: 28px 24px; 
+                }
+                .modern-card-title {
+                    font-size: 1.4rem;
+                }
+                .modern-card-description {
+                    font-size: 0.9rem;
+                    margin-bottom: 28px;
+                }
+                .icon-container {
+                    width: 64px;
+                    height: 64px;
+                    margin-bottom: 20px;
+                }
+                .icon-container i {
+                    font-size: 24px;
+                }
+                .contact-actions {
+                    gap: 10px;
+                }
+                .primary-contact-btn {
+                    padding: 12px 16px;
+                    font-size: 0.85rem;
+                }
+                .secondary-contact-btn {
+                    padding: 10px 16px;
+                    font-size: 0.85rem;
+                }
             }
         </style>
-        
-        <div class="connect-container">
-            <div class="connect-hero">
-                <h2>Let's Connect</h2>
-                <p>Ready to start your journey with us? Reach out through any of these channels.</p>
-            </div>
             
-            <div class="contact-grid">
-                <!-- Business Contact -->
-                <div class="contact-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                                <polyline points="9,22 9,12 15,12 15,22"/>
-                            </svg>
-                        </div>
-                        <h3 class="card-title">For Business</h3>
-                    </div>
-                    <p class="card-description">Ready to grow your business? Let's discuss how we can help you achieve compliance and scale efficiently.</p>
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <div class="detail-icon"></div>
-                            <a href="mailto:business@wealthempires.in" class="contact-link">business@wealthempires.in</a>
-                        </div>
-                        <div class="contact-detail">
-                            <div class="detail-icon"></div>
-                            <span class="contact-phone">+91 9884521264</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Career Contact -->
-                <div class="contact-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                                <line x1="8" y1="21" x2="16" y2="21"/>
-                                <line x1="12" y1="17" x2="12" y2="21"/>
-                            </svg>
-                        </div>
-                        <h3 class="card-title">For Internship/Job</h3>
-                    </div>
-                    <p class="card-description">Students • Freshers • Experienced professionals looking to join our innovative team</p>
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <div class="detail-icon"></div>
-                            <a href="mailto:career@wealthempires.in" class="contact-link">career@wealthempires.in</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Partnership Contact -->
-                <div class="contact-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                <circle cx="9" cy="7" r="4"/>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                            </svg>
-                        </div>
-                        <h3 class="card-title">For Partnership</h3>
-                    </div>
-                    <p class="card-description">Incubations • Startup enablers • Strategic partnerships to grow together</p>
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <div class="detail-icon"></div>
-                            <a href="mailto:support@wealthempires.in" class="contact-link">support@wealthempires.in</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            
+    
 
     <!-- FAQ Section -->
     <section class="advantages" style="padding: 20px 0; background: white;">

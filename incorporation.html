@@ -47,6 +47,7 @@
 
         .hero-left {
             padding-right: 20px;
+            text-align: left;
         }
 
         .hero-left h1 {
@@ -56,6 +57,7 @@
             color: #1a1a1a;
             margin-bottom: 24px;
             letter-spacing: -0.02em;
+            text-align: left;
         }
 
         .hero-left p {
@@ -64,6 +66,7 @@
             color: #4a4a4a;
             margin-bottom: 36px;
             max-width: 540px;
+            text-align: left;
         }
 
         .cta-button {
@@ -186,7 +189,7 @@
             /* show text first, image becomes second block on mobile */
             .hero-left {
                 padding-right: 0;
-                text-align: center;
+                text-align: center !important;
                 order: 1;
             }
 
@@ -208,7 +211,7 @@
                 display: block;
                 padding-left: 0;
                 order: 2;
-                text-align: center;
+                text-align: center !important;
             }
 
             .hero-image {
@@ -248,13 +251,19 @@
                 padding-top: 120px; /* space equal to header height + breathing room */
             }
 
+            .hero-left {
+                text-align: center !important;
+            }
+            
             .hero-left h1 {
                 font-size: 28px;
+                text-align: center !important;
             }
 
             .hero-left p {
                 font-size: 15px;
                 margin-bottom: 20px;
+                text-align: center !important;
             }
 
             .hero-buttons {

@@ -46,6 +46,7 @@
 
         .hero-left {
             padding-right: 20px;
+            text-align: left;
         }
 
         .hero-left h1 {
@@ -55,6 +56,7 @@
             color: #1a1a1a;
             margin-bottom: 24px;
             letter-spacing: -0.02em;
+            text-align: left;
         }
 
         .hero-left p {
@@ -63,6 +65,7 @@
             color: #4a4a4a;
             margin-bottom: 36px;
             max-width: 540px;
+            text-align: left;
         }
 
         .cta-button {
@@ -175,8 +178,16 @@
 
             .hero-left {
                 padding-right: 0;
-                text-align: center;
+                text-align: center !important;
                 margin-bottom: 20px;
+            }
+
+            .hero-left h1 {
+                text-align: center !important;
+            }
+
+            .hero-left p {
+                text-align: center !important;
             }
 
             .hero-left h1 {
@@ -212,6 +223,18 @@
         }
 
         @media (max-width: 480px) {
+            .hero-left {
+                text-align: center !important;
+            }
+
+            .hero-left h1 {
+                text-align: center !important;
+            }
+
+            .hero-left p {
+                text-align: center !important;
+            }
+
             .hero-section {
                 padding: 100px 16px 0px 16px;
             }
