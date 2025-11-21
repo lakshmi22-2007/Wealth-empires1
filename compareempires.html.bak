@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+< lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get More For Less - Pricing Comparison</title>
+    <link rel="icon" type="image/jpeg" href="Wealth Empires.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="Wealth Empires.jpg">
+    <link rel="stylesheet" href="styles.css">
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Compare - Wealth Empires</title>
+        <link rel="icon" type="image/jpeg" href="Wealth Empires.jpg">
+        <link rel="shortcut icon" type="image/jpeg" href="Wealth Empires.jpg">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <style>
+            /* Minimal reset for this page; main styling is in styles.css */
+            * { box-sizing: border-box; margin: 0; padding: 0; }
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #fff; }
+        </style>
+    </head>
+
+    <body>
+        <div class="nav-overlay" id="navOverlay"></div>
+                        
+                                    // Toggle current section
+                                    if (!isActive) {
+                                        newList.classList.add('active');
+                                        newHeading.classList.add('active');
+                                    }
+                                });
+                            }
+                        });
+                    }
+
+                    function resetFooterAccordion() {
+                        const footerColumns = document.querySelectorAll('.footer-column');
+            
+                        footerColumns.forEach(column => {
+                            const heading = column.querySelector('h3');
+                            const list = column.querySelector('ul');
+                
+                            if (heading && list) {
+                                list.classList.remove('active');
+                                heading.classList.remove('active');
+                    
+                                // Remove click listeners
+                                const newHeading = heading.cloneNode(true);
+                                heading.parentNode.replaceChild(newHeading, heading);
+                            }
+                        });
+                    }
+                </script>
+            }
+
+            .footer-right {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.875rem;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+
+<>
+    <div class="nav-overlay" id="navOverlay"></div>
+    <header>
+        <div class="nav-container">
+            <nav>
+                <div class="logo">
+                    <a href="index.html"
+                        style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+                        <img src="Wealth Empires.jpg" alt="Wealth Empires Logo"
+                            style="height: 48px; width: auto; border-radius: 8px;">
+                        <div class="logo-text">Wealth Empires</div>
+                    </a>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Services <i class="fa-solid fa-caret-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="incorporation.html" class="dropdown-item">
+                                <span>Incorporation</span>
+                            </a>
+                            <a href="360-compliance.html" class="dropdown-item">
+                                <span>360° Compliance</span>
+                            </a>
+                            <a href="trademark.html" class="dropdown-item">
+                                <span>Trademark</span>
+                            </a>
+                            <a href="taxes.html" class="dropdown-item">
+                                <span>Taxes</span>
+                            </a>
+
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Our Product <i class="fa-solid fa-caret-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="https://aistartupdoctor.com/" class="dropdown-item">
+                                <span>Startup Doctor</span>
+                            </a>
+                            <a href="https://hitworth.wealthempires.in/" class="dropdown-item">
+                                <span>HitWorth</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="our-story.html">Our Story</a></li>
+                    <li><a href="our-partner.html">Our Partners</a></li>
+                    <li class="header-buttons-li">
+                        <div class="header-buttons">
+                            <a href="contact.html" class="btn-demo">Contact Us</a>
+                            <a href="https://crm.wealthempires.in/" class="btn-primary" style="color: white;">Start
+                                Incorporation</a>
+                        </div>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <h1 class="main-title">Stay Legally Sound In One Click!.</h1>
+        <p class="subtitle">There's no reason to pay crazy high prices to start your business.</p>
+        <p class="subtitle-secondary">Wealth Empires does it worry-free, without the hidden fees.</p>
+    </section>
+
+    <div class="table-scroll-wrapper">
+        <div class="comparison-table">
+            <div class="comparison-row comparison-header">
+                <div class="feature-name"></div>
+                <div class="company-header-cell featured">
+                    <div class="company-name" style="color: white;">Wealth Empires</div>
+                </div>
+                <div class="company-header-cell">
+                    <div class="company-name">India filings</div>
+                </div>
+                <div class="company-header-cell">
+                    <div class="company-name">Vakil Search</div>
+                </div>
+                <div class="company-header-cell">
+                    <div class="company-name">Quick company</div>
+                </div>
+                <div class="company-header-cell">
+                    <div class="company-name">Egnoil</div>
+                </div>
+            </div>
+
+            <div class="comparison-row">
+                <div class="feature-name">MCA Compliance</div>
+                <div class="advfeature-value">22.5k</div>
+                <div class="feature-value">25.8k</div>
+                <div class="feature-value">28k</div>
+                <div class="feature-value">35k</div>
+                <div class="feature-value">30k</div>
+            </div>
+
+            <div class="comparison-row">
+                <div class="feature-name">Trademark</div>
+                <div class="advfeature-value">6.5k</div>
+                <div class="feature-value">8k</div>
+                <div class="feature-value">9k</div>
+                <div class="feature-value">8.5k</div>
+                <div class="feature-value">10k</div>
+            </div>
+
+            <div class="comparison-row">
+                <div class="feature-name">Company Incorporation</div>
+                <div class="advfeature-value">12.5k</div>
+                <div class="feature-value">15k</div>
+                <div class="feature-value">14k</div>
+                <div class="feature-value">17k</div>
+                <div class="feature-value">15.5k</div>
+            </div>
+
+            <div class="comparison-row">
+                <div class="feature-name">Perks</div>
+                <div class="advfeature-value">6</div>
+                <div class="feature-value">3</div>
+                <div class="feature-value">4</div>
+                <div class="feature-value">0</div>
+                <div class="feature-value">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-buttons">
+        <a href="index.html"><button class="btn-primary">Get Started</button></a>
+    </div>
+<!-- Testimonial Section -->

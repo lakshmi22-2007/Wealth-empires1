@@ -4,364 +4,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get More For Less - Pricing Comparison</title>
+    <title>Compare - Wealth Empires</title>
+    <link rel="icon" type="image/jpeg" href="Wealth Empires.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="Wealth Empires.jpg">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Minimal reset for this page; main styling is in styles.css */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; 
+            background: #fff;
+            padding-top: 120px !important;
         }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background-color: #ffffff;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
+        
+        /* Header uses styles.css - no custom styling needed */
+        
+        /* Force table styles to override any CSS conflicts */
         .hero-section {
-            text-align: center;
-            margin-bottom: 50px;
-            padding-top: 100px;
+            padding: 80px 24px 60px !important;
+            text-align: center !important;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%) !important;
         }
 
         .main-title {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #000000;
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
+            font-size: 3.5rem !important;
+            font-weight: 800 !important;
+            color: #1a1a1a !important;
+            margin-bottom: 24px !important;
+            line-height: 1.1 !important;
         }
 
-        .subtitle {
-            font-size: 1.125rem;
-            color: #6b7280;
-            margin-bottom: 8px;
-            font-weight: 400;
+        .subtitle, .subtitle-secondary {
+            font-size: 1.25rem !important;
+            color: #64748b !important;
+            margin-bottom: 8px !important;
+            font-weight: 400 !important;
         }
-
-        .subtitle-secondary {
-            font-size: 1.125rem;
-            color: #6b7280;
-            font-weight: 400;
-        }
-
-        .company-name {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
+        
         .table-scroll-wrapper {
-            overflow-x: auto;
-            width: 100%;
-            padding: 0 20px;
+            width: 100% !important;
+            overflow-x: auto !important;
+            padding: 12px 24px 28px 24px !important;
+            margin-bottom: 40px !important;
         }
 
         .comparison-table {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 40px;
-            min-width: 800px;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            overflow: hidden;
+            width: 100% !important;
+            max-width: 800px !important;
+            margin: 0 auto !important;
+            border-radius: 16px !important;
+            overflow: hidden !important;
+            background: #fff !important;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1) !important;
+            border: 1px solid #e5e7eb !important;
         }
 
         .comparison-row {
-            display: grid;
-            grid-template-columns: 1.5fr repeat(5, 1fr);
-            border-bottom: 1px solid #e5e7eb;
-            align-items: center;
-        }
-
-        .comparison-row:last-child {
-            border-bottom: none;
-        }
-
-        .comparison-row:not(.comparison-header):nth-of-type(even) {
-            background-color: #f9fafb;
+            display: flex !important;
+            width: 100% !important;
         }
 
         .comparison-header {
-            background-color: #ffffff !important;
-            border-bottom: 2px solid #e5e7eb;
-        }
-
-        .company-header-cell {
-            padding: 20px 16px;
-            text-align: center;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .company-header-cell.featured {
-            background: #0d3d3d;
+            background: #fff !important;
+            border-bottom: 2px solid #f3f4f6 !important;
         }
 
         .feature-name {
-            padding: 24px;
-            font-weight: 600;
-            color: #1a1a1a;
-            font-size: 0.95rem;
+            flex: 0 0 300px !important;
+            padding: 20px 24px !important;
+            font-weight: 600 !important;
+            color: #374151 !important;
+            background: #fff !important;
+            font-size: 16px !important;
+            text-align: left !important;
+            display: flex !important;
+            align-items: center !important;
+            border-bottom: 1px solid #f3f4f6 !important;
+        }
+
+        .company-header-cell {
+            flex: 1 !important;
+            padding: 24px 20px !important;
+            text-align: center !important;
+            border-left: 1px solid #f3f4f6 !important;
+            font-size: 16px !important;
+            font-weight: 700 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: #fff !important;
+            color: #1f2937 !important;
+        }
+
+        .company-header-cell.featured {
+            background: linear-gradient(135deg, #a7dbd8 0%, #b8e6d3 100%) !important;
+            position: relative !important;
+        }
+
+        .company-name {
+            font-size: 18px !important;
+            font-weight: 700 !important;
+            margin-bottom: 8px !important;
+            color: #1f2937 !important;
+        }
+
+        .price {
+            font-size: 24px !important;
+            font-weight: 800 !important;
+            color: #1f2937 !important;
+            margin-bottom: 4px !important;
+        }
+
+        .price-note {
+            font-size: 12px !important;
+            color: #6b7280 !important;
+            font-weight: 500 !important;
+        }
+
+        .feature-value,
+        .advfeature-value {
+            flex: 1 !important;
+            padding: 18px 20px !important;
+            text-align: center !important;
+            border-left: 1px solid #f3f4f6 !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-bottom: 1px solid #f3f4f6 !important;
+            background: #fff !important;
         }
 
         .advfeature-value {
-            color: #0d3d3d;
-            font-weight: 800;
-            padding: 24px 16px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            background-color: #f4e4a61f;
-            height: 100%;
+            background: linear-gradient(135deg, #a7dbd8 0%, #b8e6d3 100%) !important;
         }
 
-        .feature-value {
-            padding: 24px 16px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            color: #1a1a1a;
-            height: 100%;
+        .advfeature-value i.fa-check {
+            color: #16a34a !important;
+            font-size: 20px !important;
+        }
+
+        .feature-value i.fa-check {
+            color: #16a34a !important;
+            font-size: 20px !important;
+        }
+
+        .feature-value i.fa-times {
+            color: #dc2626 !important;
+            font-size: 20px !important;
+        }
+
+        .total-row {
+            background: #f8fafc !important;
+            font-weight: 700 !important;
+        }
+
+        .total-row .feature-name {
+            background: #f8fafc !important;
+            font-weight: 700 !important;
+        }
+
+        .total-row .advfeature-value,
+        .total-row .feature-value {
+            background: #f8fafc !important;
+            flex-direction: column !important;
+        }
+
+        .total-row .advfeature-value {
+            background: linear-gradient(135deg, #a7dbd8 0%, #b8e6d3 100%) !important;
+        }
+
+        .total-price {
+            font-size: 18px !important;
+            font-weight: 800 !important;
+            color: #1f2937 !important;
+            margin-bottom: 4px !important;
+        }
+
+        .comparison-header .feature-name {
+            background: #fff !important;
+            color: transparent !important;
+        }
+
+        .comparison-row:nth-child(odd) .feature-name { 
+            background: #fcfcfd !important;
+        }
+
+        .comparison-row:nth-child(even) .feature-name { 
+            background: #fff !important;
+        }
+
+        /* Remove bottom border from last row */
+        .comparison-row:last-child .feature-name,
+        .comparison-row:last-child .company-header-cell,
+        .comparison-row:last-child .feature-value,
+        .comparison-row:last-child .advfeature-value {
+            border-bottom: none !important;
         }
 
         .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin: 40px 0 60px 0;
+            text-align: center !important;
+            margin: 40px 0 60px !important;
         }
 
-        .btn-primary {
-            background-color: #000000;
-            color: #ffffff;
-            border: none;
-            padding: 14px 32px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: #1a1a1a;
-            transform: translateY(-1px);
-        }
-
-        /* Footer Styles */
-        .footer-container {
-            background-color: #f8f9fa;
-            color: #333;
-            padding: 40px 20px;
-            border-top: 1px solid #e7e7e7;
-        }
-
-        .footer-header {
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-        }
-
-        .footer-header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-logo {
-            height: 40px;
-        }
-
-        .header-divider {
-            height: 40px;
-            width: 1px;
-            background-color: #ccc;
-            margin: 0 20px;
-        }
-
-        .contact-section a {
-            color: #2563ec;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .contact-section .support-email {
-            color: #555;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 150px;
-        }
-
-        .footer-column h3 {
-            font-size: 16px;
-            margin-bottom: 15px;
-            color: #000;
-        }
-
-        .footer-column ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-column ul li a {
-            color: #555;
-            text-decoration: none;
-        }
-
-        .footer-column ul li a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #ddd;
-            padding-top: 20px;
-            margin-top: 20px;
-        }
-
-        .footer-bottom-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-        }
-
-        .footer-links a {
-            color: #555;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .footer-links span {
-            color: #ccc;
-        }
-
-        .footer-right {
-            display: flex;
-            align-items: center;
-        }
-
-        .copyright {
-            margin-right: 20px;
-        }
-
-        .social-links a {
-            color: #555;
-            margin-left: 15px;
-            font-size: 18px;
+        .cta-buttons .btn-primary {
+            display: inline-block !important;
+            padding: 14px 32px !important;
+            background: #0f1724 !important;
+            color: #fff !important;
+            border: none !important;
+            border-radius: 8px !important;
+            font-weight: 700 !important;
+            font-size: 16px !important;
+            text-decoration: none !important;
+            transition: all 0.2s ease !important;
+            cursor: pointer !important;
         }
 
         @media (max-width: 768px) {
+            
+            /* Hero Section Mobile */
+            .hero-section {
+                padding: 40px 16px 30px !important;
+                margin-top: 0 !important;
+            }
+            
             .main-title {
-                font-size: 2.25rem;
-                padding: 10px;
+                font-size: 2.2rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 16px !important;
             }
-
-            .subtitle,
-            .subtitle-secondary {
-                font-size: 1rem;
+            
+            .subtitle, .subtitle-secondary {
+                font-size: 1rem !important;
+                margin-bottom: 6px !important;
             }
-
+            
+            /* Table Mobile Styles */
+            .table-scroll-wrapper {
+                padding: 8px 16px 20px 16px !important;
+                margin-bottom: 30px !important;
+            }
+            
+            .comparison-table {
+                min-width: 600px !important;
+                max-width: none !important;
+                border-radius: 12px !important;
+            }
+            
+            .feature-name {
+                flex: 0 0 200px !important;
+                font-size: 13px !important;
+                padding: 14px 12px !important;
+                line-height: 1.3 !important;
+            }
+            
+            .company-header-cell {
+                padding: 16px 8px !important;
+            }
+            
+            .company-name {
+                font-size: 14px !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .price {
+                font-size: 18px !important;
+                margin-bottom: 2px !important;
+            }
+            
+            .price-note {
+                font-size: 10px !important;
+            }
+            
+            .feature-value,
+            .advfeature-value {
+                font-size: 14px !important;
+                padding: 14px 8px !important;
+            }
+            
+            .feature-value i,
+            .advfeature-value i {
+                font-size: 16px !important;
+            }
+            
+            .total-price {
+                font-size: 15px !important;
+            }
+            
+            /* CTA Button Mobile */
             .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+                margin: 30px 0 40px !important;
+                padding: 0 16px !important;
             }
-
-            .btn-primary {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            /* Footer Responsive */
-            .footer-header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .header-divider {
-                display: none;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-column {
-                margin-bottom: 20px;
-            }
-
-            .footer-column h3 {
-                margin-top: 0;
-            }
-
-            .footer-bottom-content {
-                flex-direction: column-reverse;
-                gap: 20px;
-                text-align: center;
-            }
-
-            .footer-links {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .footer-links span {
-                display: none;
-            }
-
-            .footer-right {
-                flex-direction: column;
-                gap: 15px;
+            
+            .cta-buttons .btn-primary {
+                padding: 16px 40px !important;
+                font-size: 16px !important;
+                width: 100% !important;
+                max-width: 300px !important;
             }
         }
-
-        @media (max-width: 480px) {
-            .main-title {
-                font-size: 1.875rem;
-                padding: 10px;
-            }
-
-            .container {
-                padding: 20px 16px;
-            }
-        }
+        
+        /* Navigation handled by styles.css */
     </style>
 </head>
 
@@ -405,11 +353,11 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">Our Product <i class="fa-solid fa-caret-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="hitworth.html" class="dropdown-item">
-                                <span>HitWorth</span>
+                            <a href="https://aistartupdoctor.com/" class="dropdown-item">
+                                <span>Startup Doctor</span>
                             </a>
-                            <a href="health-check.html" class="dropdown-item">
-                                <span>Health Check</span>
+                            <a href="https://hitworth.wealthempires.in/" class="dropdown-item">
+                                <span>HitWorth</span>
                             </a>
                         </div>
                     </li>
@@ -436,59 +384,88 @@
 
     <div class="table-scroll-wrapper">
         <div class="comparison-table">
+            <!-- Header Row -->
             <div class="comparison-row comparison-header">
                 <div class="feature-name"></div>
                 <div class="company-header-cell featured">
-                    <div class="company-name" style="color: white;">Wealth Empires</div>
+                    <div class="company-name">Wealth Empires</div>
+                    <div class="price">₹297</div>
+                    <div class="price-note">+ State Fees</div>
                 </div>
                 <div class="company-header-cell">
-                    <div class="company-name">India filings</div>
+                    <div class="company-name">LegalZoom</div>
+                    <div class="price">₹100 /yr</div>
+                    <div class="price-note">First Year Free</div>
                 </div>
-                <div class="company-header-cell">
-                    <div class="company-name">Vakil Search</div>
+            </div>
+
+            <!-- Features -->
+            <div class="comparison-row">
+                <div class="feature-name">US Business Formation</div>
+                <div class="advfeature-value">
+                    <i class="fas fa-check"></i>
                 </div>
-                <div class="company-header-cell">
-                    <div class="company-name">Quick company</div>
-                </div>
-                <div class="company-header-cell">
-                    <div class="company-name">Egnoil</div>
+                <div class="feature-value">
+                    <i class="fas fa-check"></i>
                 </div>
             </div>
 
             <div class="comparison-row">
-                <div class="feature-name">MCA Compliance</div>
-                <div class="advfeature-value">22.5k</div>
-                <div class="feature-value">25.8k</div>
-                <div class="feature-value">28k</div>
-                <div class="feature-value">35k</div>
-                <div class="feature-value">30k</div>
+                <div class="feature-name">EIN & Operating Agreement</div>
+                <div class="advfeature-value">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="feature-value">
+                    <i class="fas fa-check"></i>
+                </div>
             </div>
 
             <div class="comparison-row">
-                <div class="feature-name">Trademark</div>
-                <div class="advfeature-value">6.5k</div>
-                <div class="feature-value">8k</div>
-                <div class="feature-value">9k</div>
-                <div class="feature-value">8.5k</div>
-                <div class="feature-value">10k</div>
+                <div class="feature-name">Registered Agent Service</div>
+                <div class="advfeature-value">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="feature-value">
+                    <i class="fas fa-check"></i>
+                </div>
             </div>
 
             <div class="comparison-row">
-                <div class="feature-name">Company Incorporation</div>
-                <div class="advfeature-value">12.5k</div>
-                <div class="feature-value">15k</div>
-                <div class="feature-value">14k</div>
-                <div class="feature-value">17k</div>
-                <div class="feature-value">15.5k</div>
+                <div class="feature-name">Form in Any State</div>
+                <div class="advfeature-value">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="feature-value">
+                    <i class="fas fa-times"></i>
+                </div>
             </div>
 
             <div class="comparison-row">
-                <div class="feature-name">Perks</div>
-                <div class="advfeature-value">6</div>
-                <div class="feature-value">3</div>
-                <div class="feature-value">4</div>
-                <div class="feature-value">0</div>
-                <div class="feature-value">0</div>
+                <div class="feature-name">Live Chat & Email Support</div>
+                <div class="advfeature-value">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="feature-value">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+
+            <div class="comparison-row">
+                <div class="feature-name">Trustpilot Score</div>
+                <div class="advfeature-value">4.7</div>
+                <div class="feature-value">3.1</div>
+            </div>
+
+            <!-- Total Cost Row -->
+            <div class="comparison-row total-row">
+                <div class="feature-name">Your Total Cost</div>
+                <div class="advfeature-value">
+                    <div class="total-price">₹297</div>
+                    <div class="price-note">+ State Fees</div>
+                </div>
+                <div class="feature-value">
+                    <div class="total-price">₹500 One-time</div>
+                </div>
             </div>
         </div>
     </div>
@@ -496,6 +473,211 @@
     <div class="cta-buttons">
         <a href="index.html"><button class="btn-primary">Get Started</button></a>
     </div>
+<!-- Testimonial Section -->
+    <section class="testimonial-hero-section" style="margin: 24px 24px 48px 24px; padding: 60px 0; background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <!-- Header with Awards -->
+            <div class="testimonial-header" style="position: relative; margin-bottom: 60px;">
+                <!-- Awards Badges - Moved to top right -->
+                <div class="awards-container" style="position: absolute; top: 0; right: 0; display: flex; gap: 20px; flex-wrap: wrap; z-index: 5;">
+                    <!-- Badge 1 -->
+                    <div class="award-badge" style="text-align: center; background: none; border: none; padding: 0;">
+                        <img src="img/b1.png" alt="Award Badge 1" style="width: 70px; height: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15)); border-radius: 12px;">
+                    </div>
+                    
+                    <!-- Badge 2 -->
+                    <div class="award-badge" style="text-align: center; background: none; border: none; padding: 0;">
+                        <img src="img/b2.png" alt="Award Badge 2" style="width: 70px; height: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15)); border-radius: 12px;">
+                    </div>
+                    
+                    <!-- Badge 3 -->
+                    <div class="award-badge" style="text-align: center; background: none; border: none; padding: 0;">
+                        <img src="img/b3.png" alt="Award Badge 3" style="width: 70px; height: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15)); border-radius: 12px;">
+                    </div>
+                    
+                    <!-- Badge 4 -->
+                    <div class="award-badge" style="text-align: center; background: none; border: none; padding: 0;">
+                        <img src="img/b4.png" alt="Award Badge 4" style="width: 70px; height: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15)); border-radius: 12px;">
+                    </div>
+                </div>
+
+                <h1 class="testimonial-title" style="font-size: 3.5rem; font-weight: 600; margin: 0 0 40px 0; line-height: 1.1; text-align: left;">
+                    <span style="color: #7851A9;">Superheroes</span> <span style="color: #1f2937;">who</span><br>
+                    <span style="color: #1f2937;">trust</span> <span style="color: #1f2937;">WealthEmpires</span>
+                </h1>
+            </div>
+
+            <!-- Testimonial Cards -->
+            <div class="testimonial-grid" style="display: grid; grid-template-columns: 200px 200px 400px 200px; gap: 20px; align-items: stretch; justify-content: center;">
+                <!-- Customer Photo 1 -->
+                <div class="customer-card hover-testimonial" style="background: #ffc0cb; border-radius: 25px; padding: 0; overflow: hidden; height: 280px; position: relative; cursor: pointer;">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face" alt="Steven Rumancik" style="width: 100%; height: 100%; object-fit: cover; transition: all 0.3s ease;">
+                    
+                    <!-- Hover Overlay with Testimonial -->
+                    <div class="testimonial-overlay" style="position: absolute !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; background: rgba(255, 192, 203, 0.95) !important; padding: 20px !important; display: flex !important; flex-direction: column !important; justify-content: center !important; text-align: center !important; border-radius: 25px !important; z-index: 10 !important;">
+                        <div style="color: #e91e63; font-size: 16px; margin-bottom: 8px;">✦</div>
+                        <p style="font-size: 14px; font-weight: 600; color: #2d3748; line-height: 1.3; margin: 0 0 12px 0;">
+                            We're now operating leaner and more efficiently than ever before. WealthEmpires has truly transformed our business!
+                        </p>
+                        <div>
+                            <h4 style="font-size: 15px; font-weight: 700; color: #2d3748; margin: 0;">Steven Rumancik</h4>
+                            <p style="font-size: 12px; color: #666; margin: 3px 0 0 0;">CEO, Peak Technology</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Photo 2 -->
+                <div class="customer-card hover-testimonial" style="background: #add8e6; border-radius: 25px; padding: 0; overflow: hidden; height: 280px; position: relative; cursor: pointer;">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=face" alt="Jack Marshall" style="width: 100%; height: 100%; object-fit: cover; transition: all 0.3s ease;">
+                    
+                    <!-- Hover Overlay with Testimonial -->
+                    <div class="testimonial-overlay" style="position: absolute !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; background: rgba(173, 216, 230, 0.95) !important; padding: 20px !important; display: flex !important; flex-direction: column !important; justify-content: center !important; text-align: center !important; border-radius: 25px !important; z-index: 10 !important;">
+                        <div style="color: #4a90e2; font-size: 16px; margin-bottom: 8px;">✦</div>
+                        <p style="font-size: 14px; font-weight: 600; color: #2d3748; line-height: 1.3; margin: 0 0 12px 0;">
+                            One word, excellent. It's been game-changing for us. WealthEmpires has given us the confidence to grow, simplify operations, and deliver even better results for our clients.
+                        </p>
+                        <div>
+                            <h4 style="font-size: 15px; font-weight: 700; color: #2d3748; margin: 0;">Jack Marshall</h4>
+                            <p style="font-size: 12px; color: #666; margin: 3px 0 0 0;">Associate Director, Network Ltd.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Testimonial -->
+                <div class="featured-testimonial" style="background: linear-gradient(135deg, #d4f561 0%, #c8e6c9 100%); border-radius: 25px; padding: 30px; position: relative; height: 280px; display: flex; align-items: center;">
+                    <!-- Customer Photo with Sparkle Effect -->
+                    <div style="flex-shrink: 0; width: 100px; height: 100px; border-radius: 50%; overflow: hidden; margin-right: 20px; position: relative;">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face" alt="George Ballane" style="width: 100%; height: 100%; object-fit: cover;">
+                        
+                        <!-- Sparkle Decoration with radiating lines -->
+                        
+                        
+                        <!-- Sparkles -->
+                        <div style="position: absolute; right: -15px; top: 15%; color: #e91e63; font-size: 16px; transform: rotate(15deg);">✦</div>
+                        <div style="position: absolute; left: -15px; bottom: 20%; color: #ff6b6b; font-size: 14px; transform: rotate(-15deg);">✦</div>
+                    </div>
+                    
+                    <!-- Testimonial Content -->
+                    <div style="flex: 1;">
+                        <div style="color: #e91e63; font-size: 18px; margin-bottom: 8px;">✦</div>
+                        <p style="font-size: 16px; font-weight: 600; color: #2d3748; line-height: 1.4; margin: 0 0 15px 0;">
+                            WealthEmpires literally runs my business. We are more profitable with just a little more sales, all thanks to WealthEmpires.
+                        </p>
+                        
+                        <div>
+                            <h4 style="font-size: 16px; font-weight: 700; color: #2d3748; margin: 0;">George Ballane</h4>
+                            <p style="font-size: 13px; color: #666; margin: 3px 0 0 0;">Founder, BizTechPro</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Photo 4 -->
+                <div class="customer-card hover-testimonial" style="background: #98fb98; border-radius: 25px; padding: 0; overflow: hidden; height: 280px; position: relative; cursor: pointer;">
+                    <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=500&fit=crop&crop=face" alt="Wes Ulmer" style="width: 100%; height: 100%; object-fit: cover; transition: all 0.3s ease;">
+                    
+                    <!-- Hover Overlay with Testimonial -->
+                    <div class="testimonial-overlay" style="position: absolute !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; background: rgba(152, 251, 152, 0.95) !important; padding: 20px !important; display: flex !important; flex-direction: column !important; justify-content: center !important; text-align: center !important; border-radius: 25px !important; z-index: 10 !important;">
+                        <div style="color: #4caf50; font-size: 16px; margin-bottom: 8px;">✦</div>
+                        <p style="font-size: 14px; font-weight: 600; color: #2d3748; line-height: 1.3; margin: 0 0 12px 0;">
+                            With WealthEmpires we found a platform that integrates easily and allows for more efficient management of our projects.
+                        </p>
+                        <div>
+                            <h4 style="font-size: 15px; font-weight: 700; color: #2d3748; margin: 0;">Wes Ulmer</h4>
+                            <p style="font-size: 12px; color: #666; margin: 3px 0 0 0;">CEO and President, BD Tech</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hover Effects and Responsive Styles -->
+        <style>
+            /* Hover Effects */
+            .hover-testimonial:hover .testimonial-overlay {
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            .hover-testimonial:hover img {
+                transform: scale(1.05) !important;
+                filter: blur(2px) !important;
+            }
+            
+            .testimonial-overlay {
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease !important;
+                z-index: 10;
+            }
+            
+            @media (max-width: 1200px) {
+                .testimonial-grid {
+                    grid-template-columns: 180px 180px 350px 180px !important;
+                    gap: 15px !important;
+                }
+            }
+            
+            @media (max-width: 1024px) {
+                .testimonial-grid {
+                    grid-template-columns: 1fr 1fr !important;
+                    gap: 15px !important;
+                    justify-content: center !important;
+                }
+                .featured-testimonial {
+                    grid-column: span 2 !important;
+                }
+                .customer-card {
+                    height: 250px !important;
+                }
+            }
+            
+            @media (max-width: 1024px) {
+                .awards-container {
+                    position: static !important;
+                    justify-content: center !important;
+                    margin: 20px 0 !important;
+                }
+                .testimonial-title {
+                    text-align: center !important;
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .testimonial-title {
+                    font-size: 2.5rem !important;
+                    text-align: center !important;
+                }
+                .awards-container {
+                    position: static !important;
+                    justify-content: center !important;
+                    gap: 8px !important;
+                    margin: 15px 0 !important;
+                }
+                .award-badge {
+                    min-width: 75px !important;
+                    padding: 8px 10px !important;
+                }
+                .testimonial-grid {
+                    grid-template-columns: 1fr !important;
+                    gap: 15px !important;
+                }
+                .featured-testimonial {
+                    grid-column: span 1 !important;
+                    flex-direction: column !important;
+                    text-align: center !important;
+                    padding: 25px 15px !important;
+                    height: auto !important;
+                }
+                .featured-testimonial > div:first-child {
+                    margin-right: 0 !important;
+                    margin-bottom: 15px !important;
+                }
+                .customer-card {
+                    height: 200px !important;
+                }
+            }
+        </style>
+    </section>
 
     <section style="background: #ffffff; padding: 0px;">
         <div class="container">
@@ -618,6 +800,7 @@
             </div>
         </div>
     </section>
+    
 
     <script>
         function toggleFAQ(element) {
@@ -644,8 +827,197 @@
             }
         }
     </script>
+    <!-- CTA Section (responsive) -->
+    <section class="cta-hero-section" style="margin: 24px 24px; border-radius: 24px; position: relative; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 6px 30px rgba(0,0,0,0.08);">
+        <!-- full image placed as an absolutely positioned element so entire image stays visible -->
+        <img src="my story1.png" alt="" aria-hidden="true" class="cta-bg-img">
+        <style>
+            /* Push the image slightly beyond the right edge for a stronger visual overlap and bump zoom a bit */
+            .cta-bg-img { position: absolute; right: -6%; left: auto; top: 0; height: 100%; width: auto; max-width: 75%; object-fit: contain; z-index: 0; pointer-events: none; transform: scale(1.30); transform-origin: right center; }
+            @media (max-width: 1200px) { .cta-bg-img { right: -4%; left: auto; max-width: 70%; transform: scale(1.25); } }
+            @media (max-width: 900px) { .cta-bg-img { display:none; } }
+            .cta-overlay { position:absolute; inset:0; background: linear-gradient(rgba(255,255,255,0.82), rgba(255,255,255,0.78)); z-index:1; }
+            .cta-inner { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:28px 32px; display:grid; grid-template-columns: 1fr auto; gap:20px; align-items:center; }
+            .cta-left { padding:8px 12px; }
+            .cta-left h2 { font-size:48px; margin:0; line-height:1.05; color:#111827; font-weight:800; }
+            .cta-left p { margin:8px 0 0; color:#374151; font-size:16px; }
+            .cta-actions { display:flex; gap:14px; align-items:center; }
+            .cta-btn { display:inline-flex; align-items:center; justify-content:center; padding:12px 28px; border-radius:999px; text-decoration:none; font-weight:700; transition:all .18s ease; }
+            .btn-primary { background:#0f1724; color:#fff; border: none; }
+            .btn-primary:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(15,23,42,0.12); }
+            .btn-ghost { background:#fff; color:#0f1724; border:1px solid #d1d5db; }
+            .btn-ghost:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(15,23,42,0.06); }
+            .cta-right { text-align:right; padding-right:12px; }
+            .cta-right p { margin:0; color:#6b21a8; font-weight:600; }
+
+            @media (max-width:900px) {
+                .cta-inner { grid-template-columns: 1fr; text-align:left; padding:20px; }
+                .cta-right { text-align:left; padding:0; }
+                .cta-actions { margin-top:12px; }
+                .cta-left h2 { font-size:34px; }
+            }
+            @media (max-width:480px) {
+                .cta-left h2 { font-size:28px; }
+                .cta-btn { width:100%; padding:10px 16px; }
+                .cta-actions { flex-direction:column; gap:10px; }
+            }
+        </style>
+
+        <!-- subtle overlay for contrast -->
+        <div class="cta-overlay" aria-hidden="true"></div>
+
+        <div class="cta-inner">
+            <div class="cta-left">
+                <h2>#WE People First<br>Company.</h2>
+                
+
+                <div class="cta-actions" role="group" aria-label="Call to actions" style="margin-top: 24px;">
+                    <a class="cta-btn btn-primary" href="https://crm.wealthempires.in/">Start incorporation</a>
+                    <a class="cta-btn btn-ghost" href="contact.html">Contact us</a>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+
+<!-- Footer -->
+   <!-- Footer -->
+    <style>
+     @media (max-width: 768px) {
+            
+            /* Stack header items vertically */
+            .footer-header-content {
+                flex-direction: column;
+                gap: 20px; /* Adds space between logo and contact info */
+            }
+
+            .header-divider {
+                display: none; /* Hide the vertical divider line */
+            }
+
+            /* Stack the main content columns */
+            .footer-content {
+                flex-direction: column;
+                text-align: center; /* Center-aligns the text in columns */
+            }
+            
+            .footer-column {
+                margin-bottom: 20px; /* Adds space between stacked columns */
+            }
+
+            .footer-column h3 {
+                margin-top: 0; /* Removes extra space for headings after the first one */
+            }
+
+            /* Stack bottom links and social media vertically */
+            .footer-bottom-content {
+                flex-direction: column-reverse; /* Shows copyright at the bottom */
+                gap: 20px; /* Adds space between elements */
+                text-align: center;
+            }
+
+            .footer-links {
+                display: flex;
+                flex-direction: column; /* Stack policy links */
+                gap: 10px;
+            }
+
+            .footer-links span {
+                display: none; /* Hide the pipe dividers */
+            }
+            
+            .footer-right {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+
+    <style>
+    @media (max-width: 768px) {
+        .footer-column {
+            margin-bottom: 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .footer-column:last-child {
+            border-bottom: none;
+        }
+
+        .footer-column h3 {
+            margin: 0;
+            padding: 18px 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .footer-column h3:hover {
+            background: #f8f9fa;
+        }
+
+        .footer-column h3::after {
+            content: '▼';
+            font-size: 12px;
+            color: #999;
+            transform: rotate(0deg);
+            transition: transform 0.3s ease;
+        }
+
+        .footer-column h3.active::after {
+            transform: rotate(180deg);
+        }
+
+        .footer-column ul {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background: #fff;
+        }
+
+        .footer-column ul.active {
+            max-height: 500px;
+            padding: 0 0 20px 0;
+        }
+
+        .footer-column ul li {
+            margin: 0;
+            padding: 8px 0;
+        }
+
+        .footer-column ul li a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            transition: color 0.2s ease;
+            text-align: left;
+        }
+
+        .footer-column ul li a:hover {
+            color: #2563eb;
+        }
+
+        .footer-column h3[style*="margin-top"] {
+            display: none;
+        }
+    }
+    </style>
 
     <footer class="footer-container">
+        <!-- Top Header Section -->
         <div class="footer-header">
             <div class="footer-header-content">
                 <div class="logo-section">
@@ -653,12 +1025,12 @@
                 </div>
                 <div class="header-divider"></div>
                 <div class="contact-section">
-                    <a href="mailto:support@wealthempires.com" class="support-email">support@wealthempires.com </a>
-                    <span style="color: rgb(204, 199, 199);"> | </span>
-                    <a href="#" style="text-decoration: none; color: #2563ec; font-weight: 500;">+91 9884521264</a>
+                    <a href="mailto:support@wealthempires.com" class="support-email">support@wealthempires.com | +91 9884521264</a>
+                    
                 </div>
             </div>
         </div>
+
         <div class="footer-content">
             <div class="footer-column">
                 <h3>Products</h3>
@@ -676,6 +1048,7 @@
                     <li><a href="#">Legal Consultation</a></li>
                 </ul>
             </div>
+
             <div class="footer-column">
                 <h3>Services</h3>
                 <ul>
@@ -692,6 +1065,7 @@
                     <li><a href="#">Check ISO Validity</a></li>
                 </ul>
             </div>
+
             <div class="footer-column">
                 <h3>Talk To Experts</h3>
                 <ul>
@@ -704,8 +1078,10 @@
                     <li><a href="#">ISO Certification</a></li>
                     <li><a href="#">Funding</a></li>
                     <li><a href="#">Risk Mitigation</a></li>
+
                 </ul>
             </div>
+
             <div class="footer-column">
                 <h3>Resources</h3>
                 <ul>
@@ -722,6 +1098,7 @@
                     <li><a href="#">B2B Support</a></li>
                 </ul>
             </div>
+
             <div class="footer-column">
                 <h3>Company</h3>
                 <ul>
@@ -737,6 +1114,7 @@
                 </ul>
             </div>
         </div>
+
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <div class="footer-links">
@@ -749,9 +1127,13 @@
                     <a href="gdpr.html">GDPR</a>
                     <span>|</span>
                     <a href="Responsible Disclosure Policy.html">Responsible Disclosure</a>
+                    <span>|</span>
                 </div>
+
                 <div class="footer-right">
-                    <div class="copyright">Copyright © 2025 Wealth Empires Inc.</div>
+                    <div class="copyright">
+                        Copyright © 2025 Wealth Empires Inc.
+                    </div>
                     <div class="social-links">
                         <a href="https://x.com/wewealthempires" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="https://www.linkedin.com/company/wealthempires" aria-label="LinkedIn"><i
@@ -772,91 +1154,39 @@
         const navOverlay = document.getElementById('navOverlay');
         const dropdowns = document.querySelectorAll('.dropdown');
 
-        // Toggle mobile menu
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
             navOverlay.classList.toggle('active');
-            document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : '';
         });
 
-        // Close menu when overlay is clicked
         navOverlay.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
             navOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-
-            // Close all dropdowns
-            dropdowns.forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
         });
 
-        // Handle dropdown clicks
         dropdowns.forEach(dropdown => {
             const toggle = dropdown.querySelector('.dropdown-toggle');
-
             toggle.addEventListener('click', (e) => {
                 if (window.innerWidth <= 768) {
                     e.preventDefault();
-                    e.stopPropagation();
-
-                    // Close other dropdowns
-                    dropdowns.forEach(otherDropdown => {
-                        if (otherDropdown !== dropdown) {
-                            otherDropdown.classList.remove('active');
-                        }
-                    });
-
-                    // Toggle current dropdown
                     dropdown.classList.toggle('active');
                 }
             });
         });
 
-        // Close menu when clicking regular nav links (not dropdowns)
-        document.querySelectorAll('.nav-links > li > a:not(.dropdown-toggle)').forEach(link => {
+        document.querySelectorAll('.nav-links a:not(.dropdown-toggle)').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
                     hamburger.classList.remove('active');
                     navLinks.classList.remove('active');
                     navOverlay.classList.remove('active');
-                    document.body.style.overflow = '';
                 }
             });
         });
 
-        // Close menu when clicking dropdown items
-        document.querySelectorAll('.dropdown-item').forEach(item => {
-            item.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    navOverlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-
-        // Handle window resize
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                if (window.innerWidth > 768) {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    navOverlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                    dropdowns.forEach(dropdown => {
-                        dropdown.classList.remove('active');
-                    });
-                }
-            }, 250);
-        });
-
-        // --- Smooth Scrolling ---
+        // --- Original Smooth Scrolling Logic ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -870,7 +1200,7 @@
             });
         });
 
-        // --- Scroll Effect for Header ---
+        // --- Original Scroll Effect for Header ---
         window.addEventListener('scroll', function () {
             const navContainer = document.querySelector('.nav-container');
             if (window.scrollY > 100) {
@@ -882,6 +1212,102 @@
             }
         });
     </script>
+    <script>
+        // Mobile footer accordion functionality (copied from index.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Only activate on mobile devices
+            if (window.innerWidth <= 768) {
+                initFooterAccordion();
+            }
+
+            // Reinitialize on window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth <= 768) {
+                    initFooterAccordion();
+                } else {
+                    resetFooterAccordion();
+                }
+            });
+        });
+
+        function initFooterAccordion() {
+            const footerColumns = document.querySelectorAll('.footer-column');
+
+            footerColumns.forEach(column => {
+                const heading = column.querySelector('h3');
+                const list = column.querySelector('ul');
+
+                if (heading && list && !heading.hasAttribute('style')) {
+                    // Initially collapse all sections
+                    list.classList.remove('active');
+                    heading.classList.remove('active');
+
+                    // Replace heading to remove previous listeners, then set accessibility attributes
+                    const newHeading = heading.cloneNode(true);
+                    heading.parentNode.replaceChild(newHeading, heading);
+                    newHeading.setAttribute('role', 'button');
+                    newHeading.setAttribute('tabindex', '0');
+                    newHeading.setAttribute('aria-expanded', 'false');
+
+                    // Add click listener
+                    newHeading.addEventListener('click', function() {
+                        const newList = column.querySelector('ul');
+                        const isActive = newList.classList.contains('active');
+
+                        // Close all other sections
+                        footerColumns.forEach(otherColumn => {
+                            const otherList = otherColumn.querySelector('ul');
+                            const otherHeading = otherColumn.querySelector('h3');
+                            if (otherList && otherHeading && !otherHeading.hasAttribute('style')) {
+                                otherList.classList.remove('active');
+                                otherHeading.classList.remove('active');
+                                otherHeading.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+
+                        // Toggle current section and aria state
+                        if (!isActive) {
+                            newList.classList.add('active');
+                            newHeading.classList.add('active');
+                            newHeading.setAttribute('aria-expanded', 'true');
+                        } else {
+                            newList.classList.remove('active');
+                            newHeading.classList.remove('active');
+                            newHeading.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    // Keyboard support: toggle on Enter or Space
+                    newHeading.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            newHeading.click();
+                        }
+                    });
+                }
+            });
+        }
+
+        function resetFooterAccordion() {
+            const footerColumns = document.querySelectorAll('.footer-column');
+
+            footerColumns.forEach(column => {
+                const heading = column.querySelector('h3');
+                const list = column.querySelector('ul');
+
+                if (heading && list) {
+                    list.classList.remove('active');
+                    heading.classList.remove('active');
+                    heading.setAttribute('aria-expanded', 'false');
+
+                    // Remove click listeners by replacing node
+                    const newHeading = heading.cloneNode(true);
+                    heading.parentNode.replaceChild(newHeading, heading);
+                }
+            });
+        }
+    </script>
+
 </body>
 
 </html>
