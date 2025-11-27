@@ -59,6 +59,17 @@
   padding: 0;
 }
 
+/* Ensure sticky header does not overlap page content on small screens */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 68px;
+  }
+
+  body {
+    padding-top: var(--nav-height, 68px) !important; /* use CSS variable set by JS when available */
+  }
+}
+
 .nav-container nav {
   display: flex;
   justify-content: space-between;
